@@ -1,0 +1,360 @@
+{
+  "generated": "2026-07-02",
+  "years": [
+    2026
+  ],
+  "events": [
+    {
+      "date": "2026-01-01",
+      "name": "New Year's Day",
+      "title": "New Year's Day",
+      "time": "",
+      "type": "holiday",
+      "desc": "01/01/2026. 元旦, 美股与股指期货全天休市."
+    },
+    {
+      "date": "2026-01-09",
+      "name": "Non-Farm Employment Change",
+      "title": "Non-Farm Employment Change",
+      "time": "8:30am ET",
+      "type": "economic",
+      "desc": "01/09/2026 at 8:30am ET. 美国非农就业数据发布, 市场高波动事件."
+    },
+    {
+      "date": "2026-01-13",
+      "name": "CPI | Consumer Price Index",
+      "title": "CPI | Consumer Price Index",
+      "time": "8:30am ET",
+      "type": "economic",
+      "desc": "01/13/2026 at 8:30am ET. 美国消费者物价指数 (CPI) 发布."
+    },
+    {
+      "date": "2026-01-19",
+      "name": "Martin Luther King Jr. Day",
+      "title": "Martin Luther King Jr. Day",
+      "time": "提前收盘",
+      "type": "early_close",
+      "desc": "01/19/2026. 马丁·路德·金纪念日, 股指期货提前收盘 (约 13:00 ET)."
+    },
+    {
+      "date": "2026-01-28",
+      "name": "FOMC Statement",
+      "title": "FOMC Statement",
+      "time": "2:00pm ET",
+      "type": "economic",
+      "desc": "01/28/2026 at 2:00pm ET. 联邦公开市场委员会 (FOMC) 利率决议与政策声明."
+    },
+    {
+      "date": "2026-02-11",
+      "name": "Non-Farm Employment Change",
+      "title": "Non-Farm Employment Change",
+      "time": "8:30am ET",
+      "type": "economic",
+      "desc": "02/11/2026 at 8:30am ET. 美国非农就业数据发布, 市场高波动事件."
+    },
+    {
+      "date": "2026-02-13",
+      "name": "CPI | Consumer Price Index",
+      "title": "CPI | Consumer Price Index",
+      "time": "8:30am ET",
+      "type": "economic",
+      "desc": "02/13/2026 at 8:30am ET. 美国消费者物价指数 (CPI) 发布."
+    },
+    {
+      "date": "2026-02-16",
+      "name": "Presidents' Day",
+      "title": "Presidents' Day",
+      "time": "提前收盘",
+      "type": "early_close",
+      "desc": "02/16/2026. 总统日, 股指期货提前收盘 (约 13:00 ET)."
+    },
+    {
+      "date": "2026-03-06",
+      "name": "Non-Farm Employment Change",
+      "title": "Non-Farm Employment Change",
+      "time": "8:30am ET",
+      "type": "economic",
+      "desc": "03/06/2026 at 8:30am ET. 美国非农就业数据发布, 市场高波动事件."
+    },
+    {
+      "date": "2026-03-11",
+      "name": "CPI | Consumer Price Index",
+      "title": "CPI | Consumer Price Index",
+      "time": "8:30am ET",
+      "type": "economic",
+      "desc": "03/11/2026 at 8:30am ET. 美国消费者物价指数 (CPI) 发布."
+    },
+    {
+      "date": "2026-03-18",
+      "name": "FOMC Statement",
+      "title": "FOMC Statement",
+      "time": "2:00pm ET",
+      "type": "economic",
+      "desc": "03/18/2026 at 2:00pm ET. 联邦公开市场委员会 (FOMC) 利率决议与政策声明."
+    },
+    {
+      "date": "2026-04-03",
+      "name": "Good Friday",
+      "title": "Good Friday",
+      "time": "",
+      "type": "holiday",
+      "desc": "04/03/2026. 耶稣受难日, 美股与股指期货全天休市."
+    },
+    {
+      "date": "2026-04-03",
+      "name": "Non-Farm Employment Change",
+      "title": "Non-Farm Employment Change",
+      "time": "8:30am ET",
+      "type": "economic",
+      "desc": "04/03/2026 at 8:30am ET. 美国非农就业数据发布, 市场高波动事件."
+    },
+    {
+      "date": "2026-04-10",
+      "name": "CPI | Consumer Price Index",
+      "title": "CPI | Consumer Price Index",
+      "time": "8:30am ET",
+      "type": "economic",
+      "desc": "04/10/2026 at 8:30am ET. 美国消费者物价指数 (CPI) 发布."
+    },
+    {
+      "date": "2026-04-29",
+      "name": "FOMC Statement",
+      "title": "FOMC Statement",
+      "time": "2:00pm ET",
+      "type": "economic",
+      "desc": "04/29/2026 at 2:00pm ET. 联邦公开市场委员会 (FOMC) 利率决议与政策声明."
+    },
+    {
+      "date": "2026-05-08",
+      "name": "Non-Farm Employment Change",
+      "title": "Non-Farm Employment Change",
+      "time": "8:30am ET",
+      "type": "economic",
+      "desc": "05/08/2026 at 8:30am ET. 美国非农就业数据发布, 市场高波动事件."
+    },
+    {
+      "date": "2026-05-12",
+      "name": "CPI | Consumer Price Index",
+      "title": "CPI | Consumer Price Index",
+      "time": "8:30am ET",
+      "type": "economic",
+      "desc": "05/12/2026 at 8:30am ET. 美国消费者物价指数 (CPI) 发布."
+    },
+    {
+      "date": "2026-05-25",
+      "name": "Memorial Day",
+      "title": "Memorial Day",
+      "time": "提前收盘",
+      "type": "early_close",
+      "desc": "05/25/2026. 阵亡将士纪念日, 股指期货提前收盘 (约 13:00 ET)."
+    },
+    {
+      "date": "2026-06-05",
+      "name": "Non-Farm Employment Change",
+      "title": "Non-Farm Employment Change",
+      "time": "8:30am ET",
+      "type": "economic",
+      "desc": "06/05/2026 at 8:30am ET. 美国非农就业数据发布, 市场高波动事件."
+    },
+    {
+      "date": "2026-06-10",
+      "name": "CPI | Consumer Price Index",
+      "title": "CPI | Consumer Price Index",
+      "time": "8:30am ET",
+      "type": "economic",
+      "desc": "06/10/2026 at 8:30am ET. 美国消费者物价指数 (CPI) 发布."
+    },
+    {
+      "date": "2026-06-17",
+      "name": "FOMC Statement",
+      "title": "FOMC Statement",
+      "time": "2:00pm ET",
+      "type": "economic",
+      "desc": "06/17/2026 at 2:00pm ET. 联邦公开市场委员会 (FOMC) 利率决议与政策声明."
+    },
+    {
+      "date": "2026-06-19",
+      "name": "Juneteenth",
+      "title": "Juneteenth",
+      "time": "提前收盘",
+      "type": "early_close",
+      "desc": "06/19/2026. 六月节, 股指期货提前收盘 (约 13:00 ET)."
+    },
+    {
+      "date": "2026-07-02",
+      "name": "Non-Farm Employment Change",
+      "title": "Non-Farm Employment Change",
+      "time": "8:30am ET",
+      "type": "economic",
+      "desc": "07/02/2026 at 8:30am ET. 美国非农就业数据发布, 市场高波动事件."
+    },
+    {
+      "date": "2026-07-03",
+      "name": "Independence Day",
+      "title": "Independence Day",
+      "time": "提前收盘",
+      "type": "early_close",
+      "desc": "07/03/2026. 独立日, 股指期货提前收盘 (约 13:00 ET)."
+    },
+    {
+      "date": "2026-07-14",
+      "name": "CPI | Consumer Price Index",
+      "title": "CPI | Consumer Price Index",
+      "time": "8:30am ET",
+      "type": "economic",
+      "desc": "07/14/2026 at 8:30am ET. 美国消费者物价指数 (CPI) 发布."
+    },
+    {
+      "date": "2026-07-29",
+      "name": "FOMC Statement",
+      "title": "FOMC Statement",
+      "time": "2:00pm ET",
+      "type": "economic",
+      "desc": "07/29/2026 at 2:00pm ET. 联邦公开市场委员会 (FOMC) 利率决议与政策声明."
+    },
+    {
+      "date": "2026-08-07",
+      "name": "Non-Farm Employment Change",
+      "title": "Non-Farm Employment Change",
+      "time": "8:30am ET",
+      "type": "economic",
+      "desc": "08/07/2026 at 8:30am ET. 美国非农就业数据发布, 市场高波动事件."
+    },
+    {
+      "date": "2026-08-12",
+      "name": "CPI | Consumer Price Index",
+      "title": "CPI | Consumer Price Index",
+      "time": "8:30am ET",
+      "type": "economic",
+      "desc": "08/12/2026 at 8:30am ET. 美国消费者物价指数 (CPI) 发布."
+    },
+    {
+      "date": "2026-09-04",
+      "name": "Non-Farm Employment Change",
+      "title": "Non-Farm Employment Change",
+      "time": "8:30am ET",
+      "type": "economic",
+      "desc": "09/04/2026 at 8:30am ET. 美国非农就业数据发布, 市场高波动事件."
+    },
+    {
+      "date": "2026-09-07",
+      "name": "Labor Day",
+      "title": "Labor Day",
+      "time": "提前收盘",
+      "type": "early_close",
+      "desc": "09/07/2026. 劳动节, 股指期货提前收盘 (约 13:00 ET)."
+    },
+    {
+      "date": "2026-09-11",
+      "name": "CPI | Consumer Price Index",
+      "title": "CPI | Consumer Price Index",
+      "time": "8:30am ET",
+      "type": "economic",
+      "desc": "09/11/2026 at 8:30am ET. 美国消费者物价指数 (CPI) 发布."
+    },
+    {
+      "date": "2026-09-16",
+      "name": "FOMC Statement",
+      "title": "FOMC Statement",
+      "time": "2:00pm ET",
+      "type": "economic",
+      "desc": "09/16/2026 at 2:00pm ET. 联邦公开市场委员会 (FOMC) 利率决议与政策声明."
+    },
+    {
+      "date": "2026-10-02",
+      "name": "Non-Farm Employment Change",
+      "title": "Non-Farm Employment Change",
+      "time": "8:30am ET",
+      "type": "economic",
+      "desc": "10/02/2026 at 8:30am ET. 美国非农就业数据发布, 市场高波动事件."
+    },
+    {
+      "date": "2026-10-14",
+      "name": "CPI | Consumer Price Index",
+      "title": "CPI | Consumer Price Index",
+      "time": "8:30am ET",
+      "type": "economic",
+      "desc": "10/14/2026 at 8:30am ET. 美国消费者物价指数 (CPI) 发布."
+    },
+    {
+      "date": "2026-10-28",
+      "name": "FOMC Statement",
+      "title": "FOMC Statement",
+      "time": "2:00pm ET",
+      "type": "economic",
+      "desc": "10/28/2026 at 2:00pm ET. 联邦公开市场委员会 (FOMC) 利率决议与政策声明."
+    },
+    {
+      "date": "2026-11-06",
+      "name": "Non-Farm Employment Change",
+      "title": "Non-Farm Employment Change",
+      "time": "8:30am ET",
+      "type": "economic",
+      "desc": "11/06/2026 at 8:30am ET. 美国非农就业数据发布, 市场高波动事件."
+    },
+    {
+      "date": "2026-11-10",
+      "name": "CPI | Consumer Price Index",
+      "title": "CPI | Consumer Price Index",
+      "time": "8:30am ET",
+      "type": "economic",
+      "desc": "11/10/2026 at 8:30am ET. 美国消费者物价指数 (CPI) 发布."
+    },
+    {
+      "date": "2026-11-26",
+      "name": "Thanksgiving Day",
+      "title": "Thanksgiving Day",
+      "time": "提前收盘",
+      "type": "early_close",
+      "desc": "11/26/2026. 感恩节, 股指期货提前收盘 (约 13:00 ET)."
+    },
+    {
+      "date": "2026-11-27",
+      "name": "Black Friday",
+      "title": "Black Friday",
+      "time": "提前收盘",
+      "type": "early_close",
+      "desc": "11/27/2026. 黑色星期五, 股指期货提前收盘 (约 13:00 ET)."
+    },
+    {
+      "date": "2026-12-04",
+      "name": "Non-Farm Employment Change",
+      "title": "Non-Farm Employment Change",
+      "time": "8:30am ET",
+      "type": "economic",
+      "desc": "12/04/2026 at 8:30am ET. 美国非农就业数据发布, 市场高波动事件."
+    },
+    {
+      "date": "2026-12-09",
+      "name": "FOMC Statement",
+      "title": "FOMC Statement",
+      "time": "2:00pm ET",
+      "type": "economic",
+      "desc": "12/09/2026 at 2:00pm ET. 联邦公开市场委员会 (FOMC) 利率决议与政策声明."
+    },
+    {
+      "date": "2026-12-10",
+      "name": "CPI | Consumer Price Index",
+      "title": "CPI | Consumer Price Index",
+      "time": "8:30am ET",
+      "type": "economic",
+      "desc": "12/10/2026 at 8:30am ET. 美国消费者物价指数 (CPI) 发布."
+    },
+    {
+      "date": "2026-12-24",
+      "name": "Christmas Eve",
+      "title": "Christmas Eve",
+      "time": "提前收盘",
+      "type": "early_close",
+      "desc": "12/24/2026. 平安夜, 股指期货提前收盘 (约 13:00 ET)."
+    },
+    {
+      "date": "2026-12-25",
+      "name": "Christmas Day",
+      "title": "Christmas Day",
+      "time": "",
+      "type": "holiday",
+      "desc": "12/25/2026. 圣诞节, 美股与股指期货全天休市."
+    }
+  ]
+}

@@ -1,0 +1,206 @@
+:root {
+  /* 配色方案 A · TPT 原味（用户测色提取的精确值） */
+  --bg: #0a0f0d;
+  --cell-weekday: #1b332c;          /* 工作日 */
+  --cell-weekday-border: #24413a;
+  --cell-weekend: #e0706c;          /* 周末 / 全休 = market close 鲑色 */
+  --cell-outside: #764142;          /* 非本月 */
+  --today-border: #4aa06a;          /* 今日绿框 */
+  /* 事件色 */
+  --eco: #a34f3a;          --eco-text: #ffffff;    /* 经济事件：铁锈 */
+  --early: #c8912f;        --early-text: #1a1205;  /* 提前收盘：金 */
+  --holiday-pill: #5e2b2b; --holiday-text: #ffffff; /* 全休胶囊（鲑底上）*/
+  --text: #eef2f4;
+  --text-dim: #9aa4ad;
+  --modal-bg: #1a1f27;
+  --radius: 14px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+@font-face { font-family: "Inter"; font-weight: 400; font-display: swap;
+  src: url("assets/fonts/inter-400.woff2") format("woff2"); }
+@font-face { font-family: "Inter"; font-weight: 500; font-display: swap;
+  src: url("assets/fonts/inter-500.woff2") format("woff2"); }
+@font-face { font-family: "Inter"; font-weight: 600; font-display: swap;
+  src: url("assets/fonts/inter-600.woff2") format("woff2"); }
+@font-face { font-family: "Inter"; font-weight: 700; font-display: swap;
+  src: url("assets/fonts/inter-700.woff2") format("woff2"); }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "PingFang SC", "Microsoft YaHei", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "cv11", "ss01";
+  padding: 24px;
+  min-height: 100vh;
+}
+
+.calendar { max-width: 1400px; margin: 0 auto; }
+
+.stale-banner {
+  max-width: 1400px;
+  margin: 0 auto 16px;
+  padding: 11px 18px;
+  background: #3a2e12;
+  border: 1px solid #6b551f;
+  color: #f0d68a;
+  border-radius: 10px;
+  font-size: 14px;
+  text-align: center;
+}
+.stale-banner[hidden] { display: none; }
+.stale-banner code {
+  background: rgba(255, 255, 255, .1);
+  padding: 1px 6px;
+  border-radius: 5px;
+  font-size: 13px;
+}
+
+/* Header / month nav */
+.cal-header {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 18px;
+}
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  min-width: 320px;
+  justify-content: center;
+}
+.nav-btn {
+  background: none;
+  border: none;
+  color: var(--text);
+  font-size: 30px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 4px 12px;
+  border-radius: 8px;
+  transition: background .15s;
+}
+.nav-btn:hover { background: rgba(255,255,255,.08); }
+.month-label {
+  font-size: 22px;
+  font-weight: 600;
+  min-width: 160px;
+  text-align: center;
+}
+
+/* Weekday row */
+.weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 14px;
+  margin-bottom: 14px;
+}
+.weekdays > div {
+  text-align: center;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+/* Grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 14px;
+}
+.cell {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius);
+  background: var(--cell-weekday);
+  border: 1px solid var(--cell-weekday-border);
+  padding: 10px 12px;
+  overflow: hidden;
+  cursor: default;
+  transition: transform .13s ease, box-shadow .13s ease, border-color .13s ease, filter .13s ease;
+}
+.cell:not(.outside):hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, .28);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, .38);
+  filter: brightness(1.06);
+}
+.cell.has-events { cursor: pointer; }
+.cell.weekend { background: var(--cell-weekend); border-color: transparent; }
+.cell.closed  { background: var(--cell-weekend); border-color: transparent; } /* 全休日 */
+.cell.outside { background: var(--cell-outside); border-color: transparent; }
+.cell.today { border: 2px solid var(--today-border); }
+
+.day-num {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--text);
+}
+.cell.weekend .day-num,
+.cell.closed .day-num { color: #ffffff; }
+
+.pills { margin-top: 8px; display: flex; flex-direction: column; align-items: stretch; gap: 6px; }
+.pill {
+  width: 100%;
+  background: var(--eco);
+  color: var(--eco-text);
+  font-size: 14px;
+  font-weight: 500;
+  padding: 5px 12px;
+  border-radius: 999px;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.pill.holiday { background: var(--holiday-pill); color: var(--holiday-text); }
+.pill.early { background: var(--early); color: var(--early-text); }
+
+/* Modal */
+@keyframes overlayIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes modalIn {
+  0%   { opacity: 0; transform: translateY(160px) scale(.9); }
+  50%  { opacity: 1; }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+.modal-overlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,.55);
+  backdrop-filter: blur(2px);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 100;
+  animation: overlayIn .35s ease both;
+}
+.modal-overlay[hidden] { display: none; }
+.modal {
+  position: relative;
+  background: var(--modal-bg);
+  border-radius: 16px;
+  padding: 28px 32px;
+  width: min(560px, 92vw);
+  box-shadow: 0 20px 60px rgba(0,0,0,.5);
+  transform-origin: center bottom;
+  animation: modalIn .62s cubic-bezier(.16, 1, .3, 1) both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .modal-overlay, .modal { animation: none; }
+}
+.modal-close {
+  position: absolute; top: 16px; right: 18px;
+  background: none; border: none; color: var(--text-dim);
+  font-size: 26px; line-height: 1; cursor: pointer;
+}
+.modal-close:hover { color: var(--text); }
+.modal-head { display: flex; align-items: center; gap: 12px; }
+.modal-dot { width: 16px; height: 16px; border-radius: 5px; background: var(--cell-weekday); border: 1px solid var(--cell-weekday-border); }
+.modal-date { font-size: 20px; font-weight: 500; }
+.modal-divider { border: none; border-top: 1px solid #2c333d; margin: 18px 0; }
+.modal-body { display: flex; flex-direction: column; gap: 22px; }
+.event-name { font-size: 18px; font-weight: 600; margin-bottom: 10px; }
+.event-desc { font-size: 15px; color: var(--text-dim); line-height: 1.6; }

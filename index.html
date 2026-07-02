@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Market Calendar</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="staleBanner" class="stale-banner" hidden>
+    ⚠️ 数据仅更新到 <span id="staleYear"></span> 年，请重新生成：<code>python3 scripts/fetch_data.py</code>（记得先补当年 CME 假期表）。
+  </div>
+
+  <div class="calendar">
+    <header class="cal-header">
+      <div class="nav">
+        <button id="prevBtn" class="nav-btn" aria-label="上个月">&#8249;</button>
+        <div id="monthLabel" class="month-label">—</div>
+        <button id="nextBtn" class="nav-btn" aria-label="下个月">&#8250;</button>
+      </div>
+    </header>
+
+    <div class="weekdays">
+      <div>Sun</div><div>Mon</div><div>Tue</div><div>Wed</div>
+      <div>Thu</div><div>Fri</div><div>Sat</div>
+    </div>
+
+    <div id="grid" class="grid"></div>
+  </div>
+
+  <div id="modal" class="modal-overlay" hidden>
+    <div class="modal">
+      <button id="modalClose" class="modal-close" aria-label="关闭">&times;</button>
+      <div class="modal-head">
+        <span id="modalDot" class="modal-dot"></span>
+        <span id="modalDate" class="modal-date"></span>
+      </div>
+      <hr class="modal-divider">
+      <div id="modalBody" class="modal-body"></div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+# 本地密钥，绝不提交
+.env
+
+# 抓取/预览产生的临时物
+.playwright-mcp/
+*.png
+__pycache__/
