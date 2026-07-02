@@ -1,7 +1,7 @@
 # CLAUDE.md — Market Calendar
 
 美盘事件日历（纯静态网页，GitHub Pages）。标记 非农 / CPI / FOMC / CME(ES/NQ 期货) 假期。
-线上：https://jcl1021-svg.github.io/market-calendar/
+线上：https://jcl1021-svg.github.io/market-calendar-app/
 
 ## 本项目工作须知
 
