@@ -123,8 +123,9 @@ async function init() {
       (EVENTS[ev.date] = EVENTS[ev.date] || []).push(ev);
     }
     const maxYear = Math.max(...(data.years || [now.getFullYear()]));
-    if (now.getFullYear() > maxYear) {
-      document.getElementById("staleYear").textContent = maxYear;
+    // 每年 12/10 起提醒补下一年数据（下一年官方日程 9 月下旬已公布）
+    if (now >= new Date(maxYear, 11, 10)) {
+      document.getElementById("staleYear").textContent = maxYear + 1;
       document.getElementById("staleBanner").hidden = false;
     }
   } catch (err) {
