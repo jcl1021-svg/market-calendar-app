@@ -1,0 +1,48 @@
+name: Daily market reminder
+
+on:
+  schedule:
+    - cron: "0 4 * * *"   # 04:00 UTC = 北京 12:00（提前一天中午）
+  workflow_dispatch:      # 允许在 Actions 页手动触发（测试用）
+    inputs:
+      date:
+        description: "手动测试：目标日期 YYYY-MM-DD（留空=正常按明天）"
+        required: false
+        default: ""
+
+permissions:
+  contents: write         # keepalive 做空提交需要写权限
+
+jobs:
+  remind:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Send reminder
+        env:
+          GMAIL_ADDRESS: ${{ secrets.GMAIL_ADDRESS }}        # 发件小号
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          MAIL_TO: ${{ secrets.MAIL_TO }}                     # 收件主邮箱
+          TARGET_DATE: ${{ github.event.inputs.date }}       # 手动测试指定日期；定时触发时为空
+        run: |
+          if [ -n "$TARGET_DATE" ]; then
+            python3 scripts/send_reminder.py --date "$TARGET_DATE"
+          else
+            python3 scripts/send_reminder.py
+          fi
+      - name: Keepalive (防 60 天自动禁用)
+        run: |
+          # 最后一次提交超过 50 天则做一次空提交，刷新 GitHub 的 60 天计时器
+          days=$(( ( $(date +%s) - $(git log -1 --format=%ct) ) / 86400 ))
+          echo "距上次提交 ${days} 天"
+          if [ "$days" -ge 50 ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git commit --allow-empty -m "chore: keepalive $(date +%F)"
+            git push
+          else
+            echo "无需 keepalive"
+          fi

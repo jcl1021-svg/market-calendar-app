@@ -4,7 +4,7 @@
 数据源（均为权威源，互相独立，某个失败不影响其余）：
   - FOMC       : 美联储官网 FOMC 日历页（解析会议日）
   - 非农 / CPI : FRED API（圣路易斯联储，记录 BLS 官方发布日）——需环境变量 FRED_API_KEY
-  - CME 假期   : exchange_calendars 库（内置官方 CME Globex 股指日历）
+  - CME 假期   : 脚本内手工核准的 CME_HOLIDAYS 显式表（逐年逐条交叉核对，见下方注释）
 
 用法：
   FRED_API_KEY=xxxx python3 scripts/fetch_data.py
