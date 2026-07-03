@@ -42,7 +42,7 @@ jobs:
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
             git commit --allow-empty -m "chore: keepalive $(date +%F)"
-            git push
+            git push origin HEAD:main
           else
             echo "无需 keepalive"
           fi
