@@ -8,3 +8,8 @@ __pycache__/
 
 # macOS 杂物
 .DS_Store
+
+# 文档/说明只存本地，不进库（与网页运行、邮件提醒都无关，避免无谓触发 Pages 部署）
+CLAUDE.md
+README.md
+docs/
