@@ -26,4 +26,13 @@
 2. `python3 scripts/fetch_data.py`（离线体检通过才写 `data.json`）；
 3. `git add . && git commit && git push`（Pages 自动更新）。
 
-设计文档：`docs/superpowers/specs/2026-07-02-market-calendar-design.md`
+> 数据一更新，邮件提醒会自动跟着新数据走，无需额外操作。
+
+## 邮件提醒（每日自动）
+
+- `.github/workflows/reminder.yml` 每天**北京时间 12:00**（cron `0 4 * * *` = 04:00 UTC）跑 `scripts/send_reminder.py`：读 `data.json`，**事件前一天**把提醒发到主 Gmail；无事件不发。覆盖全部事件（非农 / CPI / FOMC / 假期）。
+- 发信走 **Gmail SMTP**，用**发信小号**（非主号，泄露也不碰主邮箱）。GitHub 仓库 3 个 Secret：`GMAIL_ADDRESS`（小号）、`GMAIL_APP_PASSWORD`（小号应用专用密码，脚本自动去空格）、`MAIL_TO`（收件主邮箱）。**这些只在 GitHub Secret 里，绝不进代码/`.env` 不提交。**
+- **keepalive 用内联 git 空提交**（≥50 天没提交才空提交一次）防 GitHub 60 天自动禁用定时任务。**⚠️ 别用第三方 keepalive action `gautamkrishnar/keepalive-workflow`——已被 GitHub 因 TOS 永久封禁（`Repository access blocked`）。**
+- 本地/手动测试：`python3 scripts/send_reminder.py --dry-run --date YYYY-MM-DD`（只打印不发）；或 GitHub `Actions → Daily market reminder → Run workflow` 填 `date` 真发一封。测试逻辑见 `tests/test_send_reminder.py`（stdlib unittest，`python3 -m unittest discover -s tests`）。
+
+设计文档：`docs/superpowers/specs/2026-07-02-market-calendar-design.md`、`docs/superpowers/specs/2026-07-03-email-reminders-design.md`
