@@ -10,6 +10,8 @@
   --eco: #a34f3a;          --eco-text: #ffffff;    /* 经济事件：铁锈 */
   --early: #c8912f;        --early-text: #1a1205;  /* 提前收盘：金 */
   --holiday-pill: #5e2b2b; --holiday-text: #ffffff; /* 全休胶囊（鲑底上）*/
+  --roll: #55599c;         --roll-text: #ffffff;   /* 换月周：紫（操作提醒）*/
+  --pce: #ac6f6b;          --pce-text: #ffffff;    /* 核心 PCE：柔灰玫瑰红（经济数据，柔淡=次于 CPI）*/
   --text: #eef2f4;
   --text-dim: #9aa4ad;
   --modal-bg: #1a1f27;
@@ -161,6 +163,8 @@ body {
 }
 .pill.holiday { background: var(--holiday-pill); color: var(--holiday-text); }
 .pill.early { background: var(--early); color: var(--early-text); }
+.pill.roll { background: var(--roll); color: var(--roll-text); }
+.pill.pce { background: var(--pce); color: var(--pce-text); }
 
 /* Modal */
 @keyframes overlayIn { from { opacity: 0; } to { opacity: 1; } }

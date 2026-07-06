@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-02",
+  "generated": "2026-07-07",
   "years": [
     2026
   ],
@@ -37,6 +37,14 @@
       "desc": "01/19/2026. 马丁·路德·金纪念日, 股指期货提前收盘 (约 13:00 ET)."
     },
     {
+      "date": "2026-01-22",
+      "name": "PCE | Core PCE Price Index",
+      "title": "PCE | Core PCE Price Index",
+      "time": "8:30am ET",
+      "type": "pce",
+      "desc": "01/22/2026 at 8:30am ET. 核心 PCE 物价指数, 美联储首选通胀指标, 早盘或放量."
+    },
+    {
       "date": "2026-01-28",
       "name": "FOMC Statement",
       "title": "FOMC Statement",
@@ -69,6 +77,14 @@
       "desc": "02/16/2026. 总统日, 股指期货提前收盘 (约 13:00 ET)."
     },
     {
+      "date": "2026-02-20",
+      "name": "PCE | Core PCE Price Index",
+      "title": "PCE | Core PCE Price Index",
+      "time": "8:30am ET",
+      "type": "pce",
+      "desc": "02/20/2026 at 8:30am ET. 核心 PCE 物价指数, 美联储首选通胀指标, 早盘或放量."
+    },
+    {
       "date": "2026-03-06",
       "name": "Non-Farm Employment Change",
       "title": "Non-Farm Employment Change",
@@ -83,6 +99,22 @@
       "time": "8:30am ET",
       "type": "economic",
       "desc": "03/11/2026 at 8:30am ET. 美国消费者物价指数 (CPI) 发布."
+    },
+    {
+      "date": "2026-03-13",
+      "name": "PCE | Core PCE Price Index",
+      "title": "PCE | Core PCE Price Index",
+      "time": "8:30am ET",
+      "type": "pce",
+      "desc": "03/13/2026 at 8:30am ET. 核心 PCE 物价指数, 美联储首选通胀指标, 早盘或放量."
+    },
+    {
+      "date": "2026-03-16",
+      "name": "Roll Week",
+      "title": "Roll Week",
+      "time": "",
+      "type": "roll",
+      "desc": "03/16/2026. ES/NQ 换合约周. 以次月成交量超过近月为准再切."
     },
     {
       "date": "2026-03-18",
@@ -109,6 +141,14 @@
       "desc": "04/03/2026 at 8:30am ET. 美国非农就业数据发布, 市场高波动事件."
     },
     {
+      "date": "2026-04-09",
+      "name": "PCE | Core PCE Price Index",
+      "title": "PCE | Core PCE Price Index",
+      "time": "8:30am ET",
+      "type": "pce",
+      "desc": "04/09/2026 at 8:30am ET. 核心 PCE 物价指数, 美联储首选通胀指标, 早盘或放量."
+    },
+    {
       "date": "2026-04-10",
       "name": "CPI | Consumer Price Index",
       "title": "CPI | Consumer Price Index",
@@ -123,6 +163,14 @@
       "time": "2:00pm ET",
       "type": "economic",
       "desc": "04/29/2026 at 2:00pm ET. 联邦公开市场委员会 (FOMC) 利率决议与政策声明."
+    },
+    {
+      "date": "2026-04-30",
+      "name": "PCE | Core PCE Price Index",
+      "title": "PCE | Core PCE Price Index",
+      "time": "8:30am ET",
+      "type": "pce",
+      "desc": "04/30/2026 at 8:30am ET. 核心 PCE 物价指数, 美联储首选通胀指标, 早盘或放量."
     },
     {
       "date": "2026-05-08",
@@ -149,6 +197,14 @@
       "desc": "05/25/2026. 阵亡将士纪念日, 股指期货提前收盘 (约 13:00 ET)."
     },
     {
+      "date": "2026-05-28",
+      "name": "PCE | Core PCE Price Index",
+      "title": "PCE | Core PCE Price Index",
+      "time": "8:30am ET",
+      "type": "pce",
+      "desc": "05/28/2026 at 8:30am ET. 核心 PCE 物价指数, 美联储首选通胀指标, 早盘或放量."
+    },
+    {
       "date": "2026-06-05",
       "name": "Non-Farm Employment Change",
       "title": "Non-Farm Employment Change",
@@ -165,6 +221,14 @@
       "desc": "06/10/2026 at 8:30am ET. 美国消费者物价指数 (CPI) 发布."
     },
     {
+      "date": "2026-06-15",
+      "name": "Roll Week",
+      "title": "Roll Week",
+      "time": "",
+      "type": "roll",
+      "desc": "06/15/2026. ES/NQ 换合约周. 以次月成交量超过近月为准再切."
+    },
+    {
       "date": "2026-06-17",
       "name": "FOMC Statement",
       "title": "FOMC Statement",
@@ -179,6 +243,14 @@
       "time": "提前收盘",
       "type": "early_close",
       "desc": "06/19/2026. 六月节, 股指期货提前收盘 (约 13:00 ET)."
+    },
+    {
+      "date": "2026-06-25",
+      "name": "PCE | Core PCE Price Index",
+      "title": "PCE | Core PCE Price Index",
+      "time": "8:30am ET",
+      "type": "pce",
+      "desc": "06/25/2026 at 8:30am ET. 核心 PCE 物价指数, 美联储首选通胀指标, 早盘或放量."
     },
     {
       "date": "2026-07-02",
@@ -213,6 +285,14 @@
       "desc": "07/29/2026 at 2:00pm ET. 联邦公开市场委员会 (FOMC) 利率决议与政策声明."
     },
     {
+      "date": "2026-07-30",
+      "name": "PCE | Core PCE Price Index",
+      "title": "PCE | Core PCE Price Index",
+      "time": "8:30am ET",
+      "type": "pce",
+      "desc": "07/30/2026 at 8:30am ET. 核心 PCE 物价指数, 美联储首选通胀指标, 早盘或放量."
+    },
+    {
       "date": "2026-08-07",
       "name": "Non-Farm Employment Change",
       "title": "Non-Farm Employment Change",
@@ -227,6 +307,14 @@
       "time": "8:30am ET",
       "type": "economic",
       "desc": "08/12/2026 at 8:30am ET. 美国消费者物价指数 (CPI) 发布."
+    },
+    {
+      "date": "2026-08-26",
+      "name": "PCE | Core PCE Price Index",
+      "title": "PCE | Core PCE Price Index",
+      "time": "8:30am ET",
+      "type": "pce",
+      "desc": "08/26/2026 at 8:30am ET. 核心 PCE 物价指数, 美联储首选通胀指标, 早盘或放量."
     },
     {
       "date": "2026-09-04",
@@ -253,12 +341,28 @@
       "desc": "09/11/2026 at 8:30am ET. 美国消费者物价指数 (CPI) 发布."
     },
     {
+      "date": "2026-09-14",
+      "name": "Roll Week",
+      "title": "Roll Week",
+      "time": "",
+      "type": "roll",
+      "desc": "09/14/2026. ES/NQ 换合约周. 以次月成交量超过近月为准再切."
+    },
+    {
       "date": "2026-09-16",
       "name": "FOMC Statement",
       "title": "FOMC Statement",
       "time": "2:00pm ET",
       "type": "economic",
       "desc": "09/16/2026 at 2:00pm ET. 联邦公开市场委员会 (FOMC) 利率决议与政策声明."
+    },
+    {
+      "date": "2026-09-30",
+      "name": "PCE | Core PCE Price Index",
+      "title": "PCE | Core PCE Price Index",
+      "time": "8:30am ET",
+      "type": "pce",
+      "desc": "09/30/2026 at 8:30am ET. 核心 PCE 物价指数, 美联储首选通胀指标, 早盘或放量."
     },
     {
       "date": "2026-10-02",
@@ -285,6 +389,14 @@
       "desc": "10/28/2026 at 2:00pm ET. 联邦公开市场委员会 (FOMC) 利率决议与政策声明."
     },
     {
+      "date": "2026-10-29",
+      "name": "PCE | Core PCE Price Index",
+      "title": "PCE | Core PCE Price Index",
+      "time": "8:30am ET",
+      "type": "pce",
+      "desc": "10/29/2026 at 8:30am ET. 核心 PCE 物价指数, 美联储首选通胀指标, 早盘或放量."
+    },
+    {
       "date": "2026-11-06",
       "name": "Non-Farm Employment Change",
       "title": "Non-Farm Employment Change",
@@ -299,6 +411,14 @@
       "time": "8:30am ET",
       "type": "economic",
       "desc": "11/10/2026 at 8:30am ET. 美国消费者物价指数 (CPI) 发布."
+    },
+    {
+      "date": "2026-11-25",
+      "name": "PCE | Core PCE Price Index",
+      "title": "PCE | Core PCE Price Index",
+      "time": "8:30am ET",
+      "type": "pce",
+      "desc": "11/25/2026 at 8:30am ET. 核心 PCE 物价指数, 美联储首选通胀指标, 早盘或放量."
     },
     {
       "date": "2026-11-26",
@@ -339,6 +459,22 @@
       "time": "8:30am ET",
       "type": "economic",
       "desc": "12/10/2026 at 8:30am ET. 美国消费者物价指数 (CPI) 发布."
+    },
+    {
+      "date": "2026-12-14",
+      "name": "Roll Week",
+      "title": "Roll Week",
+      "time": "",
+      "type": "roll",
+      "desc": "12/14/2026. ES/NQ 换合约周. 以次月成交量超过近月为准再切."
+    },
+    {
+      "date": "2026-12-23",
+      "name": "PCE | Core PCE Price Index",
+      "title": "PCE | Core PCE Price Index",
+      "time": "8:30am ET",
+      "type": "pce",
+      "desc": "12/23/2026 at 8:30am ET. 核心 PCE 物价指数, 美联储首选通胀指标, 早盘或放量."
     },
     {
       "date": "2026-12-24",

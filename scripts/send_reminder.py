@@ -21,7 +21,9 @@ CAL_URL = "https://jcl1021-svg.github.io/market-calendar-app/"
 SUBJECT_LABELS = {
     "Non-Farm Employment Change": "非农",
     "CPI | Consumer Price Index": "CPI",
+    "PCE | Core PCE Price Index": "PCE",
     "FOMC Statement": "FOMC",
+    "Roll Week": "换月周",
 }
 
 

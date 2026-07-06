@@ -38,6 +38,13 @@ def http_get(url):
         return r.read().decode("utf-8", "replace")
 
 
+def _nth_weekday(year, month, weekday, n):
+    """某年某月第 n 个 weekday（周一=0…周日=6）的日期。"""
+    first = datetime.date(year, month, 1)
+    offset = (weekday - first.weekday()) % 7
+    return first + datetime.timedelta(days=offset + 7 * (n - 1))
+
+
 # ---------------------------------------------------------------- FOMC
 def fetch_fomc(years):
     """从美联储日历页解析各年 FOMC 会议，声明日 = 会议第二天 14:00 ET。"""
@@ -97,14 +104,15 @@ def fetch_bls(years, key):
     """非农（Employment Situation）+ CPI 发布日，来自 FRED（BLS 官方记录），8:30am ET。"""
     events = []
     specs = [
-        ("PAYEMS", "Non-Farm Employment Change", "美国非农就业数据发布, 市场高波动事件."),
-        ("CPIAUCSL", "CPI | Consumer Price Index", "美国消费者物价指数 (CPI) 发布."),
+        ("PAYEMS", "Non-Farm Employment Change", "美国非农就业数据发布, 市场高波动事件.", "economic"),
+        ("CPIAUCSL", "CPI | Consumer Price Index", "美国消费者物价指数 (CPI) 发布.", "economic"),
+        ("PCEPILFE", "PCE | Core PCE Price Index", "核心 PCE 物价指数, 美联储首选通胀指标, 早盘或放量.", "pce"),
     ]
-    for series_id, name, zh in specs:
+    for series_id, name, zh, etype in specs:
         rid = _release_id_for(series_id, key)
         for ds in _release_dates(rid, key, years):
             events.append({
-                "date": ds, "name": name, "title": name, "time": "8:30am ET", "type": "economic",
+                "date": ds, "name": name, "title": name, "time": "8:30am ET", "type": etype,
                 "desc": f"{datetime.date.fromisoformat(ds):%m/%d/%Y} at 8:30am ET. {zh}",
             })
     return events
@@ -156,6 +164,30 @@ def fetch_cme(years):
     return events
 
 
+# ---------------------------------------------------------------- ES/NQ 换月周
+def fetch_contract_roll(years):
+    """ES/NQ 季度合约换月周锚点 = 到期月(3/6/9/12)第三个周五所在周的周一。
+
+    这是"换月周·开始盯量"的提醒，不是精确执行日：实际成交量向次月转移是
+    渐进过程（机构先动持仓、日内散户约到期前一周才跟上），应以次月成交量
+    超过近月为准再切。故只标一个锚点周一，说明里提示按盘面量确认。
+    """
+    events = []
+    for year in years:
+        for month in (3, 6, 9, 12):
+            monday = _nth_weekday(year, month, 4, 3) - datetime.timedelta(days=4)
+            events.append({
+                "date": monday.isoformat(),
+                "name": "Roll Week",
+                "title": "Roll Week",
+                "time": "",
+                "type": "roll",
+                "desc": f"{monday:%m/%d/%Y}. ES/NQ 换合约周. "
+                        f"以次月成交量超过近月为准再切.",
+            })
+    return events
+
+
 # ---------------------------------------------------------------- main
 def _load_dotenv():
     """读取项目根目录下 .env（仅本地用，已被 .gitignore 忽略）。"""
@@ -186,6 +218,7 @@ def main():
     for label, fn in [
         ("FOMC", lambda: fetch_fomc(years)),
         ("CME", lambda: fetch_cme(years)),
+        ("Roll", lambda: fetch_contract_roll(years)),
         ("BLS(FRED)", lambda: fetch_bls(years, key) if key else _need_key()),
     ]:
         try:
@@ -235,7 +268,9 @@ def sanity_check(events, years):
                 cnt["CPI"] += 1
             elif e["name"] == "FOMC Statement":
                 cnt["FOMC"] += 1
-        for k, expect in (("非农", 12), ("CPI", 12), ("FOMC", 8)):
+            elif e["name"] == "Roll Week":
+                cnt["换月周"] += 1
+        for k, expect in (("非农", 12), ("CPI", 12), ("FOMC", 8), ("换月周", 4)):
             if cnt[k] and cnt[k] != expect:
                 problems.append(f"{y} 年 {k} 数量异常：{cnt[k]}（应为 {expect}）")
 

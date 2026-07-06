@@ -65,6 +65,8 @@ function render() {
         pill.className = "pill";
         if (ev.type === "holiday") pill.classList.add("holiday");
         else if (ev.type === "early_close") pill.classList.add("early");
+        else if (ev.type === "roll") pill.classList.add("roll");
+        else if (ev.type === "pce") pill.classList.add("pce");
         pill.textContent = ev.name;
         pills.appendChild(pill);
       }
