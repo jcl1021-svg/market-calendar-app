@@ -1,7 +1,8 @@
 {
-  "generated": "2026-07-07",
+  "generated": "2026-11-06",
   "years": [
-    2026
+    2026,
+    2027
   ],
   "events": [
     {
@@ -10,103 +11,139 @@
       "title": "New Year's Day",
       "time": "",
       "type": "holiday",
-      "desc": "01/01/2026. 元旦, 美股与股指期货全天休市."
+      "desc": "01/01/2026. CME 股指期货（Globex）全天关闭，NYSE 股票市场同步全天休市。Globex 于周日 17:00 CT（18:00 ET）重开。",
+      "source": "CME Globex 假期表（TradeSearcher 复现，另经 MarketFramework / FinanceCalendar 与 NYSE 交叉核对）",
+      "sourceUrl": "https://tradesearcher.ai/tools/futures-trading-hours"
     },
     {
       "date": "2026-01-09",
-      "name": "Non-Farm Employment Change",
-      "title": "Non-Farm Employment Change",
+      "name": "Non-Farm Payrolls",
+      "title": "Non-Farm Payrolls · Employment Situation",
       "time": "8:30am ET",
-      "type": "economic",
-      "desc": "01/09/2026 at 8:30am ET. 美国非农就业数据发布, 市场高波动事件."
+      "type": "nfp",
+      "desc": "01/09/2026 at 8:30am ET. 美国非农就业报告（Employment Situation），统计参考月份：2025年12月。8:30 ET 发布，市场高波动事件。",
+      "source": "BLS · Employment Situation 发布日程",
+      "sourceUrl": "https://www.bls.gov/schedule/news_release/empsit.htm"
     },
     {
       "date": "2026-01-13",
       "name": "CPI | Consumer Price Index",
       "title": "CPI | Consumer Price Index",
       "time": "8:30am ET",
-      "type": "economic",
-      "desc": "01/13/2026 at 8:30am ET. 美国消费者物价指数 (CPI) 发布."
+      "type": "cpi",
+      "desc": "01/13/2026 at 8:30am ET. 美国消费者物价指数（CPI），统计参考月份：2025年12月。8:30 ET 发布。",
+      "source": "BLS · CPI 发布日程",
+      "sourceUrl": "https://www.bls.gov/schedule/news_release/cpi.htm"
     },
     {
       "date": "2026-01-19",
       "name": "Martin Luther King Jr. Day",
       "title": "Martin Luther King Jr. Day",
-      "time": "提前收盘",
+      "time": "1:00pm ET",
       "type": "early_close",
-      "desc": "01/19/2026. 马丁·路德·金纪念日, 股指期货提前收盘 (约 13:00 ET)."
+      "desc": "01/19/2026 at 1:00pm ET. CME 股指期货（Globex）当天照常开盘，中午 12:00 CT（13:00 ET）暂停交易，无结算，17:00 CT（18:00 ET）重开下一交易日。注意：这只是缩短时段，不是休市——NYSE 股票市场当天是全天休市，两边口径不同。",
+      "source": "CME Globex 假期表（TradeSearcher 复现，另经 MarketFramework / FinanceCalendar 与 NYSE 交叉核对）",
+      "sourceUrl": "https://tradesearcher.ai/tools/futures-trading-hours"
     },
     {
       "date": "2026-01-22",
-      "name": "PCE | Core PCE Price Index",
-      "title": "PCE | Core PCE Price Index",
-      "time": "8:30am ET",
+      "name": "PCE | Personal Income and Outlays",
+      "title": "Personal Income and Outlays, October and November 2025",
+      "time": "10:00am ET",
       "type": "pce",
-      "desc": "01/22/2026 at 8:30am ET. 核心 PCE 物价指数, 美联储首选通胀指标, 早盘或放量."
+      "desc": "01/22/2026 at 10:00am ET. BEA《个人收入与支出》（Personal Income and Outlays）报告，PCE 物价指数与核心 PCE（除食品和能源）都在这份报告里发布，没有单独的“核心 PCE”报告。美联储首选通胀指标。 例外：这是 2025 年政府停摆后的合并补发（2025年10月+11月两期一起发），时间是 10:00 ET 不是 8:30；该条为二手来源核实（BEA 2026 表格未单列此条）。",
+      "source": "BEA · Personal Income and Outlays 2026 发布表",
+      "sourceUrl": "https://bea.gov/news/2026/personal-income-and-outlays-december-2025"
     },
     {
       "date": "2026-01-28",
       "name": "FOMC Statement",
       "title": "FOMC Statement",
       "time": "2:00pm ET",
-      "type": "economic",
-      "desc": "01/28/2026 at 2:00pm ET. 联邦公开市场委员会 (FOMC) 利率决议与政策声明."
+      "type": "fomc",
+      "desc": "01/28/2026 at 2:00pm ET. FOMC 两日会议（1月27–28日），利率决议与政策声明在第二天 14:00 ET 发布，发布会 14:30 ET。本次无经济预测摘要（SEP）。",
+      "source": "Federal Reserve · FOMC 日程",
+      "sourceUrl": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
     },
     {
       "date": "2026-02-11",
-      "name": "Non-Farm Employment Change",
-      "title": "Non-Farm Employment Change",
+      "name": "Non-Farm Payrolls",
+      "title": "Non-Farm Payrolls · Employment Situation",
       "time": "8:30am ET",
-      "type": "economic",
-      "desc": "02/11/2026 at 8:30am ET. 美国非农就业数据发布, 市场高波动事件."
+      "type": "nfp",
+      "desc": "02/11/2026 at 8:30am ET. 美国非农就业报告（Employment Situation），统计参考月份：2026年1月。8:30 ET 发布，市场高波动事件。 改期：原定 2月6日，因 1月30日–2月3日联邦拨款短暂中断，顺延到 2月11日（周三）。",
+      "source": "BLS · Employment Situation 发布日程",
+      "sourceUrl": "https://www.bls.gov/schedule/news_release/empsit.htm"
     },
     {
       "date": "2026-02-13",
       "name": "CPI | Consumer Price Index",
       "title": "CPI | Consumer Price Index",
       "time": "8:30am ET",
-      "type": "economic",
-      "desc": "02/13/2026 at 8:30am ET. 美国消费者物价指数 (CPI) 发布."
+      "type": "cpi",
+      "desc": "02/13/2026 at 8:30am ET. 美国消费者物价指数（CPI），统计参考月份：2026年1月。8:30 ET 发布。 改期：原定 2月11日，因联邦拨款中断顺延到 2月13日（周五）。",
+      "source": "BLS · CPI 发布日程",
+      "sourceUrl": "https://www.bls.gov/schedule/news_release/cpi.htm"
     },
     {
       "date": "2026-02-16",
       "name": "Presidents' Day",
       "title": "Presidents' Day",
-      "time": "提前收盘",
+      "time": "1:00pm ET",
       "type": "early_close",
-      "desc": "02/16/2026. 总统日, 股指期货提前收盘 (约 13:00 ET)."
+      "desc": "02/16/2026 at 1:00pm ET. CME 股指期货（Globex）当天照常开盘，中午 12:00 CT（13:00 ET）暂停交易，无结算，17:00 CT（18:00 ET）重开下一交易日。注意：这只是缩短时段，不是休市——NYSE 股票市场当天是全天休市，两边口径不同。",
+      "source": "CME Globex 假期表（TradeSearcher 复现，另经 MarketFramework / FinanceCalendar 与 NYSE 交叉核对）",
+      "sourceUrl": "https://tradesearcher.ai/tools/futures-trading-hours"
     },
     {
       "date": "2026-02-20",
-      "name": "PCE | Core PCE Price Index",
-      "title": "PCE | Core PCE Price Index",
+      "name": "PCE | Personal Income and Outlays",
+      "title": "Personal Income and Outlays, December 2025",
       "time": "8:30am ET",
       "type": "pce",
-      "desc": "02/20/2026 at 8:30am ET. 核心 PCE 物价指数, 美联储首选通胀指标, 早盘或放量."
+      "desc": "02/20/2026 at 8:30am ET. BEA《个人收入与支出》（Personal Income and Outlays）报告，PCE 物价指数与核心 PCE（除食品和能源）都在这份报告里发布，没有单独的“核心 PCE”报告。美联储首选通胀指标。 改期：原定 1月29日，因 2025 年 10–11 月政府停摆顺延到 2月20日。",
+      "source": "BEA · Personal Income and Outlays 2026 发布表",
+      "sourceUrl": "https://bea.gov/news/2026/personal-income-and-outlays-december-2025"
     },
     {
       "date": "2026-03-06",
-      "name": "Non-Farm Employment Change",
-      "title": "Non-Farm Employment Change",
+      "name": "Non-Farm Payrolls",
+      "title": "Non-Farm Payrolls · Employment Situation",
       "time": "8:30am ET",
-      "type": "economic",
-      "desc": "03/06/2026 at 8:30am ET. 美国非农就业数据发布, 市场高波动事件."
+      "type": "nfp",
+      "desc": "03/06/2026 at 8:30am ET. 美国非农就业报告（Employment Situation），统计参考月份：2026年2月。8:30 ET 发布，市场高波动事件。",
+      "source": "BLS · Employment Situation 发布日程",
+      "sourceUrl": "https://www.bls.gov/schedule/news_release/empsit.htm"
+    },
+    {
+      "date": "2026-03-08",
+      "name": "Daylight Saving Time Begins",
+      "title": "Daylight Saving Time Begins",
+      "time": "2:00am ET",
+      "type": "dst",
+      "desc": "03/08/2026 at 2:00am ET. 2026年3月8日（周日）凌晨 2:00 本地时钟拨到 3:00，美国东部进入夏令时 EDT（UTC-4）。此后 8:30 ET = 北京时间 20:30，14:00 ET = 北京时间次日 02:00。切换后的第一个交易日是 3月9日（周一），盘前简报和闹钟都按夏令时走。 说明：美国《阳光保护法》（永久夏令时）2026年7月已过众议院、送参议院，截至 2026年11月尚未成为法律，切换按现行规则照常进行。",
+      "source": "NIST 夏令时规则（经 Old Farmer's Almanac / timeanddate 核对）",
+      "sourceUrl": "https://www.almanac.com/content/when-daylight-saving-time"
     },
     {
       "date": "2026-03-11",
       "name": "CPI | Consumer Price Index",
       "title": "CPI | Consumer Price Index",
       "time": "8:30am ET",
-      "type": "economic",
-      "desc": "03/11/2026 at 8:30am ET. 美国消费者物价指数 (CPI) 发布."
+      "type": "cpi",
+      "desc": "03/11/2026 at 8:30am ET. 美国消费者物价指数（CPI），统计参考月份：2026年2月。8:30 ET 发布。",
+      "source": "BLS · CPI 发布日程",
+      "sourceUrl": "https://www.bls.gov/schedule/news_release/cpi.htm"
     },
     {
       "date": "2026-03-13",
-      "name": "PCE | Core PCE Price Index",
-      "title": "PCE | Core PCE Price Index",
+      "name": "PCE | Personal Income and Outlays",
+      "title": "Personal Income and Outlays, January 2026",
       "time": "8:30am ET",
       "type": "pce",
-      "desc": "03/13/2026 at 8:30am ET. 核心 PCE 物价指数, 美联储首选通胀指标, 早盘或放量."
+      "desc": "03/13/2026 at 8:30am ET. BEA《个人收入与支出》（Personal Income and Outlays）报告，PCE 物价指数与核心 PCE（除食品和能源）都在这份报告里发布，没有单独的“核心 PCE”报告。美联储首选通胀指标。",
+      "source": "BEA · Personal Income and Outlays 2026 发布表",
+      "sourceUrl": "https://bea.gov/news/2026/personal-income-and-outlays-december-2025"
     },
     {
       "date": "2026-03-16",
@@ -114,111 +151,139 @@
       "title": "Roll Week",
       "time": "",
       "type": "roll",
-      "desc": "03/16/2026. ES/NQ 换合约周. 以次月成交量超过近月为准再切."
+      "desc": "03/16/2026. CME 官方口径：换月日 = 到期月第三个周五之前的周一（到期周五为2026年3月20日）。本周起次近月合约成为主力口径。合约切换：2025年12月（ESZ25）→ 2026年3月（ESH26）。实操仍以次月成交量超过近月为准再切。",
+      "source": "CME Group · Equity Index Roll Dates",
+      "sourceUrl": "https://www.cmegroup.com/trading/equity-index/rolldates.html"
     },
     {
       "date": "2026-03-18",
       "name": "FOMC Statement",
       "title": "FOMC Statement",
       "time": "2:00pm ET",
-      "type": "economic",
-      "desc": "03/18/2026 at 2:00pm ET. 联邦公开市场委员会 (FOMC) 利率决议与政策声明."
+      "type": "fomc",
+      "desc": "03/18/2026 at 2:00pm ET. FOMC 两日会议（3月17–18日），利率决议与政策声明在第二天 14:00 ET 发布，发布会 14:30 ET。本次附带经济预测摘要（SEP / 点阵图）。",
+      "source": "Federal Reserve · FOMC 日程",
+      "sourceUrl": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
+    },
+    {
+      "date": "2026-04-03",
+      "name": "Non-Farm Payrolls",
+      "title": "Non-Farm Payrolls · Employment Situation",
+      "time": "8:30am ET",
+      "type": "nfp",
+      "desc": "04/03/2026 at 8:30am ET. 美国非农就业报告（Employment Situation），统计参考月份：2026年3月。8:30 ET 发布，市场高波动事件。 当天是耶稣受难日：NYSE 全天休市，CME 股指为短时段（见当天假期条目）。",
+      "source": "BLS · Employment Situation 发布日程",
+      "sourceUrl": "https://www.bls.gov/schedule/news_release/empsit.htm"
     },
     {
       "date": "2026-04-03",
       "name": "Good Friday",
       "title": "Good Friday",
-      "time": "",
-      "type": "holiday",
-      "desc": "04/03/2026. 耶稣受难日, 美股与股指期货全天休市."
-    },
-    {
-      "date": "2026-04-03",
-      "name": "Non-Farm Employment Change",
-      "title": "Non-Farm Employment Change",
-      "time": "8:30am ET",
-      "type": "economic",
-      "desc": "04/03/2026 at 8:30am ET. 美国非农就业数据发布, 市场高波动事件."
+      "time": "9:15am ET",
+      "type": "early_close",
+      "desc": "04/03/2026 at 9:15am ET. 来源有分歧：按复现 CME Globex 日程的 TradeSearcher，当天股指 8:15 CT（9:15 ET）收盘，是配合非农的短时段；但 FinanceCalendar 等来源记为全天关闭（疑似把 NYSE 休市套到了期货上）。两种口径不一致——这天动手前务必再核 CME 官方通知。NYSE 当天全天休市；当天 8:30 ET 照常发布非农。 口径分歧日：CME Globex 复现源记 9:15 ET 收盘，另有来源记全天关闭。",
+      "source": "CME Globex 假期表（TradeSearcher 复现，另经 MarketFramework / FinanceCalendar 与 NYSE 交叉核对）",
+      "sourceUrl": "https://tradesearcher.ai/tools/futures-trading-hours"
     },
     {
       "date": "2026-04-09",
-      "name": "PCE | Core PCE Price Index",
-      "title": "PCE | Core PCE Price Index",
+      "name": "PCE | Personal Income and Outlays",
+      "title": "Personal Income and Outlays, February 2026",
       "time": "8:30am ET",
       "type": "pce",
-      "desc": "04/09/2026 at 8:30am ET. 核心 PCE 物价指数, 美联储首选通胀指标, 早盘或放量."
+      "desc": "04/09/2026 at 8:30am ET. BEA《个人收入与支出》（Personal Income and Outlays）报告，PCE 物价指数与核心 PCE（除食品和能源）都在这份报告里发布，没有单独的“核心 PCE”报告。美联储首选通胀指标。",
+      "source": "BEA · Personal Income and Outlays 2026 发布表",
+      "sourceUrl": "https://bea.gov/news/2026/personal-income-and-outlays-december-2025"
     },
     {
       "date": "2026-04-10",
       "name": "CPI | Consumer Price Index",
       "title": "CPI | Consumer Price Index",
       "time": "8:30am ET",
-      "type": "economic",
-      "desc": "04/10/2026 at 8:30am ET. 美国消费者物价指数 (CPI) 发布."
+      "type": "cpi",
+      "desc": "04/10/2026 at 8:30am ET. 美国消费者物价指数（CPI），统计参考月份：2026年3月。8:30 ET 发布。",
+      "source": "BLS · CPI 发布日程",
+      "sourceUrl": "https://www.bls.gov/schedule/news_release/cpi.htm"
     },
     {
       "date": "2026-04-29",
       "name": "FOMC Statement",
       "title": "FOMC Statement",
       "time": "2:00pm ET",
-      "type": "economic",
-      "desc": "04/29/2026 at 2:00pm ET. 联邦公开市场委员会 (FOMC) 利率决议与政策声明."
+      "type": "fomc",
+      "desc": "04/29/2026 at 2:00pm ET. FOMC 两日会议（4月28–29日），利率决议与政策声明在第二天 14:00 ET 发布，发布会 14:30 ET。本次无经济预测摘要（SEP）。",
+      "source": "Federal Reserve · FOMC 日程",
+      "sourceUrl": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
     },
     {
       "date": "2026-04-30",
-      "name": "PCE | Core PCE Price Index",
-      "title": "PCE | Core PCE Price Index",
+      "name": "PCE | Personal Income and Outlays",
+      "title": "Personal Income and Outlays, March 2026",
       "time": "8:30am ET",
       "type": "pce",
-      "desc": "04/30/2026 at 8:30am ET. 核心 PCE 物价指数, 美联储首选通胀指标, 早盘或放量."
+      "desc": "04/30/2026 at 8:30am ET. BEA《个人收入与支出》（Personal Income and Outlays）报告，PCE 物价指数与核心 PCE（除食品和能源）都在这份报告里发布，没有单独的“核心 PCE”报告。美联储首选通胀指标。 与 GDP 初值同日上午发布。",
+      "source": "BEA · Personal Income and Outlays 2026 发布表",
+      "sourceUrl": "https://bea.gov/news/2026/personal-income-and-outlays-december-2025"
     },
     {
       "date": "2026-05-08",
-      "name": "Non-Farm Employment Change",
-      "title": "Non-Farm Employment Change",
+      "name": "Non-Farm Payrolls",
+      "title": "Non-Farm Payrolls · Employment Situation",
       "time": "8:30am ET",
-      "type": "economic",
-      "desc": "05/08/2026 at 8:30am ET. 美国非农就业数据发布, 市场高波动事件."
+      "type": "nfp",
+      "desc": "05/08/2026 at 8:30am ET. 美国非农就业报告（Employment Situation），统计参考月份：2026年4月。8:30 ET 发布，市场高波动事件。",
+      "source": "BLS · Employment Situation 发布日程",
+      "sourceUrl": "https://www.bls.gov/schedule/news_release/empsit.htm"
     },
     {
       "date": "2026-05-12",
       "name": "CPI | Consumer Price Index",
       "title": "CPI | Consumer Price Index",
       "time": "8:30am ET",
-      "type": "economic",
-      "desc": "05/12/2026 at 8:30am ET. 美国消费者物价指数 (CPI) 发布."
+      "type": "cpi",
+      "desc": "05/12/2026 at 8:30am ET. 美国消费者物价指数（CPI），统计参考月份：2026年4月。8:30 ET 发布。",
+      "source": "BLS · CPI 发布日程",
+      "sourceUrl": "https://www.bls.gov/schedule/news_release/cpi.htm"
     },
     {
       "date": "2026-05-25",
       "name": "Memorial Day",
       "title": "Memorial Day",
-      "time": "提前收盘",
+      "time": "1:00pm ET",
       "type": "early_close",
-      "desc": "05/25/2026. 阵亡将士纪念日, 股指期货提前收盘 (约 13:00 ET)."
+      "desc": "05/25/2026 at 1:00pm ET. CME 股指期货（Globex）当天照常开盘，中午 12:00 CT（13:00 ET）暂停交易，无结算，17:00 CT（18:00 ET）重开下一交易日。注意：这只是缩短时段，不是休市——NYSE 股票市场当天是全天休市，两边口径不同。",
+      "source": "CME Globex 假期表（TradeSearcher 复现，另经 MarketFramework / FinanceCalendar 与 NYSE 交叉核对）",
+      "sourceUrl": "https://tradesearcher.ai/tools/futures-trading-hours"
     },
     {
       "date": "2026-05-28",
-      "name": "PCE | Core PCE Price Index",
-      "title": "PCE | Core PCE Price Index",
+      "name": "PCE | Personal Income and Outlays",
+      "title": "Personal Income and Outlays, April 2026",
       "time": "8:30am ET",
       "type": "pce",
-      "desc": "05/28/2026 at 8:30am ET. 核心 PCE 物价指数, 美联储首选通胀指标, 早盘或放量."
+      "desc": "05/28/2026 at 8:30am ET. BEA《个人收入与支出》（Personal Income and Outlays）报告，PCE 物价指数与核心 PCE（除食品和能源）都在这份报告里发布，没有单独的“核心 PCE”报告。美联储首选通胀指标。",
+      "source": "BEA · Personal Income and Outlays 2026 发布表",
+      "sourceUrl": "https://bea.gov/news/2026/personal-income-and-outlays-december-2025"
     },
     {
       "date": "2026-06-05",
-      "name": "Non-Farm Employment Change",
-      "title": "Non-Farm Employment Change",
+      "name": "Non-Farm Payrolls",
+      "title": "Non-Farm Payrolls · Employment Situation",
       "time": "8:30am ET",
-      "type": "economic",
-      "desc": "06/05/2026 at 8:30am ET. 美国非农就业数据发布, 市场高波动事件."
+      "type": "nfp",
+      "desc": "06/05/2026 at 8:30am ET. 美国非农就业报告（Employment Situation），统计参考月份：2026年5月。8:30 ET 发布，市场高波动事件。",
+      "source": "BLS · Employment Situation 发布日程",
+      "sourceUrl": "https://www.bls.gov/schedule/news_release/empsit.htm"
     },
     {
       "date": "2026-06-10",
       "name": "CPI | Consumer Price Index",
       "title": "CPI | Consumer Price Index",
       "time": "8:30am ET",
-      "type": "economic",
-      "desc": "06/10/2026 at 8:30am ET. 美国消费者物价指数 (CPI) 发布."
+      "type": "cpi",
+      "desc": "06/10/2026 at 8:30am ET. 美国消费者物价指数（CPI），统计参考月份：2026年5月。8:30 ET 发布。",
+      "source": "BLS · CPI 发布日程",
+      "sourceUrl": "https://www.bls.gov/schedule/news_release/cpi.htm"
     },
     {
       "date": "2026-06-15",
@@ -226,119 +291,149 @@
       "title": "Roll Week",
       "time": "",
       "type": "roll",
-      "desc": "06/15/2026. ES/NQ 换合约周. 以次月成交量超过近月为准再切."
+      "desc": "06/15/2026. CME 官方口径：换月日 = 到期月第三个周五之前的周一（到期周五为2026年6月19日）。本周起次近月合约成为主力口径。合约切换：2026年3月（ESH26）→ 2026年6月（ESM26）。实操仍以次月成交量超过近月为准再切。 注意：该周周五是六月节休市（顺延观察），到期合约最后交易日在周四，不在周五。",
+      "source": "CME Group · Equity Index Roll Dates",
+      "sourceUrl": "https://www.cmegroup.com/trading/equity-index/rolldates.html"
     },
     {
       "date": "2026-06-17",
       "name": "FOMC Statement",
       "title": "FOMC Statement",
       "time": "2:00pm ET",
-      "type": "economic",
-      "desc": "06/17/2026 at 2:00pm ET. 联邦公开市场委员会 (FOMC) 利率决议与政策声明."
+      "type": "fomc",
+      "desc": "06/17/2026 at 2:00pm ET. FOMC 两日会议（6月16–17日），利率决议与政策声明在第二天 14:00 ET 发布，发布会 14:30 ET。本次附带经济预测摘要（SEP / 点阵图）。",
+      "source": "Federal Reserve · FOMC 日程",
+      "sourceUrl": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
     },
     {
       "date": "2026-06-19",
       "name": "Juneteenth",
       "title": "Juneteenth",
-      "time": "提前收盘",
+      "time": "1:00pm ET",
       "type": "early_close",
-      "desc": "06/19/2026. 六月节, 股指期货提前收盘 (约 13:00 ET)."
+      "desc": "06/19/2026 at 1:00pm ET. CME 股指期货（Globex）当天照常开盘，中午 12:00 CT（13:00 ET）暂停交易，无结算，17:00 CT（18:00 ET）重开下一交易日。注意：这只是缩短时段，不是休市——NYSE 股票市场当天是全天休市，两边口径不同。 当天同时是季度合约到期周五：因 NYSE 休市，到期合约最后交易日已提前到 6月18日（周四）。",
+      "source": "CME Globex 假期表（TradeSearcher 复现，另经 MarketFramework / FinanceCalendar 与 NYSE 交叉核对）",
+      "sourceUrl": "https://tradesearcher.ai/tools/futures-trading-hours"
     },
     {
       "date": "2026-06-25",
-      "name": "PCE | Core PCE Price Index",
-      "title": "PCE | Core PCE Price Index",
+      "name": "PCE | Personal Income and Outlays",
+      "title": "Personal Income and Outlays, May 2026",
       "time": "8:30am ET",
       "type": "pce",
-      "desc": "06/25/2026 at 8:30am ET. 核心 PCE 物价指数, 美联储首选通胀指标, 早盘或放量."
+      "desc": "06/25/2026 at 8:30am ET. BEA《个人收入与支出》（Personal Income and Outlays）报告，PCE 物价指数与核心 PCE（除食品和能源）都在这份报告里发布，没有单独的“核心 PCE”报告。美联储首选通胀指标。",
+      "source": "BEA · Personal Income and Outlays 2026 发布表",
+      "sourceUrl": "https://bea.gov/news/2026/personal-income-and-outlays-december-2025"
     },
     {
       "date": "2026-07-02",
-      "name": "Non-Farm Employment Change",
-      "title": "Non-Farm Employment Change",
+      "name": "Non-Farm Payrolls",
+      "title": "Non-Farm Payrolls · Employment Situation",
       "time": "8:30am ET",
-      "type": "economic",
-      "desc": "07/02/2026 at 8:30am ET. 美国非农就业数据发布, 市场高波动事件."
+      "type": "nfp",
+      "desc": "07/02/2026 at 8:30am ET. 美国非农就业报告（Employment Situation），统计参考月份：2026年6月。8:30 ET 发布，市场高波动事件。 周四发布：7月3日为独立日顺延休市日。",
+      "source": "BLS · Employment Situation 发布日程",
+      "sourceUrl": "https://www.bls.gov/schedule/news_release/empsit.htm"
     },
     {
       "date": "2026-07-03",
       "name": "Independence Day",
       "title": "Independence Day",
-      "time": "提前收盘",
+      "time": "1:00pm ET",
       "type": "early_close",
-      "desc": "07/03/2026. 独立日, 股指期货提前收盘 (约 13:00 ET)."
+      "desc": "07/03/2026 at 1:00pm ET. CME 股指期货（Globex）当天照常开盘，中午 12:00 CT（13:00 ET）暂停交易，无结算，17:00 CT（18:00 ET）重开下一交易日。注意：这只是缩短时段，不是休市——NYSE 股票市场当天是全天休市，两边口径不同。 7月4日是周六，独立日按 7月3日（周五）顺延观察。",
+      "source": "CME Globex 假期表（TradeSearcher 复现，另经 MarketFramework / FinanceCalendar 与 NYSE 交叉核对）",
+      "sourceUrl": "https://tradesearcher.ai/tools/futures-trading-hours"
     },
     {
       "date": "2026-07-14",
       "name": "CPI | Consumer Price Index",
       "title": "CPI | Consumer Price Index",
       "time": "8:30am ET",
-      "type": "economic",
-      "desc": "07/14/2026 at 8:30am ET. 美国消费者物价指数 (CPI) 发布."
+      "type": "cpi",
+      "desc": "07/14/2026 at 8:30am ET. 美国消费者物价指数（CPI），统计参考月份：2026年6月。8:30 ET 发布。",
+      "source": "BLS · CPI 发布日程",
+      "sourceUrl": "https://www.bls.gov/schedule/news_release/cpi.htm"
     },
     {
       "date": "2026-07-29",
       "name": "FOMC Statement",
       "title": "FOMC Statement",
       "time": "2:00pm ET",
-      "type": "economic",
-      "desc": "07/29/2026 at 2:00pm ET. 联邦公开市场委员会 (FOMC) 利率决议与政策声明."
+      "type": "fomc",
+      "desc": "07/29/2026 at 2:00pm ET. FOMC 两日会议（7月28–29日），利率决议与政策声明在第二天 14:00 ET 发布，发布会 14:30 ET。本次无经济预测摘要（SEP）。",
+      "source": "Federal Reserve · FOMC 日程",
+      "sourceUrl": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
     },
     {
       "date": "2026-07-30",
-      "name": "PCE | Core PCE Price Index",
-      "title": "PCE | Core PCE Price Index",
+      "name": "PCE | Personal Income and Outlays",
+      "title": "Personal Income and Outlays, June 2026",
       "time": "8:30am ET",
       "type": "pce",
-      "desc": "07/30/2026 at 8:30am ET. 核心 PCE 物价指数, 美联储首选通胀指标, 早盘或放量."
+      "desc": "07/30/2026 at 8:30am ET. BEA《个人收入与支出》（Personal Income and Outlays）报告，PCE 物价指数与核心 PCE（除食品和能源）都在这份报告里发布，没有单独的“核心 PCE”报告。美联储首选通胀指标。",
+      "source": "BEA · Personal Income and Outlays 2026 发布表",
+      "sourceUrl": "https://bea.gov/news/2026/personal-income-and-outlays-december-2025"
     },
     {
       "date": "2026-08-07",
-      "name": "Non-Farm Employment Change",
-      "title": "Non-Farm Employment Change",
+      "name": "Non-Farm Payrolls",
+      "title": "Non-Farm Payrolls · Employment Situation",
       "time": "8:30am ET",
-      "type": "economic",
-      "desc": "08/07/2026 at 8:30am ET. 美国非农就业数据发布, 市场高波动事件."
+      "type": "nfp",
+      "desc": "08/07/2026 at 8:30am ET. 美国非农就业报告（Employment Situation），统计参考月份：2026年7月。8:30 ET 发布，市场高波动事件。",
+      "source": "BLS · Employment Situation 发布日程",
+      "sourceUrl": "https://www.bls.gov/schedule/news_release/empsit.htm"
     },
     {
       "date": "2026-08-12",
       "name": "CPI | Consumer Price Index",
       "title": "CPI | Consumer Price Index",
       "time": "8:30am ET",
-      "type": "economic",
-      "desc": "08/12/2026 at 8:30am ET. 美国消费者物价指数 (CPI) 发布."
+      "type": "cpi",
+      "desc": "08/12/2026 at 8:30am ET. 美国消费者物价指数（CPI），统计参考月份：2026年7月。8:30 ET 发布。",
+      "source": "BLS · CPI 发布日程",
+      "sourceUrl": "https://www.bls.gov/schedule/news_release/cpi.htm"
     },
     {
       "date": "2026-08-26",
-      "name": "PCE | Core PCE Price Index",
-      "title": "PCE | Core PCE Price Index",
+      "name": "PCE | Personal Income and Outlays",
+      "title": "Personal Income and Outlays, July 2026",
       "time": "8:30am ET",
       "type": "pce",
-      "desc": "08/26/2026 at 8:30am ET. 核心 PCE 物价指数, 美联储首选通胀指标, 早盘或放量."
+      "desc": "08/26/2026 at 8:30am ET. BEA《个人收入与支出》（Personal Income and Outlays）报告，PCE 物价指数与核心 PCE（除食品和能源）都在这份报告里发布，没有单独的“核心 PCE”报告。美联储首选通胀指标。",
+      "source": "BEA · Personal Income and Outlays 2026 发布表",
+      "sourceUrl": "https://bea.gov/news/2026/personal-income-and-outlays-december-2025"
     },
     {
       "date": "2026-09-04",
-      "name": "Non-Farm Employment Change",
-      "title": "Non-Farm Employment Change",
+      "name": "Non-Farm Payrolls",
+      "title": "Non-Farm Payrolls · Employment Situation",
       "time": "8:30am ET",
-      "type": "economic",
-      "desc": "09/04/2026 at 8:30am ET. 美国非农就业数据发布, 市场高波动事件."
+      "type": "nfp",
+      "desc": "09/04/2026 at 8:30am ET. 美国非农就业报告（Employment Situation），统计参考月份：2026年8月。8:30 ET 发布，市场高波动事件。",
+      "source": "BLS · Employment Situation 发布日程",
+      "sourceUrl": "https://www.bls.gov/schedule/news_release/empsit.htm"
     },
     {
       "date": "2026-09-07",
       "name": "Labor Day",
       "title": "Labor Day",
-      "time": "提前收盘",
+      "time": "1:00pm ET",
       "type": "early_close",
-      "desc": "09/07/2026. 劳动节, 股指期货提前收盘 (约 13:00 ET)."
+      "desc": "09/07/2026 at 1:00pm ET. CME 股指期货（Globex）当天照常开盘，中午 12:00 CT（13:00 ET）暂停交易，无结算，17:00 CT（18:00 ET）重开下一交易日。注意：这只是缩短时段，不是休市——NYSE 股票市场当天是全天休市，两边口径不同。",
+      "source": "CME Globex 假期表（TradeSearcher 复现，另经 MarketFramework / FinanceCalendar 与 NYSE 交叉核对）",
+      "sourceUrl": "https://tradesearcher.ai/tools/futures-trading-hours"
     },
     {
       "date": "2026-09-11",
       "name": "CPI | Consumer Price Index",
       "title": "CPI | Consumer Price Index",
       "time": "8:30am ET",
-      "type": "economic",
-      "desc": "09/11/2026 at 8:30am ET. 美国消费者物价指数 (CPI) 发布."
+      "type": "cpi",
+      "desc": "09/11/2026 at 8:30am ET. 美国消费者物价指数（CPI），统计参考月份：2026年8月。8:30 ET 发布。",
+      "source": "BLS · CPI 发布日程",
+      "sourceUrl": "https://www.bls.gov/schedule/news_release/cpi.htm"
     },
     {
       "date": "2026-09-14",
@@ -346,119 +441,159 @@
       "title": "Roll Week",
       "time": "",
       "type": "roll",
-      "desc": "09/14/2026. ES/NQ 换合约周. 以次月成交量超过近月为准再切."
+      "desc": "09/14/2026. CME 官方口径：换月日 = 到期月第三个周五之前的周一（到期周五为2026年9月18日）。本周起次近月合约成为主力口径。合约切换：2026年6月（ESM26）→ 2026年9月（ESU26）。实操仍以次月成交量超过近月为准再切。",
+      "source": "CME Group · Equity Index Roll Dates",
+      "sourceUrl": "https://www.cmegroup.com/trading/equity-index/rolldates.html"
     },
     {
       "date": "2026-09-16",
       "name": "FOMC Statement",
       "title": "FOMC Statement",
       "time": "2:00pm ET",
-      "type": "economic",
-      "desc": "09/16/2026 at 2:00pm ET. 联邦公开市场委员会 (FOMC) 利率决议与政策声明."
+      "type": "fomc",
+      "desc": "09/16/2026 at 2:00pm ET. FOMC 两日会议（9月15–16日），利率决议与政策声明在第二天 14:00 ET 发布，发布会 14:30 ET。本次附带经济预测摘要（SEP / 点阵图）。",
+      "source": "Federal Reserve · FOMC 日程",
+      "sourceUrl": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
     },
     {
       "date": "2026-09-30",
-      "name": "PCE | Core PCE Price Index",
-      "title": "PCE | Core PCE Price Index",
+      "name": "PCE | Personal Income and Outlays",
+      "title": "Personal Income and Outlays, August 2026",
       "time": "8:30am ET",
       "type": "pce",
-      "desc": "09/30/2026 at 8:30am ET. 核心 PCE 物价指数, 美联储首选通胀指标, 早盘或放量."
+      "desc": "09/30/2026 at 8:30am ET. BEA《个人收入与支出》（Personal Income and Outlays）报告，PCE 物价指数与核心 PCE（除食品和能源）都在这份报告里发布，没有单独的“核心 PCE”报告。美联储首选通胀指标。",
+      "source": "BEA · Personal Income and Outlays 2026 发布表",
+      "sourceUrl": "https://bea.gov/news/2026/personal-income-and-outlays-december-2025"
     },
     {
       "date": "2026-10-02",
-      "name": "Non-Farm Employment Change",
-      "title": "Non-Farm Employment Change",
+      "name": "Non-Farm Payrolls",
+      "title": "Non-Farm Payrolls · Employment Situation",
       "time": "8:30am ET",
-      "type": "economic",
-      "desc": "10/02/2026 at 8:30am ET. 美国非农就业数据发布, 市场高波动事件."
+      "type": "nfp",
+      "desc": "10/02/2026 at 8:30am ET. 美国非农就业报告（Employment Situation），统计参考月份：2026年9月。8:30 ET 发布，市场高波动事件。",
+      "source": "BLS · Employment Situation 发布日程",
+      "sourceUrl": "https://www.bls.gov/schedule/news_release/empsit.htm"
     },
     {
       "date": "2026-10-14",
       "name": "CPI | Consumer Price Index",
       "title": "CPI | Consumer Price Index",
       "time": "8:30am ET",
-      "type": "economic",
-      "desc": "10/14/2026 at 8:30am ET. 美国消费者物价指数 (CPI) 发布."
+      "type": "cpi",
+      "desc": "10/14/2026 at 8:30am ET. 美国消费者物价指数（CPI），统计参考月份：2026年9月。8:30 ET 发布。",
+      "source": "BLS · CPI 发布日程",
+      "sourceUrl": "https://www.bls.gov/schedule/news_release/cpi.htm"
     },
     {
       "date": "2026-10-28",
       "name": "FOMC Statement",
       "title": "FOMC Statement",
       "time": "2:00pm ET",
-      "type": "economic",
-      "desc": "10/28/2026 at 2:00pm ET. 联邦公开市场委员会 (FOMC) 利率决议与政策声明."
+      "type": "fomc",
+      "desc": "10/28/2026 at 2:00pm ET. FOMC 两日会议（10月27–28日），利率决议与政策声明在第二天 14:00 ET 发布，发布会 14:30 ET。本次无经济预测摘要（SEP）。",
+      "source": "Federal Reserve · FOMC 日程",
+      "sourceUrl": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
     },
     {
       "date": "2026-10-29",
-      "name": "PCE | Core PCE Price Index",
-      "title": "PCE | Core PCE Price Index",
+      "name": "PCE | Personal Income and Outlays",
+      "title": "Personal Income and Outlays, September 2026",
       "time": "8:30am ET",
       "type": "pce",
-      "desc": "10/29/2026 at 8:30am ET. 核心 PCE 物价指数, 美联储首选通胀指标, 早盘或放量."
+      "desc": "10/29/2026 at 8:30am ET. BEA《个人收入与支出》（Personal Income and Outlays）报告，PCE 物价指数与核心 PCE（除食品和能源）都在这份报告里发布，没有单独的“核心 PCE”报告。美联储首选通胀指标。",
+      "source": "BEA · Personal Income and Outlays 2026 发布表",
+      "sourceUrl": "https://bea.gov/news/2026/personal-income-and-outlays-december-2025"
+    },
+    {
+      "date": "2026-11-01",
+      "name": "Daylight Saving Time Ends",
+      "title": "Daylight Saving Time Ends",
+      "time": "2:00am ET",
+      "type": "dst",
+      "desc": "11/01/2026 at 2:00am ET. 2026年11月1日（周日）凌晨 2:00 本地时钟拨回 1:00（这一小时重复一次），美国东部回到标准时 EST（UTC-5）。此后 8:30 ET = 北京时间 21:30，14:00 ET = 北京时间次日 03:00。切换后的第一个交易日是 11月2日（周一）。 说明：美国《阳光保护法》（永久夏令时）2026年7月已过众议院、送参议院，截至 2026年11月尚未成为法律，切换按现行规则照常进行。",
+      "source": "NIST 夏令时规则（经 Old Farmer's Almanac / timeanddate 核对）",
+      "sourceUrl": "https://www.almanac.com/content/when-daylight-saving-time"
     },
     {
       "date": "2026-11-06",
-      "name": "Non-Farm Employment Change",
-      "title": "Non-Farm Employment Change",
+      "name": "Non-Farm Payrolls",
+      "title": "Non-Farm Payrolls · Employment Situation",
       "time": "8:30am ET",
-      "type": "economic",
-      "desc": "11/06/2026 at 8:30am ET. 美国非农就业数据发布, 市场高波动事件."
+      "type": "nfp",
+      "desc": "11/06/2026 at 8:30am ET. 美国非农就业报告（Employment Situation），统计参考月份：2026年10月。8:30 ET 发布，市场高波动事件。",
+      "source": "BLS · Employment Situation 发布日程",
+      "sourceUrl": "https://www.bls.gov/schedule/news_release/empsit.htm"
     },
     {
       "date": "2026-11-10",
       "name": "CPI | Consumer Price Index",
       "title": "CPI | Consumer Price Index",
       "time": "8:30am ET",
-      "type": "economic",
-      "desc": "11/10/2026 at 8:30am ET. 美国消费者物价指数 (CPI) 发布."
+      "type": "cpi",
+      "desc": "11/10/2026 at 8:30am ET. 美国消费者物价指数（CPI），统计参考月份：2026年10月。8:30 ET 发布。",
+      "source": "BLS · CPI 发布日程",
+      "sourceUrl": "https://www.bls.gov/schedule/news_release/cpi.htm"
     },
     {
       "date": "2026-11-25",
-      "name": "PCE | Core PCE Price Index",
-      "title": "PCE | Core PCE Price Index",
+      "name": "PCE | Personal Income and Outlays",
+      "title": "Personal Income and Outlays, October 2026",
       "time": "8:30am ET",
       "type": "pce",
-      "desc": "11/25/2026 at 8:30am ET. 核心 PCE 物价指数, 美联储首选通胀指标, 早盘或放量."
+      "desc": "11/25/2026 at 8:30am ET. BEA《个人收入与支出》（Personal Income and Outlays）报告，PCE 物价指数与核心 PCE（除食品和能源）都在这份报告里发布，没有单独的“核心 PCE”报告。美联储首选通胀指标。",
+      "source": "BEA · Personal Income and Outlays 2026 发布表",
+      "sourceUrl": "https://bea.gov/news/2026/personal-income-and-outlays-december-2025"
     },
     {
       "date": "2026-11-26",
       "name": "Thanksgiving Day",
       "title": "Thanksgiving Day",
-      "time": "提前收盘",
+      "time": "1:00pm ET",
       "type": "early_close",
-      "desc": "11/26/2026. 感恩节, 股指期货提前收盘 (约 13:00 ET)."
+      "desc": "11/26/2026 at 1:00pm ET. CME 股指期货（Globex）当天照常开盘，中午 12:00 CT（13:00 ET）暂停交易，无结算，17:00 CT（18:00 ET）重开下一交易日。注意：这只是缩短时段，不是休市——NYSE 股票市场当天是全天休市，两边口径不同。",
+      "source": "CME Globex 假期表（TradeSearcher 复现，另经 MarketFramework / FinanceCalendar 与 NYSE 交叉核对）",
+      "sourceUrl": "https://tradesearcher.ai/tools/futures-trading-hours"
     },
     {
       "date": "2026-11-27",
-      "name": "Black Friday",
-      "title": "Black Friday",
-      "time": "提前收盘",
+      "name": "Day after Thanksgiving",
+      "title": "Day after Thanksgiving",
+      "time": "1:15pm ET",
       "type": "early_close",
-      "desc": "11/27/2026. 黑色星期五, 股指期货提前收盘 (约 13:00 ET)."
+      "desc": "11/27/2026 at 1:15pm ET. CME 股指期货当天 12:15 CT（13:15 ET）提前收盘，当晚不再开晚盘。NYSE 当天 13:00 ET 提前收盘。",
+      "source": "CME Globex 假期表（TradeSearcher 复现，另经 MarketFramework / FinanceCalendar 与 NYSE 交叉核对）",
+      "sourceUrl": "https://tradesearcher.ai/tools/futures-trading-hours"
     },
     {
       "date": "2026-12-04",
-      "name": "Non-Farm Employment Change",
-      "title": "Non-Farm Employment Change",
+      "name": "Non-Farm Payrolls",
+      "title": "Non-Farm Payrolls · Employment Situation",
       "time": "8:30am ET",
-      "type": "economic",
-      "desc": "12/04/2026 at 8:30am ET. 美国非农就业数据发布, 市场高波动事件."
+      "type": "nfp",
+      "desc": "12/04/2026 at 8:30am ET. 美国非农就业报告（Employment Situation），统计参考月份：2026年11月。8:30 ET 发布，市场高波动事件。",
+      "source": "BLS · Employment Situation 发布日程",
+      "sourceUrl": "https://www.bls.gov/schedule/news_release/empsit.htm"
     },
     {
       "date": "2026-12-09",
       "name": "FOMC Statement",
       "title": "FOMC Statement",
       "time": "2:00pm ET",
-      "type": "economic",
-      "desc": "12/09/2026 at 2:00pm ET. 联邦公开市场委员会 (FOMC) 利率决议与政策声明."
+      "type": "fomc",
+      "desc": "12/09/2026 at 2:00pm ET. FOMC 两日会议（12月8–9日），利率决议与政策声明在第二天 14:00 ET 发布，发布会 14:30 ET。本次附带经济预测摘要（SEP / 点阵图）。",
+      "source": "Federal Reserve · FOMC 日程",
+      "sourceUrl": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
     },
     {
       "date": "2026-12-10",
       "name": "CPI | Consumer Price Index",
       "title": "CPI | Consumer Price Index",
       "time": "8:30am ET",
-      "type": "economic",
-      "desc": "12/10/2026 at 8:30am ET. 美国消费者物价指数 (CPI) 发布."
+      "type": "cpi",
+      "desc": "12/10/2026 at 8:30am ET. 美国消费者物价指数（CPI），统计参考月份：2026年11月。8:30 ET 发布。",
+      "source": "BLS · CPI 发布日程",
+      "sourceUrl": "https://www.bls.gov/schedule/news_release/cpi.htm"
     },
     {
       "date": "2026-12-14",
@@ -466,23 +601,29 @@
       "title": "Roll Week",
       "time": "",
       "type": "roll",
-      "desc": "12/14/2026. ES/NQ 换合约周. 以次月成交量超过近月为准再切."
+      "desc": "12/14/2026. CME 官方口径：换月日 = 到期月第三个周五之前的周一（到期周五为2026年12月18日）。本周起次近月合约成为主力口径。合约切换：2026年9月（ESU26）→ 2026年12月（ESZ26）。实操仍以次月成交量超过近月为准再切。",
+      "source": "CME Group · Equity Index Roll Dates",
+      "sourceUrl": "https://www.cmegroup.com/trading/equity-index/rolldates.html"
     },
     {
       "date": "2026-12-23",
-      "name": "PCE | Core PCE Price Index",
-      "title": "PCE | Core PCE Price Index",
+      "name": "PCE | Personal Income and Outlays",
+      "title": "Personal Income and Outlays, November 2026",
       "time": "8:30am ET",
       "type": "pce",
-      "desc": "12/23/2026 at 8:30am ET. 核心 PCE 物价指数, 美联储首选通胀指标, 早盘或放量."
+      "desc": "12/23/2026 at 8:30am ET. BEA《个人收入与支出》（Personal Income and Outlays）报告，PCE 物价指数与核心 PCE（除食品和能源）都在这份报告里发布，没有单独的“核心 PCE”报告。美联储首选通胀指标。",
+      "source": "BEA · Personal Income and Outlays 2026 发布表",
+      "sourceUrl": "https://bea.gov/news/2026/personal-income-and-outlays-december-2025"
     },
     {
       "date": "2026-12-24",
       "name": "Christmas Eve",
       "title": "Christmas Eve",
-      "time": "提前收盘",
+      "time": "1:15pm ET",
       "type": "early_close",
-      "desc": "12/24/2026. 平安夜, 股指期货提前收盘 (约 13:00 ET)."
+      "desc": "12/24/2026 at 1:15pm ET. CME 股指期货当天 12:15 CT（13:15 ET）提前收盘，当晚不再开晚盘。NYSE 当天 13:00 ET 提前收盘。",
+      "source": "CME Globex 假期表（TradeSearcher 复现，另经 MarketFramework / FinanceCalendar 与 NYSE 交叉核对）",
+      "sourceUrl": "https://tradesearcher.ai/tools/futures-trading-hours"
     },
     {
       "date": "2026-12-25",
@@ -490,7 +631,619 @@
       "title": "Christmas Day",
       "time": "",
       "type": "holiday",
-      "desc": "12/25/2026. 圣诞节, 美股与股指期货全天休市."
+      "desc": "12/25/2026. CME 股指期货（Globex）全天关闭，NYSE 股票市场同步全天休市。Globex 于周日 17:00 CT（18:00 ET）重开。",
+      "source": "CME Globex 假期表（TradeSearcher 复现，另经 MarketFramework / FinanceCalendar 与 NYSE 交叉核对）",
+      "sourceUrl": "https://tradesearcher.ai/tools/futures-trading-hours"
+    },
+    {
+      "date": "2027-01-01",
+      "name": "New Year's Day",
+      "title": "New Year's Day",
+      "time": "",
+      "type": "holiday",
+      "desc": "01/01/2027. CME 股指期货（Globex）全天关闭，NYSE 股票市场同步全天休市。Globex 于周日 17:00 CT（18:00 ET）重开。 2027 年 CME 假期具体时段尚未最终定版（CME 一般在假期前约两周才定版）；此处日期与时段为三家复现源一致口径，临近时须再核 CME 官方通知。NYSE 的 2027 年日期已正式公布。",
+      "source": "CME Globex 假期表（TradeSearcher 复现，另经 MarketFramework / FinanceCalendar 与 NYSE 交叉核对）",
+      "sourceUrl": "https://tradesearcher.ai/tools/futures-trading-hours"
+    },
+    {
+      "date": "2027-01-08",
+      "name": "Non-Farm Payrolls",
+      "title": "Non-Farm Payrolls · Employment Situation",
+      "time": "8:30am ET",
+      "type": "nfp",
+      "desc": "01/08/2027 at 8:30am ET. 美国非农就业报告（Employment Situation），统计参考月份：2026年12月。8:30 ET 发布，市场高波动事件。",
+      "source": "BLS · Employment Situation 发布日程",
+      "sourceUrl": "https://www.bls.gov/schedule/news_release/empsit.htm"
+    },
+    {
+      "date": "2027-01-13",
+      "name": "CPI | Consumer Price Index",
+      "title": "CPI | Consumer Price Index",
+      "time": "8:30am ET",
+      "type": "cpi",
+      "desc": "01/13/2027 at 8:30am ET. 美国消费者物价指数（CPI），统计参考月份：2026年12月。8:30 ET 发布。",
+      "source": "BLS · CPI 发布日程",
+      "sourceUrl": "https://www.bls.gov/schedule/news_release/cpi.htm"
+    },
+    {
+      "date": "2027-01-18",
+      "name": "Martin Luther King Jr. Day",
+      "title": "Martin Luther King Jr. Day",
+      "time": "1:00pm ET",
+      "type": "early_close",
+      "desc": "01/18/2027 at 1:00pm ET. CME 股指期货（Globex）当天照常开盘，中午 12:00 CT（13:00 ET）暂停交易，无结算，17:00 CT（18:00 ET）重开下一交易日。注意：这只是缩短时段，不是休市——NYSE 股票市场当天是全天休市，两边口径不同。 2027 年 CME 假期具体时段尚未最终定版（CME 一般在假期前约两周才定版）；此处日期与时段为三家复现源一致口径，临近时须再核 CME 官方通知。NYSE 的 2027 年日期已正式公布。",
+      "source": "CME Globex 假期表（TradeSearcher 复现，另经 MarketFramework / FinanceCalendar 与 NYSE 交叉核对）",
+      "sourceUrl": "https://tradesearcher.ai/tools/futures-trading-hours"
+    },
+    {
+      "date": "2027-01-27",
+      "name": "FOMC Statement",
+      "title": "FOMC Statement",
+      "time": "2:00pm ET",
+      "type": "fomc",
+      "desc": "01/27/2027 at 2:00pm ET. FOMC 两日会议（1月26–27日），利率决议与政策声明在第二天 14:00 ET 发布，发布会 14:30 ET。本次无经济预测摘要（SEP）。 暂定日期：美联储注明 2027 年会议日期须待前一次会议确认后才算定版。",
+      "source": "Federal Reserve · FOMC 日程",
+      "sourceUrl": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
+    },
+    {
+      "date": "2027-01-28",
+      "name": "PCE | Personal Income and Outlays",
+      "title": "Personal Income and Outlays, December 2026",
+      "time": "8:30am ET",
+      "type": "pce",
+      "desc": "01/28/2027 at 8:30am ET. BEA《个人收入与支出》（Personal Income and Outlays）报告，PCE 物价指数与核心 PCE（除食品和能源）都在这份报告里发布，没有单独的“核心 PCE”报告。美联储首选通胀指标。 与 GDP 初值同日上午发布。",
+      "source": "BEA · Release Schedule",
+      "sourceUrl": "https://bea.gov/news/schedule/next-year"
+    },
+    {
+      "date": "2027-02-05",
+      "name": "Non-Farm Payrolls",
+      "title": "Non-Farm Payrolls · Employment Situation",
+      "time": "8:30am ET",
+      "type": "nfp",
+      "desc": "02/05/2027 at 8:30am ET. 美国非农就业报告（Employment Situation），统计参考月份：2027年1月。8:30 ET 发布，市场高波动事件。 本次含年度基准修订。",
+      "source": "BLS · Employment Situation 发布日程",
+      "sourceUrl": "https://www.bls.gov/schedule/news_release/empsit.htm"
+    },
+    {
+      "date": "2027-02-11",
+      "name": "CPI | Consumer Price Index",
+      "title": "CPI | Consumer Price Index",
+      "time": "8:30am ET",
+      "type": "cpi",
+      "desc": "02/11/2027 at 8:30am ET. 美国消费者物价指数（CPI），统计参考月份：2027年1月。8:30 ET 发布。",
+      "source": "BLS · CPI 发布日程",
+      "sourceUrl": "https://www.bls.gov/schedule/news_release/cpi.htm"
+    },
+    {
+      "date": "2027-02-15",
+      "name": "Presidents' Day",
+      "title": "Presidents' Day",
+      "time": "1:00pm ET",
+      "type": "early_close",
+      "desc": "02/15/2027 at 1:00pm ET. CME 股指期货（Globex）当天照常开盘，中午 12:00 CT（13:00 ET）暂停交易，无结算，17:00 CT（18:00 ET）重开下一交易日。注意：这只是缩短时段，不是休市——NYSE 股票市场当天是全天休市，两边口径不同。 2027 年 CME 假期具体时段尚未最终定版（CME 一般在假期前约两周才定版）；此处日期与时段为三家复现源一致口径，临近时须再核 CME 官方通知。NYSE 的 2027 年日期已正式公布。",
+      "source": "CME Globex 假期表（TradeSearcher 复现，另经 MarketFramework / FinanceCalendar 与 NYSE 交叉核对）",
+      "sourceUrl": "https://tradesearcher.ai/tools/futures-trading-hours"
+    },
+    {
+      "date": "2027-02-25",
+      "name": "PCE | Personal Income and Outlays",
+      "title": "Personal Income and Outlays, January 2027",
+      "time": "8:30am ET",
+      "type": "pce",
+      "desc": "02/25/2027 at 8:30am ET. BEA《个人收入与支出》（Personal Income and Outlays）报告，PCE 物价指数与核心 PCE（除食品和能源）都在这份报告里发布，没有单独的“核心 PCE”报告。美联储首选通胀指标。 与 GDP 二次估值同日上午发布。",
+      "source": "BEA · Release Schedule",
+      "sourceUrl": "https://bea.gov/news/schedule/next-year"
+    },
+    {
+      "date": "2027-03-05",
+      "name": "Non-Farm Payrolls",
+      "title": "Non-Farm Payrolls · Employment Situation",
+      "time": "8:30am ET",
+      "type": "nfp",
+      "desc": "03/05/2027 at 8:30am ET. 美国非农就业报告（Employment Situation），统计参考月份：2027年2月。8:30 ET 发布，市场高波动事件。",
+      "source": "BLS · Employment Situation 发布日程",
+      "sourceUrl": "https://www.bls.gov/schedule/news_release/empsit.htm"
+    },
+    {
+      "date": "2027-03-10",
+      "name": "CPI | Consumer Price Index",
+      "title": "CPI | Consumer Price Index",
+      "time": "8:30am ET",
+      "type": "cpi",
+      "desc": "03/10/2027 at 8:30am ET. 美国消费者物价指数（CPI），统计参考月份：2027年2月。8:30 ET 发布。 注意：当年夏令时 3月14日才开始，本次仍是冬令时，北京时间 21:30。",
+      "source": "BLS · CPI 发布日程",
+      "sourceUrl": "https://www.bls.gov/schedule/news_release/cpi.htm"
+    },
+    {
+      "date": "2027-03-14",
+      "name": "Daylight Saving Time Begins",
+      "title": "Daylight Saving Time Begins",
+      "time": "2:00am ET",
+      "type": "dst",
+      "desc": "03/14/2027 at 2:00am ET. 2027年3月14日（周日）凌晨 2:00 本地时钟拨到 3:00，美国东部进入夏令时 EDT（UTC-4）。此后 8:30 ET = 北京时间 20:30，14:00 ET = 北京时间次日 02:00。切换后的第一个交易日是 3月15日（周一）——正好也是换月周周一。 说明：美国《阳光保护法》（永久夏令时）2026年7月已过众议院、送参议院，截至 2026年11月尚未成为法律，切换按现行规则照常进行。",
+      "source": "NIST 夏令时规则（经 Old Farmer's Almanac / timeanddate 核对）",
+      "sourceUrl": "https://www.almanac.com/content/when-daylight-saving-time"
+    },
+    {
+      "date": "2027-03-15",
+      "name": "Roll Week",
+      "title": "Roll Week",
+      "time": "",
+      "type": "roll",
+      "desc": "03/15/2027. CME 官方口径：换月日 = 到期月第三个周五之前的周一（到期周五为2027年3月19日）。本周起次近月合约成为主力口径。合约切换：2026年12月（ESZ26）→ 2027年3月（ESH27）。实操仍以次月成交量超过近月为准再切。",
+      "source": "CME Group · Equity Index Roll Dates",
+      "sourceUrl": "https://www.cmegroup.com/trading/equity-index/rolldates.html"
+    },
+    {
+      "date": "2027-03-17",
+      "name": "FOMC Statement",
+      "title": "FOMC Statement",
+      "time": "2:00pm ET",
+      "type": "fomc",
+      "desc": "03/17/2027 at 2:00pm ET. FOMC 两日会议（3月16–17日），利率决议与政策声明在第二天 14:00 ET 发布，发布会 14:30 ET。本次附带经济预测摘要（SEP / 点阵图）。 暂定日期：美联储注明 2027 年会议日期须待前一次会议确认后才算定版。",
+      "source": "Federal Reserve · FOMC 日程",
+      "sourceUrl": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
+    },
+    {
+      "date": "2027-03-26",
+      "name": "Good Friday",
+      "title": "Good Friday",
+      "time": "",
+      "type": "holiday",
+      "desc": "03/26/2027. CME 股指期货（Globex）全天关闭，NYSE 股票市场同步全天休市。Globex 于周日 17:00 CT（18:00 ET）重开。 2027 年 CME 假期具体时段尚未最终定版（CME 一般在假期前约两周才定版）；此处日期与时段为三家复现源一致口径，临近时须再核 CME 官方通知。NYSE 的 2027 年日期已正式公布。",
+      "source": "CME Globex 假期表（TradeSearcher 复现，另经 MarketFramework / FinanceCalendar 与 NYSE 交叉核对）",
+      "sourceUrl": "https://tradesearcher.ai/tools/futures-trading-hours"
+    },
+    {
+      "date": "2027-03-31",
+      "name": "PCE | Personal Income and Outlays",
+      "title": "Personal Income and Outlays, February 2027",
+      "time": "8:30am ET",
+      "type": "pce",
+      "desc": "03/31/2027 at 8:30am ET. BEA《个人收入与支出》（Personal Income and Outlays）报告，PCE 物价指数与核心 PCE（除食品和能源）都在这份报告里发布，没有单独的“核心 PCE”报告。美联储首选通胀指标。 与 GDP 三次估值同日上午发布。",
+      "source": "BEA · Release Schedule",
+      "sourceUrl": "https://bea.gov/news/schedule/next-year"
+    },
+    {
+      "date": "2027-04-02",
+      "name": "Non-Farm Payrolls",
+      "title": "Non-Farm Payrolls · Employment Situation",
+      "time": "8:30am ET",
+      "type": "nfp",
+      "desc": "04/02/2027 at 8:30am ET. 美国非农就业报告（Employment Situation），统计参考月份：2027年3月。8:30 ET 发布，市场高波动事件。",
+      "source": "BLS · Employment Situation 发布日程",
+      "sourceUrl": "https://www.bls.gov/schedule/news_release/empsit.htm"
+    },
+    {
+      "date": "2027-04-13",
+      "name": "CPI | Consumer Price Index",
+      "title": "CPI | Consumer Price Index",
+      "time": "8:30am ET",
+      "type": "cpi",
+      "desc": "04/13/2027 at 8:30am ET. 美国消费者物价指数（CPI），统计参考月份：2027年3月。8:30 ET 发布。",
+      "source": "BLS · CPI 发布日程",
+      "sourceUrl": "https://www.bls.gov/schedule/news_release/cpi.htm"
+    },
+    {
+      "date": "2027-04-28",
+      "name": "FOMC Statement",
+      "title": "FOMC Statement",
+      "time": "2:00pm ET",
+      "type": "fomc",
+      "desc": "04/28/2027 at 2:00pm ET. FOMC 两日会议（4月27–28日），利率决议与政策声明在第二天 14:00 ET 发布，发布会 14:30 ET。本次无经济预测摘要（SEP）。 暂定日期：美联储注明 2027 年会议日期须待前一次会议确认后才算定版。",
+      "source": "Federal Reserve · FOMC 日程",
+      "sourceUrl": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
+    },
+    {
+      "date": "2027-04-29",
+      "name": "PCE | Personal Income and Outlays",
+      "title": "Personal Income and Outlays, March 2027",
+      "time": "8:30am ET",
+      "type": "pce",
+      "desc": "04/29/2027 at 8:30am ET. BEA《个人收入与支出》（Personal Income and Outlays）报告，PCE 物价指数与核心 PCE（除食品和能源）都在这份报告里发布，没有单独的“核心 PCE”报告。美联储首选通胀指标。 与 GDP 初值同日上午发布。",
+      "source": "BEA · Release Schedule",
+      "sourceUrl": "https://bea.gov/news/schedule/next-year"
+    },
+    {
+      "date": "2027-05-07",
+      "name": "Non-Farm Payrolls",
+      "title": "Non-Farm Payrolls · Employment Situation",
+      "time": "8:30am ET",
+      "type": "nfp",
+      "desc": "05/07/2027 at 8:30am ET. 美国非农就业报告（Employment Situation），统计参考月份：2027年4月。8:30 ET 发布，市场高波动事件。",
+      "source": "BLS · Employment Situation 发布日程",
+      "sourceUrl": "https://www.bls.gov/schedule/news_release/empsit.htm"
+    },
+    {
+      "date": "2027-05-12",
+      "name": "CPI | Consumer Price Index",
+      "title": "CPI | Consumer Price Index",
+      "time": "8:30am ET",
+      "type": "cpi",
+      "desc": "05/12/2027 at 8:30am ET. 美国消费者物价指数（CPI），统计参考月份：2027年4月。8:30 ET 发布。",
+      "source": "BLS · CPI 发布日程",
+      "sourceUrl": "https://www.bls.gov/schedule/news_release/cpi.htm"
+    },
+    {
+      "date": "2027-05-27",
+      "name": "PCE | Personal Income and Outlays",
+      "title": "Personal Income and Outlays, April 2027",
+      "time": "8:30am ET",
+      "type": "pce",
+      "desc": "05/27/2027 at 8:30am ET. BEA《个人收入与支出》（Personal Income and Outlays）报告，PCE 物价指数与核心 PCE（除食品和能源）都在这份报告里发布，没有单独的“核心 PCE”报告。美联储首选通胀指标。",
+      "source": "BEA · Release Schedule",
+      "sourceUrl": "https://bea.gov/news/schedule/next-year"
+    },
+    {
+      "date": "2027-05-31",
+      "name": "Memorial Day",
+      "title": "Memorial Day",
+      "time": "1:00pm ET",
+      "type": "early_close",
+      "desc": "05/31/2027 at 1:00pm ET. CME 股指期货（Globex）当天照常开盘，中午 12:00 CT（13:00 ET）暂停交易，无结算，17:00 CT（18:00 ET）重开下一交易日。注意：这只是缩短时段，不是休市——NYSE 股票市场当天是全天休市，两边口径不同。 2027 年 CME 假期具体时段尚未最终定版（CME 一般在假期前约两周才定版）；此处日期与时段为三家复现源一致口径，临近时须再核 CME 官方通知。NYSE 的 2027 年日期已正式公布。",
+      "source": "CME Globex 假期表（TradeSearcher 复现，另经 MarketFramework / FinanceCalendar 与 NYSE 交叉核对）",
+      "sourceUrl": "https://tradesearcher.ai/tools/futures-trading-hours"
+    },
+    {
+      "date": "2027-06-04",
+      "name": "Non-Farm Payrolls",
+      "title": "Non-Farm Payrolls · Employment Situation",
+      "time": "8:30am ET",
+      "type": "nfp",
+      "desc": "06/04/2027 at 8:30am ET. 美国非农就业报告（Employment Situation），统计参考月份：2027年5月。8:30 ET 发布，市场高波动事件。",
+      "source": "BLS · Employment Situation 发布日程",
+      "sourceUrl": "https://www.bls.gov/schedule/news_release/empsit.htm"
+    },
+    {
+      "date": "2027-06-09",
+      "name": "FOMC Statement",
+      "title": "FOMC Statement",
+      "time": "2:00pm ET",
+      "type": "fomc",
+      "desc": "06/09/2027 at 2:00pm ET. FOMC 两日会议（6月8–9日），利率决议与政策声明在第二天 14:00 ET 发布，发布会 14:30 ET。本次附带经济预测摘要（SEP / 点阵图）。 暂定日期：美联储注明 2027 年会议日期须待前一次会议确认后才算定版。",
+      "source": "Federal Reserve · FOMC 日程",
+      "sourceUrl": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
+    },
+    {
+      "date": "2027-06-10",
+      "name": "CPI | Consumer Price Index",
+      "title": "CPI | Consumer Price Index",
+      "time": "8:30am ET",
+      "type": "cpi",
+      "desc": "06/10/2027 at 8:30am ET. 美国消费者物价指数（CPI），统计参考月份：2027年5月。8:30 ET 发布。",
+      "source": "BLS · CPI 发布日程",
+      "sourceUrl": "https://www.bls.gov/schedule/news_release/cpi.htm"
+    },
+    {
+      "date": "2027-06-14",
+      "name": "Roll Week",
+      "title": "Roll Week",
+      "time": "",
+      "type": "roll",
+      "desc": "06/14/2027. CME 官方口径：换月日 = 到期月第三个周五之前的周一（到期周五为2027年6月18日）。本周起次近月合约成为主力口径。合约切换：2027年3月（ESH27）→ 2027年6月（ESM27）。实操仍以次月成交量超过近月为准再切。 注意：该周周五是六月节休市（顺延观察），到期合约最后交易日在周四，不在周五。",
+      "source": "CME Group · Equity Index Roll Dates",
+      "sourceUrl": "https://www.cmegroup.com/trading/equity-index/rolldates.html"
+    },
+    {
+      "date": "2027-06-18",
+      "name": "Juneteenth",
+      "title": "Juneteenth",
+      "time": "1:00pm ET",
+      "type": "early_close",
+      "desc": "06/18/2027 at 1:00pm ET. CME 股指期货（Globex）当天照常开盘，中午 12:00 CT（13:00 ET）暂停交易，无结算，17:00 CT（18:00 ET）重开下一交易日。注意：这只是缩短时段，不是休市——NYSE 股票市场当天是全天休市，两边口径不同。 6月19日是周六，六月节按 6月18日（周五）顺延观察；当天又是季度到期周五，预计到期合约最后交易日提前到 6月17日（周四），待交易所日历确认。 2027 年 CME 假期具体时段尚未最终定版（CME 一般在假期前约两周才定版）；此处日期与时段为三家复现源一致口径，临近时须再核 CME 官方通知。NYSE 的 2027 年日期已正式公布。",
+      "source": "CME Globex 假期表（TradeSearcher 复现，另经 MarketFramework / FinanceCalendar 与 NYSE 交叉核对）",
+      "sourceUrl": "https://tradesearcher.ai/tools/futures-trading-hours"
+    },
+    {
+      "date": "2027-06-25",
+      "name": "PCE | Personal Income and Outlays",
+      "title": "Personal Income and Outlays, May 2027",
+      "time": "8:30am ET",
+      "type": "pce",
+      "desc": "06/25/2027 at 8:30am ET. BEA《个人收入与支出》（Personal Income and Outlays）报告，PCE 物价指数与核心 PCE（除食品和能源）都在这份报告里发布，没有单独的“核心 PCE”报告。美联储首选通胀指标。",
+      "source": "BEA · Release Schedule",
+      "sourceUrl": "https://bea.gov/news/schedule/next-year"
+    },
+    {
+      "date": "2027-07-02",
+      "name": "Non-Farm Payrolls",
+      "title": "Non-Farm Payrolls · Employment Situation",
+      "time": "8:30am ET",
+      "type": "nfp",
+      "desc": "07/02/2027 at 8:30am ET. 美国非农就业报告（Employment Situation），统计参考月份：2027年6月。8:30 ET 发布，市场高波动事件。 周四发布：7月5日（周一）为独立日顺延休市日。",
+      "source": "BLS · Employment Situation 发布日程",
+      "sourceUrl": "https://www.bls.gov/schedule/news_release/empsit.htm"
+    },
+    {
+      "date": "2027-07-05",
+      "name": "Independence Day",
+      "title": "Independence Day",
+      "time": "1:00pm ET",
+      "type": "early_close",
+      "desc": "07/05/2027 at 1:00pm ET. CME 股指期货（Globex）当天照常开盘，中午 12:00 CT（13:00 ET）暂停交易，无结算，17:00 CT（18:00 ET）重开下一交易日。注意：这只是缩短时段，不是休市——NYSE 股票市场当天是全天休市，两边口径不同。 7月4日是周日，独立日按 7月5日（周一）顺延观察。 2027 年 CME 假期具体时段尚未最终定版（CME 一般在假期前约两周才定版）；此处日期与时段为三家复现源一致口径，临近时须再核 CME 官方通知。NYSE 的 2027 年日期已正式公布。",
+      "source": "CME Globex 假期表（TradeSearcher 复现，另经 MarketFramework / FinanceCalendar 与 NYSE 交叉核对）",
+      "sourceUrl": "https://tradesearcher.ai/tools/futures-trading-hours"
+    },
+    {
+      "date": "2027-07-14",
+      "name": "CPI | Consumer Price Index",
+      "title": "CPI | Consumer Price Index",
+      "time": "8:30am ET",
+      "type": "cpi",
+      "desc": "07/14/2027 at 8:30am ET. 美国消费者物价指数（CPI），统计参考月份：2027年6月。8:30 ET 发布。",
+      "source": "BLS · CPI 发布日程",
+      "sourceUrl": "https://www.bls.gov/schedule/news_release/cpi.htm"
+    },
+    {
+      "date": "2027-07-28",
+      "name": "FOMC Statement",
+      "title": "FOMC Statement",
+      "time": "2:00pm ET",
+      "type": "fomc",
+      "desc": "07/28/2027 at 2:00pm ET. FOMC 两日会议（7月27–28日），利率决议与政策声明在第二天 14:00 ET 发布，发布会 14:30 ET。本次无经济预测摘要（SEP）。 暂定日期：美联储注明 2027 年会议日期须待前一次会议确认后才算定版。",
+      "source": "Federal Reserve · FOMC 日程",
+      "sourceUrl": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
+    },
+    {
+      "date": "2027-07-29",
+      "name": "PCE | Personal Income and Outlays",
+      "title": "Personal Income and Outlays, June 2027",
+      "time": "8:30am ET",
+      "type": "pce",
+      "desc": "07/29/2027 at 8:30am ET. BEA《个人收入与支出》（Personal Income and Outlays）报告，PCE 物价指数与核心 PCE（除食品和能源）都在这份报告里发布，没有单独的“核心 PCE”报告。美联储首选通胀指标。 与 GDP 初值同日上午发布。",
+      "source": "BEA · Release Schedule",
+      "sourceUrl": "https://bea.gov/news/schedule/next-year"
+    },
+    {
+      "date": "2027-08-06",
+      "name": "Non-Farm Payrolls",
+      "title": "Non-Farm Payrolls · Employment Situation",
+      "time": "8:30am ET",
+      "type": "nfp",
+      "desc": "08/06/2027 at 8:30am ET. 美国非农就业报告（Employment Situation），统计参考月份：2027年7月。8:30 ET 发布，市场高波动事件。",
+      "source": "BLS · Employment Situation 发布日程",
+      "sourceUrl": "https://www.bls.gov/schedule/news_release/empsit.htm"
+    },
+    {
+      "date": "2027-08-11",
+      "name": "CPI | Consumer Price Index",
+      "title": "CPI | Consumer Price Index",
+      "time": "8:30am ET",
+      "type": "cpi",
+      "desc": "08/11/2027 at 8:30am ET. 美国消费者物价指数（CPI），统计参考月份：2027年7月。8:30 ET 发布。",
+      "source": "BLS · CPI 发布日程",
+      "sourceUrl": "https://www.bls.gov/schedule/news_release/cpi.htm"
+    },
+    {
+      "date": "2027-08-25",
+      "name": "PCE | Personal Income and Outlays",
+      "title": "Personal Income and Outlays, July 2027",
+      "time": "8:30am ET",
+      "type": "pce",
+      "desc": "08/25/2027 at 8:30am ET. BEA《个人收入与支出》（Personal Income and Outlays）报告，PCE 物价指数与核心 PCE（除食品和能源）都在这份报告里发布，没有单独的“核心 PCE”报告。美联储首选通胀指标。",
+      "source": "BEA · Release Schedule",
+      "sourceUrl": "https://bea.gov/news/schedule/next-year"
+    },
+    {
+      "date": "2027-09-03",
+      "name": "Non-Farm Payrolls",
+      "title": "Non-Farm Payrolls · Employment Situation",
+      "time": "8:30am ET",
+      "type": "nfp",
+      "desc": "09/03/2027 at 8:30am ET. 美国非农就业报告（Employment Situation），统计参考月份：2027年8月。8:30 ET 发布，市场高波动事件。",
+      "source": "BLS · Employment Situation 发布日程",
+      "sourceUrl": "https://www.bls.gov/schedule/news_release/empsit.htm"
+    },
+    {
+      "date": "2027-09-06",
+      "name": "Labor Day",
+      "title": "Labor Day",
+      "time": "1:00pm ET",
+      "type": "early_close",
+      "desc": "09/06/2027 at 1:00pm ET. CME 股指期货（Globex）当天照常开盘，中午 12:00 CT（13:00 ET）暂停交易，无结算，17:00 CT（18:00 ET）重开下一交易日。注意：这只是缩短时段，不是休市——NYSE 股票市场当天是全天休市，两边口径不同。 2027 年 CME 假期具体时段尚未最终定版（CME 一般在假期前约两周才定版）；此处日期与时段为三家复现源一致口径，临近时须再核 CME 官方通知。NYSE 的 2027 年日期已正式公布。",
+      "source": "CME Globex 假期表（TradeSearcher 复现，另经 MarketFramework / FinanceCalendar 与 NYSE 交叉核对）",
+      "sourceUrl": "https://tradesearcher.ai/tools/futures-trading-hours"
+    },
+    {
+      "date": "2027-09-13",
+      "name": "Roll Week",
+      "title": "Roll Week",
+      "time": "",
+      "type": "roll",
+      "desc": "09/13/2027. CME 官方口径：换月日 = 到期月第三个周五之前的周一（到期周五为2027年9月17日）。本周起次近月合约成为主力口径。合约切换：2027年6月（ESM27）→ 2027年9月（ESU27）。实操仍以次月成交量超过近月为准再切。",
+      "source": "CME Group · Equity Index Roll Dates",
+      "sourceUrl": "https://www.cmegroup.com/trading/equity-index/rolldates.html"
+    },
+    {
+      "date": "2027-09-14",
+      "name": "CPI | Consumer Price Index",
+      "title": "CPI | Consumer Price Index",
+      "time": "8:30am ET",
+      "type": "cpi",
+      "desc": "09/14/2027 at 8:30am ET. 美国消费者物价指数（CPI），统计参考月份：2027年8月。8:30 ET 发布。 当天 FOMC 两日会议开始。",
+      "source": "BLS · CPI 发布日程",
+      "sourceUrl": "https://www.bls.gov/schedule/news_release/cpi.htm"
+    },
+    {
+      "date": "2027-09-15",
+      "name": "FOMC Statement",
+      "title": "FOMC Statement",
+      "time": "2:00pm ET",
+      "type": "fomc",
+      "desc": "09/15/2027 at 2:00pm ET. FOMC 两日会议（9月14–15日），利率决议与政策声明在第二天 14:00 ET 发布，发布会 14:30 ET。本次附带经济预测摘要（SEP / 点阵图）。 暂定日期：美联储注明 2027 年会议日期须待前一次会议确认后才算定版。",
+      "source": "Federal Reserve · FOMC 日程",
+      "sourceUrl": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
+    },
+    {
+      "date": "2027-09-30",
+      "name": "PCE | Personal Income and Outlays",
+      "title": "Personal Income and Outlays, August 2027",
+      "time": "8:30am ET",
+      "type": "pce",
+      "desc": "09/30/2027 at 8:30am ET. BEA《个人收入与支出》（Personal Income and Outlays）报告，PCE 物价指数与核心 PCE（除食品和能源）都在这份报告里发布，没有单独的“核心 PCE”报告。美联储首选通胀指标。",
+      "source": "BEA · Release Schedule",
+      "sourceUrl": "https://bea.gov/news/schedule/next-year"
+    },
+    {
+      "date": "2027-10-08",
+      "name": "Non-Farm Payrolls",
+      "title": "Non-Farm Payrolls · Employment Situation",
+      "time": "8:30am ET",
+      "type": "nfp",
+      "desc": "10/08/2027 at 8:30am ET. 美国非农就业报告（Employment Situation），统计参考月份：2027年9月。8:30 ET 发布，市场高波动事件。",
+      "source": "BLS · Employment Situation 发布日程",
+      "sourceUrl": "https://www.bls.gov/schedule/news_release/empsit.htm"
+    },
+    {
+      "date": "2027-10-14",
+      "name": "CPI | Consumer Price Index",
+      "title": "CPI | Consumer Price Index",
+      "time": "8:30am ET",
+      "type": "cpi",
+      "desc": "10/14/2027 at 8:30am ET. 美国消费者物价指数（CPI），统计参考月份：2027年9月。8:30 ET 发布。",
+      "source": "BLS · CPI 发布日程",
+      "sourceUrl": "https://www.bls.gov/schedule/news_release/cpi.htm"
+    },
+    {
+      "date": "2027-10-27",
+      "name": "FOMC Statement",
+      "title": "FOMC Statement",
+      "time": "2:00pm ET",
+      "type": "fomc",
+      "desc": "10/27/2027 at 2:00pm ET. FOMC 两日会议（10月26–27日），利率决议与政策声明在第二天 14:00 ET 发布，发布会 14:30 ET。本次无经济预测摘要（SEP）。 暂定日期：美联储注明 2027 年会议日期须待前一次会议确认后才算定版。",
+      "source": "Federal Reserve · FOMC 日程",
+      "sourceUrl": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
+    },
+    {
+      "date": "2027-10-28",
+      "name": "PCE | Personal Income and Outlays",
+      "title": "Personal Income and Outlays, September 2027",
+      "time": "8:30am ET",
+      "type": "pce",
+      "desc": "10/28/2027 at 8:30am ET. BEA《个人收入与支出》（Personal Income and Outlays）报告，PCE 物价指数与核心 PCE（除食品和能源）都在这份报告里发布，没有单独的“核心 PCE”报告。美联储首选通胀指标。 与 GDP 初值同日上午发布。",
+      "source": "BEA · Release Schedule",
+      "sourceUrl": "https://bea.gov/news/schedule/next-year"
+    },
+    {
+      "date": "2027-11-05",
+      "name": "Non-Farm Payrolls",
+      "title": "Non-Farm Payrolls · Employment Situation",
+      "time": "8:30am ET",
+      "type": "nfp",
+      "desc": "11/05/2027 at 8:30am ET. 美国非农就业报告（Employment Situation），统计参考月份：2027年10月。8:30 ET 发布，市场高波动事件。",
+      "source": "BLS · Employment Situation 发布日程",
+      "sourceUrl": "https://www.bls.gov/schedule/news_release/empsit.htm"
+    },
+    {
+      "date": "2027-11-07",
+      "name": "Daylight Saving Time Ends",
+      "title": "Daylight Saving Time Ends",
+      "time": "2:00am ET",
+      "type": "dst",
+      "desc": "11/07/2027 at 2:00am ET. 2027年11月7日（周日）凌晨 2:00 本地时钟拨回 1:00，美国东部回到标准时 EST（UTC-5）。此后 8:30 ET = 北京时间 21:30，14:00 ET = 北京时间次日 03:00。切换后的第一个交易日是 11月8日（周一）。 说明：美国《阳光保护法》（永久夏令时）2026年7月已过众议院、送参议院，截至 2026年11月尚未成为法律，切换按现行规则照常进行。",
+      "source": "NIST 夏令时规则（经 Old Farmer's Almanac / timeanddate 核对）",
+      "sourceUrl": "https://www.almanac.com/content/when-daylight-saving-time"
+    },
+    {
+      "date": "2027-11-10",
+      "name": "CPI | Consumer Price Index",
+      "title": "CPI | Consumer Price Index",
+      "time": "8:30am ET",
+      "type": "cpi",
+      "desc": "11/10/2027 at 8:30am ET. 美国消费者物价指数（CPI），统计参考月份：2027年10月。8:30 ET 发布。 夏令时已于 11月7日结束，本次北京时间回到 21:30。",
+      "source": "BLS · CPI 发布日程",
+      "sourceUrl": "https://www.bls.gov/schedule/news_release/cpi.htm"
+    },
+    {
+      "date": "2027-11-24",
+      "name": "PCE | Personal Income and Outlays",
+      "title": "Personal Income and Outlays, October 2027",
+      "time": "8:30am ET",
+      "type": "pce",
+      "desc": "11/24/2027 at 8:30am ET. BEA《个人收入与支出》（Personal Income and Outlays）报告，PCE 物价指数与核心 PCE（除食品和能源）都在这份报告里发布，没有单独的“核心 PCE”报告。美联储首选通胀指标。",
+      "source": "BEA · Release Schedule",
+      "sourceUrl": "https://bea.gov/news/schedule/next-year"
+    },
+    {
+      "date": "2027-11-25",
+      "name": "Thanksgiving Day",
+      "title": "Thanksgiving Day",
+      "time": "1:00pm ET",
+      "type": "early_close",
+      "desc": "11/25/2027 at 1:00pm ET. CME 股指期货（Globex）当天照常开盘，中午 12:00 CT（13:00 ET）暂停交易，无结算，17:00 CT（18:00 ET）重开下一交易日。注意：这只是缩短时段，不是休市——NYSE 股票市场当天是全天休市，两边口径不同。 2027 年 CME 假期具体时段尚未最终定版（CME 一般在假期前约两周才定版）；此处日期与时段为三家复现源一致口径，临近时须再核 CME 官方通知。NYSE 的 2027 年日期已正式公布。",
+      "source": "CME Globex 假期表（TradeSearcher 复现，另经 MarketFramework / FinanceCalendar 与 NYSE 交叉核对）",
+      "sourceUrl": "https://tradesearcher.ai/tools/futures-trading-hours"
+    },
+    {
+      "date": "2027-11-26",
+      "name": "Day after Thanksgiving",
+      "title": "Day after Thanksgiving",
+      "time": "1:15pm ET",
+      "type": "early_close",
+      "desc": "11/26/2027 at 1:15pm ET. CME 股指期货当天 12:15 CT（13:15 ET）提前收盘，当晚不再开晚盘。NYSE 当天 13:00 ET 提前收盘。 2027 年 CME 假期具体时段尚未最终定版（CME 一般在假期前约两周才定版）；此处日期与时段为三家复现源一致口径，临近时须再核 CME 官方通知。NYSE 的 2027 年日期已正式公布。",
+      "source": "CME Globex 假期表（TradeSearcher 复现，另经 MarketFramework / FinanceCalendar 与 NYSE 交叉核对）",
+      "sourceUrl": "https://tradesearcher.ai/tools/futures-trading-hours"
+    },
+    {
+      "date": "2027-12-03",
+      "name": "Non-Farm Payrolls",
+      "title": "Non-Farm Payrolls · Employment Situation",
+      "time": "8:30am ET",
+      "type": "nfp",
+      "desc": "12/03/2027 at 8:30am ET. 美国非农就业报告（Employment Situation），统计参考月份：2027年11月。8:30 ET 发布，市场高波动事件。",
+      "source": "BLS · Employment Situation 发布日程",
+      "sourceUrl": "https://www.bls.gov/schedule/news_release/empsit.htm"
+    },
+    {
+      "date": "2027-12-08",
+      "name": "FOMC Statement",
+      "title": "FOMC Statement",
+      "time": "2:00pm ET",
+      "type": "fomc",
+      "desc": "12/08/2027 at 2:00pm ET. FOMC 两日会议（12月7–8日），利率决议与政策声明在第二天 14:00 ET 发布，发布会 14:30 ET。本次附带经济预测摘要（SEP / 点阵图）。 暂定日期：美联储注明 2027 年会议日期须待前一次会议确认后才算定版。",
+      "source": "Federal Reserve · FOMC 日程",
+      "sourceUrl": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
+    },
+    {
+      "date": "2027-12-10",
+      "name": "CPI | Consumer Price Index",
+      "title": "CPI | Consumer Price Index",
+      "time": "8:30am ET",
+      "type": "cpi",
+      "desc": "12/10/2027 at 8:30am ET. 美国消费者物价指数（CPI），统计参考月份：2027年11月。8:30 ET 发布。",
+      "source": "BLS · CPI 发布日程",
+      "sourceUrl": "https://www.bls.gov/schedule/news_release/cpi.htm"
+    },
+    {
+      "date": "2027-12-13",
+      "name": "Roll Week",
+      "title": "Roll Week",
+      "time": "",
+      "type": "roll",
+      "desc": "12/13/2027. CME 官方口径：换月日 = 到期月第三个周五之前的周一（到期周五为2027年12月17日）。本周起次近月合约成为主力口径。合约切换：2027年9月（ESU27）→ 2027年12月（ESZ27）。实操仍以次月成交量超过近月为准再切。",
+      "source": "CME Group · Equity Index Roll Dates",
+      "sourceUrl": "https://www.cmegroup.com/trading/equity-index/rolldates.html"
+    },
+    {
+      "date": "2027-12-22",
+      "name": "PCE | Personal Income and Outlays",
+      "title": "Personal Income and Outlays, November 2027",
+      "time": "8:30am ET",
+      "type": "pce",
+      "desc": "12/22/2027 at 8:30am ET. BEA《个人收入与支出》（Personal Income and Outlays）报告，PCE 物价指数与核心 PCE（除食品和能源）都在这份报告里发布，没有单独的“核心 PCE”报告。美联储首选通胀指标。",
+      "source": "BEA · Release Schedule",
+      "sourceUrl": "https://bea.gov/news/schedule/next-year"
+    },
+    {
+      "date": "2027-12-24",
+      "name": "Christmas Day",
+      "title": "Christmas Day",
+      "time": "",
+      "type": "holiday",
+      "desc": "12/24/2027. 12月25日是周六，圣诞节按 12月24日（周五）顺延观察：CME 股指全天关闭，NYSE 同步休市。注意 2027 年没有单独的平安夜提前收盘日。 2027 年 CME 假期具体时段尚未最终定版（CME 一般在假期前约两周才定版）；此处日期与时段为三家复现源一致口径，临近时须再核 CME 官方通知。NYSE 的 2027 年日期已正式公布。",
+      "source": "CME Globex 假期表（TradeSearcher 复现，另经 MarketFramework / FinanceCalendar 与 NYSE 交叉核对）",
+      "sourceUrl": "https://tradesearcher.ai/tools/futures-trading-hours"
     }
   ]
 }

@@ -24,6 +24,10 @@ SUBJECT_LABELS = {
     "PCE | Core PCE Price Index": "PCE",
     "FOMC Statement": "FOMC",
     "Roll Week": "换月周",
+    "Non-Farm Payrolls": "非农",
+    "PCE | Personal Income and Outlays": "PCE",
+    "Daylight Saving Time Begins": "夏令时开始",
+    "Daylight Saving Time Ends": "夏令时结束",
 }
 
 
@@ -90,6 +94,8 @@ def body_line(ev):
         return f"• {title} — 全天休市\n  {zh}"
     if ev["type"] == "early_close":
         return f"• {title} — 提前收盘\n  {zh}"
+    if ev["type"] == "dst":
+        return f"• {title}\n  {zh}"
     hm = parse_et_time(ev.get("time", ""))
     if hm:
         bj = beijing_from_et(ev["date"], *hm)

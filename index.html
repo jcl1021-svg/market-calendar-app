@@ -1,45 +1,399 @@
-<!DOCTYPE html>
-<html lang="zh">
+<!doctype html>
+<html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Market Calendar</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<link rel="icon" href="data:,">
+<title>Market Calendar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0f0d; --panel:#111a17; --panel2:#16211e;
+  --cell-weekday:#1b332c; --cell-weekday-border:#24413a;
+  --cell-weekend:#e0706c; --cell-outside:#764142;
+  --today-border:#4aa06a; --today-glow:rgba(74,160,106,.35);
+  --eco:#a34f3a; --fomc:#cd6136; --nfp:#9c4030; --cpi:#b07d2b; --dst:#3f8261; --early:#c8912f; --early-text:#1a1205;
+  --holiday-pill:#5e2b2b; --roll:#55599c; --pce:#ac6f6b;
+  --text:#eef2f4; --dim:#9aa4ad; --dim2:#6f7a82;
+  --modal-bg:#1a1f27; --line:#24413a; --line2:#2c333d;
+  --radius:14px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;-webkit-font-smoothing:antialiased;padding:20px 18px 40px;min-height:100vh}
+.wrap{max-width:1400px;margin:0 auto}
+a{color:#7fc79b}
+
+/* stale banner */
+.stale{padding:11px 18px;background:#3a2e12;border:1px solid #6b551f;color:#f0d68a;border-radius:10px;font-size:14px;text-align:center;margin-bottom:16px}
+.stale[hidden]{display:none}
+.stale code{background:rgba(255,255,255,.1);padding:1px 6px;border-radius:5px;font-size:13px}
+
+/* toolbar */
+.toolbar{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;margin-bottom:6px}
+.nav{display:flex;align-items:center;gap:10px}
+.nav-btn{background:#16211e;border:1px solid var(--line);color:var(--text);width:40px;height:40px;border-radius:10px;font-size:22px;line-height:1;cursor:pointer;display:grid;place-items:center;transition:.15s}
+.nav-btn:hover{background:#1e2d28;border-color:#35534b}
+.today-btn{background:transparent;border:1px solid var(--line);color:var(--dim);padding:0 14px;height:40px;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer}
+.today-btn:hover{color:var(--text);border-color:#35534b}
+.month-label{font-size:26px;font-weight:700;letter-spacing:-.02em;min-width:210px;text-align:center}
+.month-label small{display:block;font-size:12px;font-weight:500;color:var(--dim);letter-spacing:.06em;margin-top:2px}
+.stats{display:flex;gap:8px;flex-wrap:wrap}
+.stat{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:8px 12px;text-align:center;min-width:74px}
+.stat b{display:block;font-size:16px;line-height:1}
+.stat span{font-size:11px;color:var(--dim)}
+
+/* next up strip */
+.nextup{margin:14px 0 16px;background:linear-gradient(90deg,#1b332c,#14251f);border:1px solid var(--line);border-radius:12px;padding:13px 16px;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.nextup .k{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#8fd0a8;font-weight:700;white-space:nowrap}
+.nextup .v{font-size:14.5px;font-weight:600}
+.nextup .v em{font-style:normal;color:var(--dim);font-weight:500}
+.nextup .cd{margin-left:auto;background:#0a0f0d;border:1px solid var(--line);padding:6px 10px;border-radius:999px;font-size:12.5px;color:#ffd9a0;font-weight:600;white-space:nowrap}
+
+/* filters / legend */
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 16px}
+.chip{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line);background:var(--panel);color:var(--dim);padding:7px 12px;border-radius:999px;font-size:13px;font-weight:600;cursor:pointer;transition:.15s}
+.chip .dot{width:9px;height:9px;border-radius:50%;flex:none}
+.chip:hover{color:var(--text)}
+.chip.on{color:var(--text);border-color:#4a6b5e;background:#1b2b26;box-shadow:inset 0 0 0 1px #35534b}
+.chip .n{font-size:11px;background:rgba(255,255,255,.08);padding:1px 6px;border-radius:999px}
+
+/* weekdays + grid */
+.weekdays{display:grid;grid-template-columns:repeat(7,1fr);gap:12px;margin-bottom:10px}
+.weekdays>div{text-align:center;font-size:12.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--dim)}
+.weekdays>div.we{color:#e89a97}
+.grid{display:grid;grid-template-columns:repeat(7,1fr);gap:12px}
+.cell{position:relative;aspect-ratio:4/3;border-radius:var(--radius);background:var(--cell-weekday);border:1px solid var(--cell-weekday-border);padding:10px 11px;overflow:hidden;transition:transform .13s,box-shadow .13s,border-color .13s,filter .13s,opacity .15s}
+.cell:not(.outside):hover{transform:translateY(-2px);border-color:rgba(255,255,255,.28);box-shadow:0 8px 20px rgba(0,0,0,.38);filter:brightness(1.06)}
+.cell.has-events{cursor:pointer}
+.cell.weekend{background:var(--cell-weekend);border-color:transparent}
+.cell.closed{background:var(--cell-weekend);border-color:transparent}
+.cell.outside{background:var(--cell-outside);border-color:transparent;opacity:.55}
+.cell.today{border:2px solid var(--today-border);box-shadow:0 0 0 3px var(--today-glow)}
+.cell.dimmed{opacity:.28;filter:saturate(.4)}
+.day-num{font-size:17px;font-weight:600;display:flex;align-items:center;gap:6px}
+.day-num .today-tag{font-size:10px;font-weight:700;letter-spacing:.06em;background:var(--today-border);color:#06130b;padding:2px 6px;border-radius:999px}
+.cell.weekend .day-num,.cell.closed .day-num{color:#fff}
+.pills{margin-top:7px;display:flex;flex-direction:column;gap:5px}
+.pill{width:100%;background:var(--eco);color:#fff;font-size:12.5px;font-weight:600;padding:5px 9px;border-radius:999px;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.25}
+.pill small{opacity:.85;font-weight:500}
+.pill.holiday{background:var(--holiday-pill)}
+.pill.early{background:var(--early);color:var(--early-text)}
+.pill.roll{background:var(--roll)}
+.pill.pce{background:var(--pce)}
+.more{font-size:11px;color:rgba(255,255,255,.85);text-align:center;font-weight:600}
+.pill .short{display:none}
+
+/* below panels */
+.below{display:grid;grid-template-columns:1.15fr .85fr;gap:16px;margin-top:22px}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px}
+.panel h2{font-size:15px;font-weight:700;margin-bottom:4px}
+.panel .sub{font-size:12.5px;color:var(--dim);margin-bottom:12px;line-height:1.5}
+.evrow{display:flex;gap:12px;padding:11px 10px;border-radius:10px;cursor:pointer;border:1px solid transparent}
+.evrow:hover{background:#1a2823;border-color:var(--line)}
+.evrow + .evrow{border-top:1px solid #1d2b27}
+.evrow + .evrow:hover{border-top-color:var(--line)}
+.datebox{flex:none;width:52px;text-align:center;background:#0d1512;border:1px solid var(--line);border-radius:10px;padding:7px 4px;height:fit-content}
+.datebox b{display:block;font-size:17px;line-height:1}
+.datebox span{font-size:11px;color:var(--dim)}
+.evrow .main{flex:1;min-width:0}
+.evrow .t{font-weight:600;font-size:14.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.evrow .d{font-size:13px;color:var(--dim);line-height:1.5;margin-top:2px}
+.tag{flex:none;font-size:11px;font-weight:700;padding:3px 8px;border-radius:999px;height:fit-content;color:#fff;background:var(--eco)}
+.tag.early{background:var(--early);color:var(--early-text)} .tag.holiday{background:var(--holiday-pill)} .tag.roll{background:var(--roll)} .tag.pce{background:var(--pce)}
+.empty{color:var(--dim);font-size:13.5px;padding:14px 4px;line-height:1.6}
+.foot{margin-top:18px;color:var(--dim2);font-size:12px;line-height:1.7;text-align:center}
+
+/* modal */
+@keyframes oIn{from{opacity:0}to{opacity:1}} @keyframes mIn{0%{opacity:0;transform:translateY(36px) scale(.97)}100%{opacity:1;transform:translateY(0) scale(1)}}
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.62);backdrop-filter:blur(3px);display:flex;align-items:center;justify-content:center;z-index:100;padding:16px;animation:oIn .25s ease both}
+.overlay[hidden]{display:none}
+.modal{background:var(--modal-bg);border:1px solid var(--line2);border-radius:16px;padding:26px 28px;width:min(580px,94vw);max-height:88vh;overflow:auto;box-shadow:0 24px 60px rgba(0,0,0,.55);animation:mIn .38s cubic-bezier(.16,1,.3,1) both;position:relative}
+@media(prefers-reduced-motion:reduce){.overlay,.modal{animation:none}.cell{transition:none}}
+.mclose{position:absolute;top:14px;right:16px;background:none;border:none;color:var(--dim);font-size:26px;cursor:pointer;line-height:1}
+.mclose:hover{color:var(--text)}
+.mdate{font-size:13px;color:var(--dim);font-weight:600;letter-spacing:.04em}
+.mitem{padding:16px 0;border-top:1px solid var(--line2)}
+.mitem:first-of-type{border-top:none;padding-top:10px}
+.mname{font-size:19px;font-weight:700;line-height:1.3;padding-right:28px}
+.mbadges{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+.timebox{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0}
+.timebox div{background:#12161d;border:1px solid var(--line2);border-radius:10px;padding:10px 12px}
+.timebox span{display:block;font-size:11px;color:var(--dim);letter-spacing:.06em;text-transform:uppercase;font-weight:700}
+.timebox b{font-size:15px}
+.mdesc{font-size:14.5px;color:#c6cfd6;line-height:1.65}
+.mnote{font-size:12.5px;color:var(--dim);margin-top:10px;line-height:1.6;background:#12161d;border:1px solid var(--line2);border-radius:10px;padding:10px 12px}
+
+@media(max-width:900px){.below{grid-template-columns:1fr}.month-label{min-width:0;font-size:22px;flex:1}.stats{display:none}}
+@media(max-width:640px){
+  body{padding:14px 10px 32px}
+  .grid,.weekdays{gap:6px}
+  .cell{aspect-ratio:auto;min-height:86px;padding:7px 6px;border-radius:10px}
+  .day-num{font-size:14px}.day-num .today-tag{display:none}
+  .pill{font-size:10px;padding:4px 5px}
+  .toolbar{gap:8px}.nav-btn{width:36px;height:36px}
+  .nextup{gap:8px}.nextup .cd{margin-left:0}
+  .timebox{grid-template-columns:1fr}
+  .pill .full{display:none}
+  .pill .short{display:inline;font-size:10.5px;font-weight:700;letter-spacing:.02em}
+  .month-label small{font-size:11px;white-space:nowrap}
+  .month-label{font-size:20px}
+}
+
+.pill.fomc{background:var(--fomc)} .pill.nfp{background:var(--nfp)} .pill.cpi{background:var(--cpi)} .pill.dst{background:var(--dst)}
+.tag.fomc{background:var(--fomc)} .tag.nfp{background:var(--nfp)} .tag.cpi{background:var(--cpi)} .tag.dst{background:var(--dst)}
+.cell.dst-day{box-shadow:inset 0 0 0 2px rgba(63,130,97,.55)}
+.flag{display:inline-block;font-size:11px;font-weight:700;padding:3px 8px;border-radius:999px;background:#3a2e12;border:1px solid #6b551f;color:#f0d68a}
+.msource{font-size:12.5px;color:var(--dim);margin-top:10px;line-height:1.6}
+.msource a{color:#7fc79b;text-decoration:underline}
+.foot a{color:#7fc79b}
+.openq{background:#241a10;border:1px solid #57431f;border-radius:12px;padding:12px 16px;font-size:13px;color:#e8cf9a;line-height:1.65;margin-top:16px;text-align:left}
+.openq b{color:#f0d68a}
+</style>
 </head>
 <body>
-  <div id="staleBanner" class="stale-banner" hidden>
-    ⏰ 该更新 <span id="staleYear"></span> 年数据了：官方日程每年 9 月下旬已公布。运行 <code>python3 scripts/fetch_data.py</code> 重新生成（记得先补该年 CME 假期表）。
-  </div>
+<div class="wrap">
+  <div id="staleBanner" class="stale" hidden>⏰ 本页数据只到 2027 年底，该补 <span id="staleYear"></span> 年数据了：FOMC / BLS / BEA 的下一年日程一般在每年 9–12 月陆续公布。</div>
 
-  <div class="calendar">
-    <header class="cal-header">
-      <div class="nav">
-        <button id="prevBtn" class="nav-btn" aria-label="上个月">&#8249;</button>
-        <div id="monthLabel" class="month-label">—</div>
-        <button id="nextBtn" class="nav-btn" aria-label="下个月">&#8250;</button>
-      </div>
-    </header>
-
-    <div class="weekdays">
-      <div>Sun</div><div>Mon</div><div>Tue</div><div>Wed</div>
-      <div>Thu</div><div>Fri</div><div>Sat</div>
+  <div class="toolbar">
+    <div class="nav">
+      <button class="nav-btn" id="prevBtn" aria-label="上个月">‹</button>
+      <div class="month-label"><span id="monthLabel">—</span><small id="monthSub"></small></div>
+      <button class="nav-btn" id="nextBtn" aria-label="下个月">›</button>
+      <button class="today-btn" id="todayBtn">回到今天</button>
     </div>
-
-    <div id="grid" class="grid"></div>
+    <div class="stats" id="stats"></div>
   </div>
 
-  <div id="modal" class="modal-overlay" hidden>
-    <div class="modal">
-      <button id="modalClose" class="modal-close" aria-label="关闭">&times;</button>
-      <div class="modal-head">
-        <span id="modalDot" class="modal-dot"></span>
-        <span id="modalDate" class="modal-date"></span>
-      </div>
-      <hr class="modal-divider">
-      <div id="modalBody" class="modal-body"></div>
-    </div>
+  <div class="nextup" id="nextUp"></div>
+
+  <div class="filters" id="filters"></div>
+
+  <div class="weekdays"><div class="we">Sun</div><div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div class="we">Sat</div></div>
+  <div class="grid" id="grid"></div>
+
+  <div class="below">
+    <section class="panel">
+      <h2 id="monthListTitle">本月事件</h2>
+      <p class="sub">点任意一条看详情。时间先写美东（ET），括号里是北京时间，按事件当天是夏令时还是冬令时逐条换算。</p>
+      <div id="monthList"></div>
+    </section>
+    <section class="panel">
+      <h2>接下来 45 天</h2>
+      <p class="sub">从今天往后最近的波动级事件，休市、换月周和夏令时切换也算在内。</p>
+      <div id="upList"></div>
+    </section>
   </div>
 
-  <script src="app.js"></script>
+  <div class="openq"><b>还没定版 / 有分歧的，先说清：</b>① 2027 年 FOMC 日期是美联储的暂定日程，要等前一次会议确认；② 2027 年 CME 假期时段尚未最终定版（CME 一般在假期前约两周定版），本页为三家复现源一致口径，临近须再核；③ 2026年4月3日耶稣受难日，CME 股指口径有分歧（9:15 ET 收盘 vs 全天关闭），已在当天条目里标明；④ 2027年12月参考月的非农 / CPI / PCE（2028年1月发布）官方尚未公布，本页不猜、不收录。</div>
+
+  <p class="foot">数据快照：2026–2027 两年 · 独立核实于 2026-11-06，未沿用旧 data.json<br>
+  FOMC：<a href="https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm" target="_blank" rel="noopener">美联储 FOMC 日程</a> · 非农：<a href="https://www.bls.gov/schedule/news_release/empsit.htm" target="_blank" rel="noopener">BLS Employment Situation 日程</a> · CPI：<a href="https://www.bls.gov/schedule/news_release/cpi.htm" target="_blank" rel="noopener">BLS CPI 日程</a> · PCE：<a href="https://bea.gov/news/schedule/next-year" target="_blank" rel="noopener">BEA 发布日程</a><br>
+  CME 假期：CME 官网假期页当日返回的是美债（BTEC）日程而非股指 Globex 表，本页股指时段据 TradeSearcher / MarketFramework / FinanceCalendar 三家对 CME Globex 日程的一致复现，并与 <a href="https://www.nyse.com/trade/hours-calendars" target="_blank" rel="noopener">NYSE 日历</a>交叉核对 · 换月周：<a href="https://www.cmegroup.com/trading/equity-index/rolldates.html" target="_blank" rel="noopener">CME Equity Index Roll Dates</a>（第三个周五之前的周一）<br>
+  夏令时：美国东部每年 3 月第二个周日开始、11 月第一个周日结束（凌晨 2:00 切换）。夏令时 EDT 时 8:30 ET = 北京时间 20:30；冬令时 EST 时 = 21:30，本页每条都按当天所属时段换算。</p>
+</div>
+
+<div class="overlay" id="modal" hidden>
+  <div class="modal" role="dialog" aria-modal="true">
+    <button class="mclose" id="modalClose" aria-label="关闭">×</button>
+    <div class="mdate" id="modalDate"></div>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+<script>
+"use strict";
+var EVENTS_RAW = [{"date":"2026-01-01","name":"New Year's Day","title":"New Year's Day","time":"","type":"holiday","desc":"CME 股指期货（Globex）全天关闭，NYSE 股票市场同步全天休市。Globex 于周日 17:00 CT（18:00 ET）重开。","ref":"","flag":"","source":"CME Globex 假期表（TradeSearcher 复现，另经 MarketFramework / FinanceCalendar 与 NYSE 交叉核对）","sourceUrl":"https://tradesearcher.ai/tools/futures-trading-hours"},{"date":"2026-01-09","name":"Non-Farm Payrolls","title":"Non-Farm Payrolls · Employment Situation","time":"8:30am ET","type":"nfp","desc":"美国非农就业报告（Employment Situation），统计参考月份：2025年12月。8:30 ET 发布，市场高波动事件。","ref":"2025年12月","flag":"","source":"BLS · Employment Situation 发布日程","sourceUrl":"https://www.bls.gov/schedule/news_release/empsit.htm"},{"date":"2026-01-13","name":"CPI | Consumer Price Index","title":"CPI | Consumer Price Index","time":"8:30am ET","type":"cpi","desc":"美国消费者物价指数（CPI），统计参考月份：2025年12月。8:30 ET 发布。","ref":"2025年12月","flag":"","source":"BLS · CPI 发布日程","sourceUrl":"https://www.bls.gov/schedule/news_release/cpi.htm"},{"date":"2026-01-19","name":"Martin Luther King Jr. Day","title":"Martin Luther King Jr. Day","time":"1:00pm ET","type":"early_close","desc":"CME 股指期货（Globex）当天照常开盘，中午 12:00 CT（13:00 ET）暂停交易，无结算，17:00 CT（18:00 ET）重开下一交易日。注意：这只是缩短时段，不是休市——NYSE 股票市场当天是全天休市，两边口径不同。","ref":"","flag":"","source":"CME Globex 假期表（TradeSearcher 复现，另经 MarketFramework / FinanceCalendar 与 NYSE 交叉核对）","sourceUrl":"https://tradesearcher.ai/tools/futures-trading-hours"},{"date":"2026-01-22","name":"PCE | Personal Income and Outlays","title":"Personal Income and Outlays, October and November 2025","time":"10:00am ET","type":"pce","desc":"BEA《个人收入与支出》（Personal Income and Outlays）报告，PCE 物价指数与核心 PCE（除食品和能源）都在这份报告里发布，没有单独的“核心 PCE”报告。美联储首选通胀指标。","ref":"October and November 2025","flag":"例外：这是 2025 年政府停摆后的合并补发（2025年10月+11月两期一起发），时间是 10:00 ET 不是 8:30；该条为二手来源核实（BEA 2026 表格未单列此条）。","source":"BEA · Personal Income and Outlays 2026 发布表","sourceUrl":"https://bea.gov/news/2026/personal-income-and-outlays-december-2025"},{"date":"2026-01-28","name":"FOMC Statement","title":"FOMC Statement","time":"2:00pm ET","type":"fomc","desc":"FOMC 两日会议（1月27–28日），利率决议与政策声明在第二天 14:00 ET 发布，发布会 14:30 ET。本次无经济预测摘要（SEP）。","ref":"会议 1月27–28日","flag":"","source":"Federal Reserve · FOMC 日程","sourceUrl":"https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm","sep":false},{"date":"2026-02-11","name":"Non-Farm Payrolls","title":"Non-Farm Payrolls · Employment Situation","time":"8:30am ET","type":"nfp","desc":"美国非农就业报告（Employment Situation），统计参考月份：2026年1月。8:30 ET 发布，市场高波动事件。","ref":"2026年1月","flag":"改期：原定 2月6日，因 1月30日–2月3日联邦拨款短暂中断，顺延到 2月11日（周三）。","source":"BLS · Employment Situation 发布日程","sourceUrl":"https://www.bls.gov/schedule/news_release/empsit.htm"},{"date":"2026-02-13","name":"CPI | Consumer Price Index","title":"CPI | Consumer Price Index","time":"8:30am ET","type":"cpi","desc":"美国消费者物价指数（CPI），统计参考月份：2026年1月。8:30 ET 发布。","ref":"2026年1月","flag":"改期：原定 2月11日，因联邦拨款中断顺延到 2月13日（周五）。","source":"BLS · CPI 发布日程","sourceUrl":"https://www.bls.gov/schedule/news_release/cpi.htm"},{"date":"2026-02-16","name":"Presidents' Day","title":"Presidents' Day","time":"1:00pm ET","type":"early_close","desc":"CME 股指期货（Globex）当天照常开盘，中午 12:00 CT（13:00 ET）暂停交易，无结算，17:00 CT（18:00 ET）重开下一交易日。注意：这只是缩短时段，不是休市——NYSE 股票市场当天是全天休市，两边口径不同。","ref":"","flag":"","source":"CME Globex 假期表（TradeSearcher 复现，另经 MarketFramework / FinanceCalendar 与 NYSE 交叉核对）","sourceUrl":"https://tradesearcher.ai/tools/futures-trading-hours"},{"date":"2026-02-20","name":"PCE | Personal Income and Outlays","title":"Personal Income and Outlays, December 2025","time":"8:30am ET","type":"pce","desc":"BEA《个人收入与支出》（Personal Income and Outlays）报告，PCE 物价指数与核心 PCE（除食品和能源）都在这份报告里发布，没有单独的“核心 PCE”报告。美联储首选通胀指标。","ref":"December 2025","flag":"改期：原定 1月29日，因 2025 年 10–11 月政府停摆顺延到 2月20日。","source":"BEA · Personal Income and Outlays 2026 发布表","sourceUrl":"https://bea.gov/news/2026/personal-income-and-outlays-december-2025"},{"date":"2026-03-06","name":"Non-Farm Payrolls","title":"Non-Farm Payrolls · Employment Situation","time":"8:30am ET","type":"nfp","desc":"美国非农就业报告（Employment Situation），统计参考月份：2026年2月。8:30 ET 发布，市场高波动事件。","ref":"2026年2月","flag":"","source":"BLS · Employment Situation 发布日程","sourceUrl":"https://www.bls.gov/schedule/news_release/empsit.htm"},{"date":"2026-03-08","name":"Daylight Saving Time Begins","title":"Daylight Saving Time Begins","time":"2:00am ET","type":"dst","desc":"2026年3月8日（周日）凌晨 2:00 本地时钟拨到 3:00，美国东部进入夏令时 EDT（UTC-4）。此后 8:30 ET = 北京时间 20:30，14:00 ET = 北京时间次日 02:00。切换后的第一个交易日是 3月9日（周一），盘前简报和闹钟都按夏令时走。","ref":"","flag":"说明：美国《阳光保护法》（永久夏令时）2026年7月已过众议院、送参议院，截至 2026年11月尚未成为法律，切换按现行规则照常进行。","source":"NIST 夏令时规则（经 Old Farmer's Almanac / timeanddate 核对）","sourceUrl":"https://www.almanac.com/content/when-daylight-saving-time"},{"date":"2026-03-11","name":"CPI | Consumer Price Index","title":"CPI | Consumer Price Index","time":"8:30am ET","type":"cpi","desc":"美国消费者物价指数（CPI），统计参考月份：2026年2月。8:30 ET 发布。","ref":"2026年2月","flag":"","source":"BLS · CPI 发布日程","sourceUrl":"https://www.bls.gov/schedule/news_release/cpi.htm"},{"date":"2026-03-13","name":"PCE | Personal Income and Outlays","title":"Personal Income and Outlays, January 2026","time":"8:30am ET","type":"pce","desc":"BEA《个人收入与支出》（Personal Income and Outlays）报告，PCE 物价指数与核心 PCE（除食品和能源）都在这份报告里发布，没有单独的“核心 PCE”报告。美联储首选通胀指标。","ref":"January 2026","flag":"","source":"BEA · Personal Income and Outlays 2026 发布表","sourceUrl":"https://bea.gov/news/2026/personal-income-and-outlays-december-2025"},{"date":"2026-03-16","name":"Roll Week","title":"Roll Week","time":"","type":"roll","desc":"CME 官方口径：换月日 = 到期月第三个周五之前的周一（到期周五为2026年3月20日）。本周起次近月合约成为主力口径。合约切换：2025年12月（ESZ25）→ 2026年3月（ESH26）。实操仍以次月成交量超过近月为准再切。","ref":"2025年12月（ESZ25）→ 2026年3月（ESH26）","flag":"","source":"CME Group · Equity Index Roll Dates","sourceUrl":"https://www.cmegroup.com/trading/equity-index/rolldates.html"},{"date":"2026-03-18","name":"FOMC Statement","title":"FOMC Statement","time":"2:00pm ET","type":"fomc","desc":"FOMC 两日会议（3月17–18日），利率决议与政策声明在第二天 14:00 ET 发布，发布会 14:30 ET。本次附带经济预测摘要（SEP / 点阵图）。","ref":"会议 3月17–18日","flag":"","source":"Federal Reserve · FOMC 日程","sourceUrl":"https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm","sep":true},{"date":"2026-04-03","name":"Non-Farm Payrolls","title":"Non-Farm Payrolls · Employment Situation","time":"8:30am ET","type":"nfp","desc":"美国非农就业报告（Employment Situation），统计参考月份：2026年3月。8:30 ET 发布，市场高波动事件。","ref":"2026年3月","flag":"当天是耶稣受难日：NYSE 全天休市，CME 股指为短时段（见当天假期条目）。","source":"BLS · Employment Situation 发布日程","sourceUrl":"https://www.bls.gov/schedule/news_release/empsit.htm"},{"date":"2026-04-03","name":"Good Friday","title":"Good Friday","time":"9:15am ET","type":"early_close","desc":"来源有分歧：按复现 CME Globex 日程的 TradeSearcher，当天股指 8:15 CT（9:15 ET）收盘，是配合非农的短时段；但 FinanceCalendar 等来源记为全天关闭（疑似把 NYSE 休市套到了期货上）。两种口径不一致——这天动手前务必再核 CME 官方通知。NYSE 当天全天休市；当天 8:30 ET 照常发布非农。","ref":"","flag":"口径分歧日：CME Globex 复现源记 9:15 ET 收盘，另有来源记全天关闭。","source":"CME Globex 假期表（TradeSearcher 复现，另经 MarketFramework / FinanceCalendar 与 NYSE 交叉核对）","sourceUrl":"https://tradesearcher.ai/tools/futures-trading-hours"},{"date":"2026-04-09","name":"PCE | Personal Income and Outlays","title":"Personal Income and Outlays, February 2026","time":"8:30am ET","type":"pce","desc":"BEA《个人收入与支出》（Personal Income and Outlays）报告，PCE 物价指数与核心 PCE（除食品和能源）都在这份报告里发布，没有单独的“核心 PCE”报告。美联储首选通胀指标。","ref":"February 2026","flag":"","source":"BEA · Personal Income and Outlays 2026 发布表","sourceUrl":"https://bea.gov/news/2026/personal-income-and-outlays-december-2025"},{"date":"2026-04-10","name":"CPI | Consumer Price Index","title":"CPI | Consumer Price Index","time":"8:30am ET","type":"cpi","desc":"美国消费者物价指数（CPI），统计参考月份：2026年3月。8:30 ET 发布。","ref":"2026年3月","flag":"","source":"BLS · CPI 发布日程","sourceUrl":"https://www.bls.gov/schedule/news_release/cpi.htm"},{"date":"2026-04-29","name":"FOMC Statement","title":"FOMC Statement","time":"2:00pm ET","type":"fomc","desc":"FOMC 两日会议（4月28–29日），利率决议与政策声明在第二天 14:00 ET 发布，发布会 14:30 ET。本次无经济预测摘要（SEP）。","ref":"会议 4月28–29日","flag":"","source":"Federal Reserve · FOMC 日程","sourceUrl":"https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm","sep":false},{"date":"2026-04-30","name":"PCE | Personal Income and Outlays","title":"Personal Income and Outlays, March 2026","time":"8:30am ET","type":"pce","desc":"BEA《个人收入与支出》（Personal Income and Outlays）报告，PCE 物价指数与核心 PCE（除食品和能源）都在这份报告里发布，没有单独的“核心 PCE”报告。美联储首选通胀指标。","ref":"March 2026","flag":"与 GDP 初值同日上午发布。","source":"BEA · Personal Income and Outlays 2026 发布表","sourceUrl":"https://bea.gov/news/2026/personal-income-and-outlays-december-2025"},{"date":"2026-05-08","name":"Non-Farm Payrolls","title":"Non-Farm Payrolls · Employment Situation","time":"8:30am ET","type":"nfp","desc":"美国非农就业报告（Employment Situation），统计参考月份：2026年4月。8:30 ET 发布，市场高波动事件。","ref":"2026年4月","flag":"","source":"BLS · Employment Situation 发布日程","sourceUrl":"https://www.bls.gov/schedule/news_release/empsit.htm"},{"date":"2026-05-12","name":"CPI | Consumer Price Index","title":"CPI | Consumer Price Index","time":"8:30am ET","type":"cpi","desc":"美国消费者物价指数（CPI），统计参考月份：2026年4月。8:30 ET 发布。","ref":"2026年4月","flag":"","source":"BLS · CPI 发布日程","sourceUrl":"https://www.bls.gov/schedule/news_release/cpi.htm"},{"date":"2026-05-25","name":"Memorial Day","title":"Memorial Day","time":"1:00pm ET","type":"early_close","desc":"CME 股指期货（Globex）当天照常开盘，中午 12:00 CT（13:00 ET）暂停交易，无结算，17:00 CT（18:00 ET）重开下一交易日。注意：这只是缩短时段，不是休市——NYSE 股票市场当天是全天休市，两边口径不同。","ref":"","flag":"","source":"CME Globex 假期表（TradeSearcher 复现，另经 MarketFramework / FinanceCalendar 与 NYSE 交叉核对）","sourceUrl":"https://tradesearcher.ai/tools/futures-trading-hours"},{"date":"2026-05-28","name":"PCE | Personal Income and Outlays","title":"Personal Income and Outlays, April 2026","time":"8:30am ET","type":"pce","desc":"BEA《个人收入与支出》（Personal Income and Outlays）报告，PCE 物价指数与核心 PCE（除食品和能源）都在这份报告里发布，没有单独的“核心 PCE”报告。美联储首选通胀指标。","ref":"April 2026","flag":"","source":"BEA · Personal Income and Outlays 2026 发布表","sourceUrl":"https://bea.gov/news/2026/personal-income-and-outlays-december-2025"},{"date":"2026-06-05","name":"Non-Farm Payrolls","title":"Non-Farm Payrolls · Employment Situation","time":"8:30am ET","type":"nfp","desc":"美国非农就业报告（Employment Situation），统计参考月份：2026年5月。8:30 ET 发布，市场高波动事件。","ref":"2026年5月","flag":"","source":"BLS · Employment Situation 发布日程","sourceUrl":"https://www.bls.gov/schedule/news_release/empsit.htm"},{"date":"2026-06-10","name":"CPI | Consumer Price Index","title":"CPI | Consumer Price Index","time":"8:30am ET","type":"cpi","desc":"美国消费者物价指数（CPI），统计参考月份：2026年5月。8:30 ET 发布。","ref":"2026年5月","flag":"","source":"BLS · CPI 发布日程","sourceUrl":"https://www.bls.gov/schedule/news_release/cpi.htm"},{"date":"2026-06-15","name":"Roll Week","title":"Roll Week","time":"","type":"roll","desc":"CME 官方口径：换月日 = 到期月第三个周五之前的周一（到期周五为2026年6月19日）。本周起次近月合约成为主力口径。合约切换：2026年3月（ESH26）→ 2026年6月（ESM26）。实操仍以次月成交量超过近月为准再切。","ref":"2026年3月（ESH26）→ 2026年6月（ESM26）","flag":"注意：该周周五是六月节休市（顺延观察），到期合约最后交易日在周四，不在周五。","source":"CME Group · Equity Index Roll Dates","sourceUrl":"https://www.cmegroup.com/trading/equity-index/rolldates.html"},{"date":"2026-06-17","name":"FOMC Statement","title":"FOMC Statement","time":"2:00pm ET","type":"fomc","desc":"FOMC 两日会议（6月16–17日），利率决议与政策声明在第二天 14:00 ET 发布，发布会 14:30 ET。本次附带经济预测摘要（SEP / 点阵图）。","ref":"会议 6月16–17日","flag":"","source":"Federal Reserve · FOMC 日程","sourceUrl":"https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm","sep":true},{"date":"2026-06-19","name":"Juneteenth","title":"Juneteenth","time":"1:00pm ET","type":"early_close","desc":"CME 股指期货（Globex）当天照常开盘，中午 12:00 CT（13:00 ET）暂停交易，无结算，17:00 CT（18:00 ET）重开下一交易日。注意：这只是缩短时段，不是休市——NYSE 股票市场当天是全天休市，两边口径不同。 当天同时是季度合约到期周五：因 NYSE 休市，到期合约最后交易日已提前到 6月18日（周四）。","ref":"","flag":"","source":"CME Globex 假期表（TradeSearcher 复现，另经 MarketFramework / FinanceCalendar 与 NYSE 交叉核对）","sourceUrl":"https://tradesearcher.ai/tools/futures-trading-hours"},{"date":"2026-06-25","name":"PCE | Personal Income and Outlays","title":"Personal Income and Outlays, May 2026","time":"8:30am ET","type":"pce","desc":"BEA《个人收入与支出》（Personal Income and Outlays）报告，PCE 物价指数与核心 PCE（除食品和能源）都在这份报告里发布，没有单独的“核心 PCE”报告。美联储首选通胀指标。","ref":"May 2026","flag":"","source":"BEA · Personal Income and Outlays 2026 发布表","sourceUrl":"https://bea.gov/news/2026/personal-income-and-outlays-december-2025"},{"date":"2026-07-02","name":"Non-Farm Payrolls","title":"Non-Farm Payrolls · Employment Situation","time":"8:30am ET","type":"nfp","desc":"美国非农就业报告（Employment Situation），统计参考月份：2026年6月。8:30 ET 发布，市场高波动事件。","ref":"2026年6月","flag":"周四发布：7月3日为独立日顺延休市日。","source":"BLS · Employment Situation 发布日程","sourceUrl":"https://www.bls.gov/schedule/news_release/empsit.htm"},{"date":"2026-07-03","name":"Independence Day","title":"Independence Day","time":"1:00pm ET","type":"early_close","desc":"CME 股指期货（Globex）当天照常开盘，中午 12:00 CT（13:00 ET）暂停交易，无结算，17:00 CT（18:00 ET）重开下一交易日。注意：这只是缩短时段，不是休市——NYSE 股票市场当天是全天休市，两边口径不同。 7月4日是周六，独立日按 7月3日（周五）顺延观察。","ref":"","flag":"","source":"CME Globex 假期表（TradeSearcher 复现，另经 MarketFramework / FinanceCalendar 与 NYSE 交叉核对）","sourceUrl":"https://tradesearcher.ai/tools/futures-trading-hours"},{"date":"2026-07-14","name":"CPI | Consumer Price Index","title":"CPI | Consumer Price Index","time":"8:30am ET","type":"cpi","desc":"美国消费者物价指数（CPI），统计参考月份：2026年6月。8:30 ET 发布。","ref":"2026年6月","flag":"","source":"BLS · CPI 发布日程","sourceUrl":"https://www.bls.gov/schedule/news_release/cpi.htm"},{"date":"2026-07-29","name":"FOMC Statement","title":"FOMC Statement","time":"2:00pm ET","type":"fomc","desc":"FOMC 两日会议（7月28–29日），利率决议与政策声明在第二天 14:00 ET 发布，发布会 14:30 ET。本次无经济预测摘要（SEP）。","ref":"会议 7月28–29日","flag":"","source":"Federal Reserve · FOMC 日程","sourceUrl":"https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm","sep":false},{"date":"2026-07-30","name":"PCE | Personal Income and Outlays","title":"Personal Income and Outlays, June 2026","time":"8:30am ET","type":"pce","desc":"BEA《个人收入与支出》（Personal Income and Outlays）报告，PCE 物价指数与核心 PCE（除食品和能源）都在这份报告里发布，没有单独的“核心 PCE”报告。美联储首选通胀指标。","ref":"June 2026","flag":"","source":"BEA · Personal Income and Outlays 2026 发布表","sourceUrl":"https://bea.gov/news/2026/personal-income-and-outlays-december-2025"},{"date":"2026-08-07","name":"Non-Farm Payrolls","title":"Non-Farm Payrolls · Employment Situation","time":"8:30am ET","type":"nfp","desc":"美国非农就业报告（Employment Situation），统计参考月份：2026年7月。8:30 ET 发布，市场高波动事件。","ref":"2026年7月","flag":"","source":"BLS · Employment Situation 发布日程","sourceUrl":"https://www.bls.gov/schedule/news_release/empsit.htm"},{"date":"2026-08-12","name":"CPI | Consumer Price Index","title":"CPI | Consumer Price Index","time":"8:30am ET","type":"cpi","desc":"美国消费者物价指数（CPI），统计参考月份：2026年7月。8:30 ET 发布。","ref":"2026年7月","flag":"","source":"BLS · CPI 发布日程","sourceUrl":"https://www.bls.gov/schedule/news_release/cpi.htm"},{"date":"2026-08-26","name":"PCE | Personal Income and Outlays","title":"Personal Income and Outlays, July 2026","time":"8:30am ET","type":"pce","desc":"BEA《个人收入与支出》（Personal Income and Outlays）报告，PCE 物价指数与核心 PCE（除食品和能源）都在这份报告里发布，没有单独的“核心 PCE”报告。美联储首选通胀指标。","ref":"July 2026","flag":"","source":"BEA · Personal Income and Outlays 2026 发布表","sourceUrl":"https://bea.gov/news/2026/personal-income-and-outlays-december-2025"},{"date":"2026-09-04","name":"Non-Farm Payrolls","title":"Non-Farm Payrolls · Employment Situation","time":"8:30am ET","type":"nfp","desc":"美国非农就业报告（Employment Situation），统计参考月份：2026年8月。8:30 ET 发布，市场高波动事件。","ref":"2026年8月","flag":"","source":"BLS · Employment Situation 发布日程","sourceUrl":"https://www.bls.gov/schedule/news_release/empsit.htm"},{"date":"2026-09-07","name":"Labor Day","title":"Labor Day","time":"1:00pm ET","type":"early_close","desc":"CME 股指期货（Globex）当天照常开盘，中午 12:00 CT（13:00 ET）暂停交易，无结算，17:00 CT（18:00 ET）重开下一交易日。注意：这只是缩短时段，不是休市——NYSE 股票市场当天是全天休市，两边口径不同。","ref":"","flag":"","source":"CME Globex 假期表（TradeSearcher 复现，另经 MarketFramework / FinanceCalendar 与 NYSE 交叉核对）","sourceUrl":"https://tradesearcher.ai/tools/futures-trading-hours"},{"date":"2026-09-11","name":"CPI | Consumer Price Index","title":"CPI | Consumer Price Index","time":"8:30am ET","type":"cpi","desc":"美国消费者物价指数（CPI），统计参考月份：2026年8月。8:30 ET 发布。","ref":"2026年8月","flag":"","source":"BLS · CPI 发布日程","sourceUrl":"https://www.bls.gov/schedule/news_release/cpi.htm"},{"date":"2026-09-14","name":"Roll Week","title":"Roll Week","time":"","type":"roll","desc":"CME 官方口径：换月日 = 到期月第三个周五之前的周一（到期周五为2026年9月18日）。本周起次近月合约成为主力口径。合约切换：2026年6月（ESM26）→ 2026年9月（ESU26）。实操仍以次月成交量超过近月为准再切。","ref":"2026年6月（ESM26）→ 2026年9月（ESU26）","flag":"","source":"CME Group · Equity Index Roll Dates","sourceUrl":"https://www.cmegroup.com/trading/equity-index/rolldates.html"},{"date":"2026-09-16","name":"FOMC Statement","title":"FOMC Statement","time":"2:00pm ET","type":"fomc","desc":"FOMC 两日会议（9月15–16日），利率决议与政策声明在第二天 14:00 ET 发布，发布会 14:30 ET。本次附带经济预测摘要（SEP / 点阵图）。","ref":"会议 9月15–16日","flag":"","source":"Federal Reserve · FOMC 日程","sourceUrl":"https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm","sep":true},{"date":"2026-09-30","name":"PCE | Personal Income and Outlays","title":"Personal Income and Outlays, August 2026","time":"8:30am ET","type":"pce","desc":"BEA《个人收入与支出》（Personal Income and Outlays）报告，PCE 物价指数与核心 PCE（除食品和能源）都在这份报告里发布，没有单独的“核心 PCE”报告。美联储首选通胀指标。","ref":"August 2026","flag":"","source":"BEA · Personal Income and Outlays 2026 发布表","sourceUrl":"https://bea.gov/news/2026/personal-income-and-outlays-december-2025"},{"date":"2026-10-02","name":"Non-Farm Payrolls","title":"Non-Farm Payrolls · Employment Situation","time":"8:30am ET","type":"nfp","desc":"美国非农就业报告（Employment Situation），统计参考月份：2026年9月。8:30 ET 发布，市场高波动事件。","ref":"2026年9月","flag":"","source":"BLS · Employment Situation 发布日程","sourceUrl":"https://www.bls.gov/schedule/news_release/empsit.htm"},{"date":"2026-10-14","name":"CPI | Consumer Price Index","title":"CPI | Consumer Price Index","time":"8:30am ET","type":"cpi","desc":"美国消费者物价指数（CPI），统计参考月份：2026年9月。8:30 ET 发布。","ref":"2026年9月","flag":"","source":"BLS · CPI 发布日程","sourceUrl":"https://www.bls.gov/schedule/news_release/cpi.htm"},{"date":"2026-10-28","name":"FOMC Statement","title":"FOMC Statement","time":"2:00pm ET","type":"fomc","desc":"FOMC 两日会议（10月27–28日），利率决议与政策声明在第二天 14:00 ET 发布，发布会 14:30 ET。本次无经济预测摘要（SEP）。","ref":"会议 10月27–28日","flag":"","source":"Federal Reserve · FOMC 日程","sourceUrl":"https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm","sep":false},{"date":"2026-10-29","name":"PCE | Personal Income and Outlays","title":"Personal Income and Outlays, September 2026","time":"8:30am ET","type":"pce","desc":"BEA《个人收入与支出》（Personal Income and Outlays）报告，PCE 物价指数与核心 PCE（除食品和能源）都在这份报告里发布，没有单独的“核心 PCE”报告。美联储首选通胀指标。","ref":"September 2026","flag":"","source":"BEA · Personal Income and Outlays 2026 发布表","sourceUrl":"https://bea.gov/news/2026/personal-income-and-outlays-december-2025"},{"date":"2026-11-01","name":"Daylight Saving Time Ends","title":"Daylight Saving Time Ends","time":"2:00am ET","type":"dst","desc":"2026年11月1日（周日）凌晨 2:00 本地时钟拨回 1:00（这一小时重复一次），美国东部回到标准时 EST（UTC-5）。此后 8:30 ET = 北京时间 21:30，14:00 ET = 北京时间次日 03:00。切换后的第一个交易日是 11月2日（周一）。","ref":"","flag":"说明：美国《阳光保护法》（永久夏令时）2026年7月已过众议院、送参议院，截至 2026年11月尚未成为法律，切换按现行规则照常进行。","source":"NIST 夏令时规则（经 Old Farmer's Almanac / timeanddate 核对）","sourceUrl":"https://www.almanac.com/content/when-daylight-saving-time"},{"date":"2026-11-06","name":"Non-Farm Payrolls","title":"Non-Farm Payrolls · Employment Situation","time":"8:30am ET","type":"nfp","desc":"美国非农就业报告（Employment Situation），统计参考月份：2026年10月。8:30 ET 发布，市场高波动事件。","ref":"2026年10月","flag":"","source":"BLS · Employment Situation 发布日程","sourceUrl":"https://www.bls.gov/schedule/news_release/empsit.htm"},{"date":"2026-11-10","name":"CPI | Consumer Price Index","title":"CPI | Consumer Price Index","time":"8:30am ET","type":"cpi","desc":"美国消费者物价指数（CPI），统计参考月份：2026年10月。8:30 ET 发布。","ref":"2026年10月","flag":"","source":"BLS · CPI 发布日程","sourceUrl":"https://www.bls.gov/schedule/news_release/cpi.htm"},{"date":"2026-11-25","name":"PCE | Personal Income and Outlays","title":"Personal Income and Outlays, October 2026","time":"8:30am ET","type":"pce","desc":"BEA《个人收入与支出》（Personal Income and Outlays）报告，PCE 物价指数与核心 PCE（除食品和能源）都在这份报告里发布，没有单独的“核心 PCE”报告。美联储首选通胀指标。","ref":"October 2026","flag":"","source":"BEA · Personal Income and Outlays 2026 发布表","sourceUrl":"https://bea.gov/news/2026/personal-income-and-outlays-december-2025"},{"date":"2026-11-26","name":"Thanksgiving Day","title":"Thanksgiving Day","time":"1:00pm ET","type":"early_close","desc":"CME 股指期货（Globex）当天照常开盘，中午 12:00 CT（13:00 ET）暂停交易，无结算，17:00 CT（18:00 ET）重开下一交易日。注意：这只是缩短时段，不是休市——NYSE 股票市场当天是全天休市，两边口径不同。","ref":"","flag":"","source":"CME Globex 假期表（TradeSearcher 复现，另经 MarketFramework / FinanceCalendar 与 NYSE 交叉核对）","sourceUrl":"https://tradesearcher.ai/tools/futures-trading-hours"},{"date":"2026-11-27","name":"Day after Thanksgiving","title":"Day after Thanksgiving","time":"1:15pm ET","type":"early_close","desc":"CME 股指期货当天 12:15 CT（13:15 ET）提前收盘，当晚不再开晚盘。NYSE 当天 13:00 ET 提前收盘。","ref":"","flag":"","source":"CME Globex 假期表（TradeSearcher 复现，另经 MarketFramework / FinanceCalendar 与 NYSE 交叉核对）","sourceUrl":"https://tradesearcher.ai/tools/futures-trading-hours"},{"date":"2026-12-04","name":"Non-Farm Payrolls","title":"Non-Farm Payrolls · Employment Situation","time":"8:30am ET","type":"nfp","desc":"美国非农就业报告（Employment Situation），统计参考月份：2026年11月。8:30 ET 发布，市场高波动事件。","ref":"2026年11月","flag":"","source":"BLS · Employment Situation 发布日程","sourceUrl":"https://www.bls.gov/schedule/news_release/empsit.htm"},{"date":"2026-12-09","name":"FOMC Statement","title":"FOMC Statement","time":"2:00pm ET","type":"fomc","desc":"FOMC 两日会议（12月8–9日），利率决议与政策声明在第二天 14:00 ET 发布，发布会 14:30 ET。本次附带经济预测摘要（SEP / 点阵图）。","ref":"会议 12月8–9日","flag":"","source":"Federal Reserve · FOMC 日程","sourceUrl":"https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm","sep":true},{"date":"2026-12-10","name":"CPI | Consumer Price Index","title":"CPI | Consumer Price Index","time":"8:30am ET","type":"cpi","desc":"美国消费者物价指数（CPI），统计参考月份：2026年11月。8:30 ET 发布。","ref":"2026年11月","flag":"","source":"BLS · CPI 发布日程","sourceUrl":"https://www.bls.gov/schedule/news_release/cpi.htm"},{"date":"2026-12-14","name":"Roll Week","title":"Roll Week","time":"","type":"roll","desc":"CME 官方口径：换月日 = 到期月第三个周五之前的周一（到期周五为2026年12月18日）。本周起次近月合约成为主力口径。合约切换：2026年9月（ESU26）→ 2026年12月（ESZ26）。实操仍以次月成交量超过近月为准再切。","ref":"2026年9月（ESU26）→ 2026年12月（ESZ26）","flag":"","source":"CME Group · Equity Index Roll Dates","sourceUrl":"https://www.cmegroup.com/trading/equity-index/rolldates.html"},{"date":"2026-12-23","name":"PCE | Personal Income and Outlays","title":"Personal Income and Outlays, November 2026","time":"8:30am ET","type":"pce","desc":"BEA《个人收入与支出》（Personal Income and Outlays）报告，PCE 物价指数与核心 PCE（除食品和能源）都在这份报告里发布，没有单独的“核心 PCE”报告。美联储首选通胀指标。","ref":"November 2026","flag":"","source":"BEA · Personal Income and Outlays 2026 发布表","sourceUrl":"https://bea.gov/news/2026/personal-income-and-outlays-december-2025"},{"date":"2026-12-24","name":"Christmas Eve","title":"Christmas Eve","time":"1:15pm ET","type":"early_close","desc":"CME 股指期货当天 12:15 CT（13:15 ET）提前收盘，当晚不再开晚盘。NYSE 当天 13:00 ET 提前收盘。","ref":"","flag":"","source":"CME Globex 假期表（TradeSearcher 复现，另经 MarketFramework / FinanceCalendar 与 NYSE 交叉核对）","sourceUrl":"https://tradesearcher.ai/tools/futures-trading-hours"},{"date":"2026-12-25","name":"Christmas Day","title":"Christmas Day","time":"","type":"holiday","desc":"CME 股指期货（Globex）全天关闭，NYSE 股票市场同步全天休市。Globex 于周日 17:00 CT（18:00 ET）重开。","ref":"","flag":"","source":"CME Globex 假期表（TradeSearcher 复现，另经 MarketFramework / FinanceCalendar 与 NYSE 交叉核对）","sourceUrl":"https://tradesearcher.ai/tools/futures-trading-hours"},{"date":"2027-01-01","name":"New Year's Day","title":"New Year's Day","time":"","type":"holiday","desc":"CME 股指期货（Globex）全天关闭，NYSE 股票市场同步全天休市。Globex 于周日 17:00 CT（18:00 ET）重开。","ref":"","flag":"2027 年 CME 假期具体时段尚未最终定版（CME 一般在假期前约两周才定版）；此处日期与时段为三家复现源一致口径，临近时须再核 CME 官方通知。NYSE 的 2027 年日期已正式公布。","source":"CME Globex 假期表（TradeSearcher 复现，另经 MarketFramework / FinanceCalendar 与 NYSE 交叉核对）","sourceUrl":"https://tradesearcher.ai/tools/futures-trading-hours"},{"date":"2027-01-08","name":"Non-Farm Payrolls","title":"Non-Farm Payrolls · Employment Situation","time":"8:30am ET","type":"nfp","desc":"美国非农就业报告（Employment Situation），统计参考月份：2026年12月。8:30 ET 发布，市场高波动事件。","ref":"2026年12月","flag":"","source":"BLS · Employment Situation 发布日程","sourceUrl":"https://www.bls.gov/schedule/news_release/empsit.htm"},{"date":"2027-01-13","name":"CPI | Consumer Price Index","title":"CPI | Consumer Price Index","time":"8:30am ET","type":"cpi","desc":"美国消费者物价指数（CPI），统计参考月份：2026年12月。8:30 ET 发布。","ref":"2026年12月","flag":"","source":"BLS · CPI 发布日程","sourceUrl":"https://www.bls.gov/schedule/news_release/cpi.htm"},{"date":"2027-01-18","name":"Martin Luther King Jr. Day","title":"Martin Luther King Jr. Day","time":"1:00pm ET","type":"early_close","desc":"CME 股指期货（Globex）当天照常开盘，中午 12:00 CT（13:00 ET）暂停交易，无结算，17:00 CT（18:00 ET）重开下一交易日。注意：这只是缩短时段，不是休市——NYSE 股票市场当天是全天休市，两边口径不同。","ref":"","flag":"2027 年 CME 假期具体时段尚未最终定版（CME 一般在假期前约两周才定版）；此处日期与时段为三家复现源一致口径，临近时须再核 CME 官方通知。NYSE 的 2027 年日期已正式公布。","source":"CME Globex 假期表（TradeSearcher 复现，另经 MarketFramework / FinanceCalendar 与 NYSE 交叉核对）","sourceUrl":"https://tradesearcher.ai/tools/futures-trading-hours"},{"date":"2027-01-27","name":"FOMC Statement","title":"FOMC Statement","time":"2:00pm ET","type":"fomc","desc":"FOMC 两日会议（1月26–27日），利率决议与政策声明在第二天 14:00 ET 发布，发布会 14:30 ET。本次无经济预测摘要（SEP）。","ref":"会议 1月26–27日","flag":"暂定日期：美联储注明 2027 年会议日期须待前一次会议确认后才算定版。","source":"Federal Reserve · FOMC 日程","sourceUrl":"https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm","sep":false},{"date":"2027-01-28","name":"PCE | Personal Income and Outlays","title":"Personal Income and Outlays, December 2026","time":"8:30am ET","type":"pce","desc":"BEA《个人收入与支出》（Personal Income and Outlays）报告，PCE 物价指数与核心 PCE（除食品和能源）都在这份报告里发布，没有单独的“核心 PCE”报告。美联储首选通胀指标。","ref":"December 2026","flag":"与 GDP 初值同日上午发布。","source":"BEA · Release Schedule","sourceUrl":"https://bea.gov/news/schedule/next-year"},{"date":"2027-02-05","name":"Non-Farm Payrolls","title":"Non-Farm Payrolls · Employment Situation","time":"8:30am ET","type":"nfp","desc":"美国非农就业报告（Employment Situation），统计参考月份：2027年1月。8:30 ET 发布，市场高波动事件。","ref":"2027年1月","flag":"本次含年度基准修订。","source":"BLS · Employment Situation 发布日程","sourceUrl":"https://www.bls.gov/schedule/news_release/empsit.htm"},{"date":"2027-02-11","name":"CPI | Consumer Price Index","title":"CPI | Consumer Price Index","time":"8:30am ET","type":"cpi","desc":"美国消费者物价指数（CPI），统计参考月份：2027年1月。8:30 ET 发布。","ref":"2027年1月","flag":"","source":"BLS · CPI 发布日程","sourceUrl":"https://www.bls.gov/schedule/news_release/cpi.htm"},{"date":"2027-02-15","name":"Presidents' Day","title":"Presidents' Day","time":"1:00pm ET","type":"early_close","desc":"CME 股指期货（Globex）当天照常开盘，中午 12:00 CT（13:00 ET）暂停交易，无结算，17:00 CT（18:00 ET）重开下一交易日。注意：这只是缩短时段，不是休市——NYSE 股票市场当天是全天休市，两边口径不同。","ref":"","flag":"2027 年 CME 假期具体时段尚未最终定版（CME 一般在假期前约两周才定版）；此处日期与时段为三家复现源一致口径，临近时须再核 CME 官方通知。NYSE 的 2027 年日期已正式公布。","source":"CME Globex 假期表（TradeSearcher 复现，另经 MarketFramework / FinanceCalendar 与 NYSE 交叉核对）","sourceUrl":"https://tradesearcher.ai/tools/futures-trading-hours"},{"date":"2027-02-25","name":"PCE | Personal Income and Outlays","title":"Personal Income and Outlays, January 2027","time":"8:30am ET","type":"pce","desc":"BEA《个人收入与支出》（Personal Income and Outlays）报告，PCE 物价指数与核心 PCE（除食品和能源）都在这份报告里发布，没有单独的“核心 PCE”报告。美联储首选通胀指标。","ref":"January 2027","flag":"与 GDP 二次估值同日上午发布。","source":"BEA · Release Schedule","sourceUrl":"https://bea.gov/news/schedule/next-year"},{"date":"2027-03-05","name":"Non-Farm Payrolls","title":"Non-Farm Payrolls · Employment Situation","time":"8:30am ET","type":"nfp","desc":"美国非农就业报告（Employment Situation），统计参考月份：2027年2月。8:30 ET 发布，市场高波动事件。","ref":"2027年2月","flag":"","source":"BLS · Employment Situation 发布日程","sourceUrl":"https://www.bls.gov/schedule/news_release/empsit.htm"},{"date":"2027-03-10","name":"CPI | Consumer Price Index","title":"CPI | Consumer Price Index","time":"8:30am ET","type":"cpi","desc":"美国消费者物价指数（CPI），统计参考月份：2027年2月。8:30 ET 发布。","ref":"2027年2月","flag":"注意：当年夏令时 3月14日才开始，本次仍是冬令时，北京时间 21:30。","source":"BLS · CPI 发布日程","sourceUrl":"https://www.bls.gov/schedule/news_release/cpi.htm"},{"date":"2027-03-14","name":"Daylight Saving Time Begins","title":"Daylight Saving Time Begins","time":"2:00am ET","type":"dst","desc":"2027年3月14日（周日）凌晨 2:00 本地时钟拨到 3:00，美国东部进入夏令时 EDT（UTC-4）。此后 8:30 ET = 北京时间 20:30，14:00 ET = 北京时间次日 02:00。切换后的第一个交易日是 3月15日（周一）——正好也是换月周周一。","ref":"","flag":"说明：美国《阳光保护法》（永久夏令时）2026年7月已过众议院、送参议院，截至 2026年11月尚未成为法律，切换按现行规则照常进行。","source":"NIST 夏令时规则（经 Old Farmer's Almanac / timeanddate 核对）","sourceUrl":"https://www.almanac.com/content/when-daylight-saving-time"},{"date":"2027-03-15","name":"Roll Week","title":"Roll Week","time":"","type":"roll","desc":"CME 官方口径：换月日 = 到期月第三个周五之前的周一（到期周五为2027年3月19日）。本周起次近月合约成为主力口径。合约切换：2026年12月（ESZ26）→ 2027年3月（ESH27）。实操仍以次月成交量超过近月为准再切。","ref":"2026年12月（ESZ26）→ 2027年3月（ESH27）","flag":"","source":"CME Group · Equity Index Roll Dates","sourceUrl":"https://www.cmegroup.com/trading/equity-index/rolldates.html"},{"date":"2027-03-17","name":"FOMC Statement","title":"FOMC Statement","time":"2:00pm ET","type":"fomc","desc":"FOMC 两日会议（3月16–17日），利率决议与政策声明在第二天 14:00 ET 发布，发布会 14:30 ET。本次附带经济预测摘要（SEP / 点阵图）。","ref":"会议 3月16–17日","flag":"暂定日期：美联储注明 2027 年会议日期须待前一次会议确认后才算定版。","source":"Federal Reserve · FOMC 日程","sourceUrl":"https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm","sep":true},{"date":"2027-03-26","name":"Good Friday","title":"Good Friday","time":"","type":"holiday","desc":"CME 股指期货（Globex）全天关闭，NYSE 股票市场同步全天休市。Globex 于周日 17:00 CT（18:00 ET）重开。","ref":"","flag":"2027 年 CME 假期具体时段尚未最终定版（CME 一般在假期前约两周才定版）；此处日期与时段为三家复现源一致口径，临近时须再核 CME 官方通知。NYSE 的 2027 年日期已正式公布。","source":"CME Globex 假期表（TradeSearcher 复现，另经 MarketFramework / FinanceCalendar 与 NYSE 交叉核对）","sourceUrl":"https://tradesearcher.ai/tools/futures-trading-hours"},{"date":"2027-03-31","name":"PCE | Personal Income and Outlays","title":"Personal Income and Outlays, February 2027","time":"8:30am ET","type":"pce","desc":"BEA《个人收入与支出》（Personal Income and Outlays）报告，PCE 物价指数与核心 PCE（除食品和能源）都在这份报告里发布，没有单独的“核心 PCE”报告。美联储首选通胀指标。","ref":"February 2027","flag":"与 GDP 三次估值同日上午发布。","source":"BEA · Release Schedule","sourceUrl":"https://bea.gov/news/schedule/next-year"},{"date":"2027-04-02","name":"Non-Farm Payrolls","title":"Non-Farm Payrolls · Employment Situation","time":"8:30am ET","type":"nfp","desc":"美国非农就业报告（Employment Situation），统计参考月份：2027年3月。8:30 ET 发布，市场高波动事件。","ref":"2027年3月","flag":"","source":"BLS · Employment Situation 发布日程","sourceUrl":"https://www.bls.gov/schedule/news_release/empsit.htm"},{"date":"2027-04-13","name":"CPI | Consumer Price Index","title":"CPI | Consumer Price Index","time":"8:30am ET","type":"cpi","desc":"美国消费者物价指数（CPI），统计参考月份：2027年3月。8:30 ET 发布。","ref":"2027年3月","flag":"","source":"BLS · CPI 发布日程","sourceUrl":"https://www.bls.gov/schedule/news_release/cpi.htm"},{"date":"2027-04-28","name":"FOMC Statement","title":"FOMC Statement","time":"2:00pm ET","type":"fomc","desc":"FOMC 两日会议（4月27–28日），利率决议与政策声明在第二天 14:00 ET 发布，发布会 14:30 ET。本次无经济预测摘要（SEP）。","ref":"会议 4月27–28日","flag":"暂定日期：美联储注明 2027 年会议日期须待前一次会议确认后才算定版。","source":"Federal Reserve · FOMC 日程","sourceUrl":"https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm","sep":false},{"date":"2027-04-29","name":"PCE | Personal Income and Outlays","title":"Personal Income and Outlays, March 2027","time":"8:30am ET","type":"pce","desc":"BEA《个人收入与支出》（Personal Income and Outlays）报告，PCE 物价指数与核心 PCE（除食品和能源）都在这份报告里发布，没有单独的“核心 PCE”报告。美联储首选通胀指标。","ref":"March 2027","flag":"与 GDP 初值同日上午发布。","source":"BEA · Release Schedule","sourceUrl":"https://bea.gov/news/schedule/next-year"},{"date":"2027-05-07","name":"Non-Farm Payrolls","title":"Non-Farm Payrolls · Employment Situation","time":"8:30am ET","type":"nfp","desc":"美国非农就业报告（Employment Situation），统计参考月份：2027年4月。8:30 ET 发布，市场高波动事件。","ref":"2027年4月","flag":"","source":"BLS · Employment Situation 发布日程","sourceUrl":"https://www.bls.gov/schedule/news_release/empsit.htm"},{"date":"2027-05-12","name":"CPI | Consumer Price Index","title":"CPI | Consumer Price Index","time":"8:30am ET","type":"cpi","desc":"美国消费者物价指数（CPI），统计参考月份：2027年4月。8:30 ET 发布。","ref":"2027年4月","flag":"","source":"BLS · CPI 发布日程","sourceUrl":"https://www.bls.gov/schedule/news_release/cpi.htm"},{"date":"2027-05-27","name":"PCE | Personal Income and Outlays","title":"Personal Income and Outlays, April 2027","time":"8:30am ET","type":"pce","desc":"BEA《个人收入与支出》（Personal Income and Outlays）报告，PCE 物价指数与核心 PCE（除食品和能源）都在这份报告里发布，没有单独的“核心 PCE”报告。美联储首选通胀指标。","ref":"April 2027","flag":"","source":"BEA · Release Schedule","sourceUrl":"https://bea.gov/news/schedule/next-year"},{"date":"2027-05-31","name":"Memorial Day","title":"Memorial Day","time":"1:00pm ET","type":"early_close","desc":"CME 股指期货（Globex）当天照常开盘，中午 12:00 CT（13:00 ET）暂停交易，无结算，17:00 CT（18:00 ET）重开下一交易日。注意：这只是缩短时段，不是休市——NYSE 股票市场当天是全天休市，两边口径不同。","ref":"","flag":"2027 年 CME 假期具体时段尚未最终定版（CME 一般在假期前约两周才定版）；此处日期与时段为三家复现源一致口径，临近时须再核 CME 官方通知。NYSE 的 2027 年日期已正式公布。","source":"CME Globex 假期表（TradeSearcher 复现，另经 MarketFramework / FinanceCalendar 与 NYSE 交叉核对）","sourceUrl":"https://tradesearcher.ai/tools/futures-trading-hours"},{"date":"2027-06-04","name":"Non-Farm Payrolls","title":"Non-Farm Payrolls · Employment Situation","time":"8:30am ET","type":"nfp","desc":"美国非农就业报告（Employment Situation），统计参考月份：2027年5月。8:30 ET 发布，市场高波动事件。","ref":"2027年5月","flag":"","source":"BLS · Employment Situation 发布日程","sourceUrl":"https://www.bls.gov/schedule/news_release/empsit.htm"},{"date":"2027-06-09","name":"FOMC Statement","title":"FOMC Statement","time":"2:00pm ET","type":"fomc","desc":"FOMC 两日会议（6月8–9日），利率决议与政策声明在第二天 14:00 ET 发布，发布会 14:30 ET。本次附带经济预测摘要（SEP / 点阵图）。","ref":"会议 6月8–9日","flag":"暂定日期：美联储注明 2027 年会议日期须待前一次会议确认后才算定版。","source":"Federal Reserve · FOMC 日程","sourceUrl":"https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm","sep":true},{"date":"2027-06-10","name":"CPI | Consumer Price Index","title":"CPI | Consumer Price Index","time":"8:30am ET","type":"cpi","desc":"美国消费者物价指数（CPI），统计参考月份：2027年5月。8:30 ET 发布。","ref":"2027年5月","flag":"","source":"BLS · CPI 发布日程","sourceUrl":"https://www.bls.gov/schedule/news_release/cpi.htm"},{"date":"2027-06-14","name":"Roll Week","title":"Roll Week","time":"","type":"roll","desc":"CME 官方口径：换月日 = 到期月第三个周五之前的周一（到期周五为2027年6月18日）。本周起次近月合约成为主力口径。合约切换：2027年3月（ESH27）→ 2027年6月（ESM27）。实操仍以次月成交量超过近月为准再切。","ref":"2027年3月（ESH27）→ 2027年6月（ESM27）","flag":"注意：该周周五是六月节休市（顺延观察），到期合约最后交易日在周四，不在周五。","source":"CME Group · Equity Index Roll Dates","sourceUrl":"https://www.cmegroup.com/trading/equity-index/rolldates.html"},{"date":"2027-06-18","name":"Juneteenth","title":"Juneteenth","time":"1:00pm ET","type":"early_close","desc":"CME 股指期货（Globex）当天照常开盘，中午 12:00 CT（13:00 ET）暂停交易，无结算，17:00 CT（18:00 ET）重开下一交易日。注意：这只是缩短时段，不是休市——NYSE 股票市场当天是全天休市，两边口径不同。 6月19日是周六，六月节按 6月18日（周五）顺延观察；当天又是季度到期周五，预计到期合约最后交易日提前到 6月17日（周四），待交易所日历确认。","ref":"","flag":"2027 年 CME 假期具体时段尚未最终定版（CME 一般在假期前约两周才定版）；此处日期与时段为三家复现源一致口径，临近时须再核 CME 官方通知。NYSE 的 2027 年日期已正式公布。","source":"CME Globex 假期表（TradeSearcher 复现，另经 MarketFramework / FinanceCalendar 与 NYSE 交叉核对）","sourceUrl":"https://tradesearcher.ai/tools/futures-trading-hours"},{"date":"2027-06-25","name":"PCE | Personal Income and Outlays","title":"Personal Income and Outlays, May 2027","time":"8:30am ET","type":"pce","desc":"BEA《个人收入与支出》（Personal Income and Outlays）报告，PCE 物价指数与核心 PCE（除食品和能源）都在这份报告里发布，没有单独的“核心 PCE”报告。美联储首选通胀指标。","ref":"May 2027","flag":"","source":"BEA · Release Schedule","sourceUrl":"https://bea.gov/news/schedule/next-year"},{"date":"2027-07-02","name":"Non-Farm Payrolls","title":"Non-Farm Payrolls · Employment Situation","time":"8:30am ET","type":"nfp","desc":"美国非农就业报告（Employment Situation），统计参考月份：2027年6月。8:30 ET 发布，市场高波动事件。","ref":"2027年6月","flag":"周四发布：7月5日（周一）为独立日顺延休市日。","source":"BLS · Employment Situation 发布日程","sourceUrl":"https://www.bls.gov/schedule/news_release/empsit.htm"},{"date":"2027-07-05","name":"Independence Day","title":"Independence Day","time":"1:00pm ET","type":"early_close","desc":"CME 股指期货（Globex）当天照常开盘，中午 12:00 CT（13:00 ET）暂停交易，无结算，17:00 CT（18:00 ET）重开下一交易日。注意：这只是缩短时段，不是休市——NYSE 股票市场当天是全天休市，两边口径不同。 7月4日是周日，独立日按 7月5日（周一）顺延观察。","ref":"","flag":"2027 年 CME 假期具体时段尚未最终定版（CME 一般在假期前约两周才定版）；此处日期与时段为三家复现源一致口径，临近时须再核 CME 官方通知。NYSE 的 2027 年日期已正式公布。","source":"CME Globex 假期表（TradeSearcher 复现，另经 MarketFramework / FinanceCalendar 与 NYSE 交叉核对）","sourceUrl":"https://tradesearcher.ai/tools/futures-trading-hours"},{"date":"2027-07-14","name":"CPI | Consumer Price Index","title":"CPI | Consumer Price Index","time":"8:30am ET","type":"cpi","desc":"美国消费者物价指数（CPI），统计参考月份：2027年6月。8:30 ET 发布。","ref":"2027年6月","flag":"","source":"BLS · CPI 发布日程","sourceUrl":"https://www.bls.gov/schedule/news_release/cpi.htm"},{"date":"2027-07-28","name":"FOMC Statement","title":"FOMC Statement","time":"2:00pm ET","type":"fomc","desc":"FOMC 两日会议（7月27–28日），利率决议与政策声明在第二天 14:00 ET 发布，发布会 14:30 ET。本次无经济预测摘要（SEP）。","ref":"会议 7月27–28日","flag":"暂定日期：美联储注明 2027 年会议日期须待前一次会议确认后才算定版。","source":"Federal Reserve · FOMC 日程","sourceUrl":"https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm","sep":false},{"date":"2027-07-29","name":"PCE | Personal Income and Outlays","title":"Personal Income and Outlays, June 2027","time":"8:30am ET","type":"pce","desc":"BEA《个人收入与支出》（Personal Income and Outlays）报告，PCE 物价指数与核心 PCE（除食品和能源）都在这份报告里发布，没有单独的“核心 PCE”报告。美联储首选通胀指标。","ref":"June 2027","flag":"与 GDP 初值同日上午发布。","source":"BEA · Release Schedule","sourceUrl":"https://bea.gov/news/schedule/next-year"},{"date":"2027-08-06","name":"Non-Farm Payrolls","title":"Non-Farm Payrolls · Employment Situation","time":"8:30am ET","type":"nfp","desc":"美国非农就业报告（Employment Situation），统计参考月份：2027年7月。8:30 ET 发布，市场高波动事件。","ref":"2027年7月","flag":"","source":"BLS · Employment Situation 发布日程","sourceUrl":"https://www.bls.gov/schedule/news_release/empsit.htm"},{"date":"2027-08-11","name":"CPI | Consumer Price Index","title":"CPI | Consumer Price Index","time":"8:30am ET","type":"cpi","desc":"美国消费者物价指数（CPI），统计参考月份：2027年7月。8:30 ET 发布。","ref":"2027年7月","flag":"","source":"BLS · CPI 发布日程","sourceUrl":"https://www.bls.gov/schedule/news_release/cpi.htm"},{"date":"2027-08-25","name":"PCE | Personal Income and Outlays","title":"Personal Income and Outlays, July 2027","time":"8:30am ET","type":"pce","desc":"BEA《个人收入与支出》（Personal Income and Outlays）报告，PCE 物价指数与核心 PCE（除食品和能源）都在这份报告里发布，没有单独的“核心 PCE”报告。美联储首选通胀指标。","ref":"July 2027","flag":"","source":"BEA · Release Schedule","sourceUrl":"https://bea.gov/news/schedule/next-year"},{"date":"2027-09-03","name":"Non-Farm Payrolls","title":"Non-Farm Payrolls · Employment Situation","time":"8:30am ET","type":"nfp","desc":"美国非农就业报告（Employment Situation），统计参考月份：2027年8月。8:30 ET 发布，市场高波动事件。","ref":"2027年8月","flag":"","source":"BLS · Employment Situation 发布日程","sourceUrl":"https://www.bls.gov/schedule/news_release/empsit.htm"},{"date":"2027-09-06","name":"Labor Day","title":"Labor Day","time":"1:00pm ET","type":"early_close","desc":"CME 股指期货（Globex）当天照常开盘，中午 12:00 CT（13:00 ET）暂停交易，无结算，17:00 CT（18:00 ET）重开下一交易日。注意：这只是缩短时段，不是休市——NYSE 股票市场当天是全天休市，两边口径不同。","ref":"","flag":"2027 年 CME 假期具体时段尚未最终定版（CME 一般在假期前约两周才定版）；此处日期与时段为三家复现源一致口径，临近时须再核 CME 官方通知。NYSE 的 2027 年日期已正式公布。","source":"CME Globex 假期表（TradeSearcher 复现，另经 MarketFramework / FinanceCalendar 与 NYSE 交叉核对）","sourceUrl":"https://tradesearcher.ai/tools/futures-trading-hours"},{"date":"2027-09-13","name":"Roll Week","title":"Roll Week","time":"","type":"roll","desc":"CME 官方口径：换月日 = 到期月第三个周五之前的周一（到期周五为2027年9月17日）。本周起次近月合约成为主力口径。合约切换：2027年6月（ESM27）→ 2027年9月（ESU27）。实操仍以次月成交量超过近月为准再切。","ref":"2027年6月（ESM27）→ 2027年9月（ESU27）","flag":"","source":"CME Group · Equity Index Roll Dates","sourceUrl":"https://www.cmegroup.com/trading/equity-index/rolldates.html"},{"date":"2027-09-14","name":"CPI | Consumer Price Index","title":"CPI | Consumer Price Index","time":"8:30am ET","type":"cpi","desc":"美国消费者物价指数（CPI），统计参考月份：2027年8月。8:30 ET 发布。","ref":"2027年8月","flag":"当天 FOMC 两日会议开始。","source":"BLS · CPI 发布日程","sourceUrl":"https://www.bls.gov/schedule/news_release/cpi.htm"},{"date":"2027-09-15","name":"FOMC Statement","title":"FOMC Statement","time":"2:00pm ET","type":"fomc","desc":"FOMC 两日会议（9月14–15日），利率决议与政策声明在第二天 14:00 ET 发布，发布会 14:30 ET。本次附带经济预测摘要（SEP / 点阵图）。","ref":"会议 9月14–15日","flag":"暂定日期：美联储注明 2027 年会议日期须待前一次会议确认后才算定版。","source":"Federal Reserve · FOMC 日程","sourceUrl":"https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm","sep":true},{"date":"2027-09-30","name":"PCE | Personal Income and Outlays","title":"Personal Income and Outlays, August 2027","time":"8:30am ET","type":"pce","desc":"BEA《个人收入与支出》（Personal Income and Outlays）报告，PCE 物价指数与核心 PCE（除食品和能源）都在这份报告里发布，没有单独的“核心 PCE”报告。美联储首选通胀指标。","ref":"August 2027","flag":"","source":"BEA · Release Schedule","sourceUrl":"https://bea.gov/news/schedule/next-year"},{"date":"2027-10-08","name":"Non-Farm Payrolls","title":"Non-Farm Payrolls · Employment Situation","time":"8:30am ET","type":"nfp","desc":"美国非农就业报告（Employment Situation），统计参考月份：2027年9月。8:30 ET 发布，市场高波动事件。","ref":"2027年9月","flag":"","source":"BLS · Employment Situation 发布日程","sourceUrl":"https://www.bls.gov/schedule/news_release/empsit.htm"},{"date":"2027-10-14","name":"CPI | Consumer Price Index","title":"CPI | Consumer Price Index","time":"8:30am ET","type":"cpi","desc":"美国消费者物价指数（CPI），统计参考月份：2027年9月。8:30 ET 发布。","ref":"2027年9月","flag":"","source":"BLS · CPI 发布日程","sourceUrl":"https://www.bls.gov/schedule/news_release/cpi.htm"},{"date":"2027-10-27","name":"FOMC Statement","title":"FOMC Statement","time":"2:00pm ET","type":"fomc","desc":"FOMC 两日会议（10月26–27日），利率决议与政策声明在第二天 14:00 ET 发布，发布会 14:30 ET。本次无经济预测摘要（SEP）。","ref":"会议 10月26–27日","flag":"暂定日期：美联储注明 2027 年会议日期须待前一次会议确认后才算定版。","source":"Federal Reserve · FOMC 日程","sourceUrl":"https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm","sep":false},{"date":"2027-10-28","name":"PCE | Personal Income and Outlays","title":"Personal Income and Outlays, September 2027","time":"8:30am ET","type":"pce","desc":"BEA《个人收入与支出》（Personal Income and Outlays）报告，PCE 物价指数与核心 PCE（除食品和能源）都在这份报告里发布，没有单独的“核心 PCE”报告。美联储首选通胀指标。","ref":"September 2027","flag":"与 GDP 初值同日上午发布。","source":"BEA · Release Schedule","sourceUrl":"https://bea.gov/news/schedule/next-year"},{"date":"2027-11-05","name":"Non-Farm Payrolls","title":"Non-Farm Payrolls · Employment Situation","time":"8:30am ET","type":"nfp","desc":"美国非农就业报告（Employment Situation），统计参考月份：2027年10月。8:30 ET 发布，市场高波动事件。","ref":"2027年10月","flag":"","source":"BLS · Employment Situation 发布日程","sourceUrl":"https://www.bls.gov/schedule/news_release/empsit.htm"},{"date":"2027-11-07","name":"Daylight Saving Time Ends","title":"Daylight Saving Time Ends","time":"2:00am ET","type":"dst","desc":"2027年11月7日（周日）凌晨 2:00 本地时钟拨回 1:00，美国东部回到标准时 EST（UTC-5）。此后 8:30 ET = 北京时间 21:30，14:00 ET = 北京时间次日 03:00。切换后的第一个交易日是 11月8日（周一）。","ref":"","flag":"说明：美国《阳光保护法》（永久夏令时）2026年7月已过众议院、送参议院，截至 2026年11月尚未成为法律，切换按现行规则照常进行。","source":"NIST 夏令时规则（经 Old Farmer's Almanac / timeanddate 核对）","sourceUrl":"https://www.almanac.com/content/when-daylight-saving-time"},{"date":"2027-11-10","name":"CPI | Consumer Price Index","title":"CPI | Consumer Price Index","time":"8:30am ET","type":"cpi","desc":"美国消费者物价指数（CPI），统计参考月份：2027年10月。8:30 ET 发布。","ref":"2027年10月","flag":"夏令时已于 11月7日结束，本次北京时间回到 21:30。","source":"BLS · CPI 发布日程","sourceUrl":"https://www.bls.gov/schedule/news_release/cpi.htm"},{"date":"2027-11-24","name":"PCE | Personal Income and Outlays","title":"Personal Income and Outlays, October 2027","time":"8:30am ET","type":"pce","desc":"BEA《个人收入与支出》（Personal Income and Outlays）报告，PCE 物价指数与核心 PCE（除食品和能源）都在这份报告里发布，没有单独的“核心 PCE”报告。美联储首选通胀指标。","ref":"October 2027","flag":"","source":"BEA · Release Schedule","sourceUrl":"https://bea.gov/news/schedule/next-year"},{"date":"2027-11-25","name":"Thanksgiving Day","title":"Thanksgiving Day","time":"1:00pm ET","type":"early_close","desc":"CME 股指期货（Globex）当天照常开盘，中午 12:00 CT（13:00 ET）暂停交易，无结算，17:00 CT（18:00 ET）重开下一交易日。注意：这只是缩短时段，不是休市——NYSE 股票市场当天是全天休市，两边口径不同。","ref":"","flag":"2027 年 CME 假期具体时段尚未最终定版（CME 一般在假期前约两周才定版）；此处日期与时段为三家复现源一致口径，临近时须再核 CME 官方通知。NYSE 的 2027 年日期已正式公布。","source":"CME Globex 假期表（TradeSearcher 复现，另经 MarketFramework / FinanceCalendar 与 NYSE 交叉核对）","sourceUrl":"https://tradesearcher.ai/tools/futures-trading-hours"},{"date":"2027-11-26","name":"Day after Thanksgiving","title":"Day after Thanksgiving","time":"1:15pm ET","type":"early_close","desc":"CME 股指期货当天 12:15 CT（13:15 ET）提前收盘，当晚不再开晚盘。NYSE 当天 13:00 ET 提前收盘。","ref":"","flag":"2027 年 CME 假期具体时段尚未最终定版（CME 一般在假期前约两周才定版）；此处日期与时段为三家复现源一致口径，临近时须再核 CME 官方通知。NYSE 的 2027 年日期已正式公布。","source":"CME Globex 假期表（TradeSearcher 复现，另经 MarketFramework / FinanceCalendar 与 NYSE 交叉核对）","sourceUrl":"https://tradesearcher.ai/tools/futures-trading-hours"},{"date":"2027-12-03","name":"Non-Farm Payrolls","title":"Non-Farm Payrolls · Employment Situation","time":"8:30am ET","type":"nfp","desc":"美国非农就业报告（Employment Situation），统计参考月份：2027年11月。8:30 ET 发布，市场高波动事件。","ref":"2027年11月","flag":"","source":"BLS · Employment Situation 发布日程","sourceUrl":"https://www.bls.gov/schedule/news_release/empsit.htm"},{"date":"2027-12-08","name":"FOMC Statement","title":"FOMC Statement","time":"2:00pm ET","type":"fomc","desc":"FOMC 两日会议（12月7–8日），利率决议与政策声明在第二天 14:00 ET 发布，发布会 14:30 ET。本次附带经济预测摘要（SEP / 点阵图）。","ref":"会议 12月7–8日","flag":"暂定日期：美联储注明 2027 年会议日期须待前一次会议确认后才算定版。","source":"Federal Reserve · FOMC 日程","sourceUrl":"https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm","sep":true},{"date":"2027-12-10","name":"CPI | Consumer Price Index","title":"CPI | Consumer Price Index","time":"8:30am ET","type":"cpi","desc":"美国消费者物价指数（CPI），统计参考月份：2027年11月。8:30 ET 发布。","ref":"2027年11月","flag":"","source":"BLS · CPI 发布日程","sourceUrl":"https://www.bls.gov/schedule/news_release/cpi.htm"},{"date":"2027-12-13","name":"Roll Week","title":"Roll Week","time":"","type":"roll","desc":"CME 官方口径：换月日 = 到期月第三个周五之前的周一（到期周五为2027年12月17日）。本周起次近月合约成为主力口径。合约切换：2027年9月（ESU27）→ 2027年12月（ESZ27）。实操仍以次月成交量超过近月为准再切。","ref":"2027年9月（ESU27）→ 2027年12月（ESZ27）","flag":"","source":"CME Group · Equity Index Roll Dates","sourceUrl":"https://www.cmegroup.com/trading/equity-index/rolldates.html"},{"date":"2027-12-22","name":"PCE | Personal Income and Outlays","title":"Personal Income and Outlays, November 2027","time":"8:30am ET","type":"pce","desc":"BEA《个人收入与支出》（Personal Income and Outlays）报告，PCE 物价指数与核心 PCE（除食品和能源）都在这份报告里发布，没有单独的“核心 PCE”报告。美联储首选通胀指标。","ref":"November 2027","flag":"","source":"BEA · Release Schedule","sourceUrl":"https://bea.gov/news/schedule/next-year"},{"date":"2027-12-24","name":"Christmas Day","title":"Christmas Day","time":"","type":"holiday","desc":"12月25日是周六，圣诞节按 12月24日（周五）顺延观察：CME 股指全天关闭，NYSE 同步休市。注意 2027 年没有单独的平安夜提前收盘日。","ref":"","flag":"2027 年 CME 假期具体时段尚未最终定版（CME 一般在假期前约两周才定版）；此处日期与时段为三家复现源一致口径，临近时须再核 CME 官方通知。NYSE 的 2027 年日期已正式公布。","source":"CME Globex 假期表（TradeSearcher 复现，另经 MarketFramework / FinanceCalendar 与 NYSE 交叉核对）","sourceUrl":"https://tradesearcher.ai/tools/futures-trading-hours"}];
+var MONTHS=["January","February","March","April","May","June","July","August","September","October","November","December"];
+var MONTHS_ZH=["1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"];
+var WD=["周日","周一","周二","周三","周四","周五","周六"];
+var TYPES={
+  fomc:{label:"FOMC 决议",color:"#cd6136",cls:"fomc"},
+  nfp:{label:"非农 NFP",color:"#9c4030",cls:"nfp"},
+  cpi:{label:"CPI",color:"#b07d2b",cls:"cpi"},
+  pce:{label:"核心 PCE",color:"#ac6f6b",cls:"pce"},
+  early_close:{label:"提前暂停 / 收盘",color:"#c8912f",cls:"early"},
+  holiday:{label:"全天休市",color:"#5e2b2b",cls:"holiday"},
+  roll:{label:"换月周",color:"#55599c",cls:"roll"},
+  dst:{label:"夏令时切换",color:"#3f8261",cls:"dst"}
+};
+var SHORT={
+  "FOMC Statement":"FOMC 决议",
+  "Non-Farm Payrolls":"非农 NFP",
+  "CPI | Consumer Price Index":"CPI",
+  "PCE | Personal Income and Outlays":"PCE",
+  "Roll Week":"换月周 Roll Week",
+  "Daylight Saving Time Begins":"夏令时开始",
+  "Daylight Saving Time Ends":"夏令时结束"
+};
+function shortName(ev){ return SHORT[ev.name] || ev.name; }
+function zhName(ev){
+  var map={"New Year's Day":"元旦","Martin Luther King Jr. Day":"马丁·路德·金日","Presidents' Day":"总统日","Good Friday":"耶稣受难日","Memorial Day":"阵亡将士纪念日","Juneteenth":"六月节","Independence Day":"独立日","Labor Day":"劳动节","Thanksgiving Day":"感恩节","Day after Thanksgiving":"感恩节次日（黑五）","Christmas Eve":"平安夜","Christmas Day":"圣诞节"};
+  return map[ev.name]||"";
+}
+var BY={};
+EVENTS_RAW.forEach(function(e){ (BY[e.date]=BY[e.date]||[]).push(e); });
+var now=new Date(), viewY=now.getFullYear(), viewM=now.getMonth(), filter="all";
+function pad(n){return String(n).padStart(2,"0");}
+function ymd(y,m,d){return y+"-"+pad(m+1)+"-"+pad(d);}
+function todayStr(){return ymd(now.getFullYear(),now.getMonth(),now.getDate());}
+function parseD(s){var p=s.split("-");return new Date(+p[0],+p[1]-1,+p[2]);}
+function daysUntil(s){var t=parseD(todayStr()), d=parseD(s);return Math.round((d-t)/86400000);}
+/* US Eastern DST, computed per year: starts 2nd Sunday of March, ends 1st Sunday of November (2:00am local).
+   2026: Mar 8 - Nov 1 · 2027: Mar 14 - Nov 7. EDT (UTC-4) = Beijing +12h; EST (UTC-5) = Beijing +13h. */
+function nthSunday(y, monthIdx, n){var d=new Date(y,monthIdx,1);var add=(7-d.getDay())%7;return new Date(y,monthIdx,1+add+(n-1)*7);}
+function dstStart(y){return nthSunday(y,2,2);}
+function dstEnd(y){return nthSunday(y,10,1);}
+function isEDT(dateStr){var d=parseD(dateStr);var y=d.getFullYear();return d>=dstStart(y) && d<dstEnd(y);}
+function beijingTime(ev){
+  if(!ev.time || ev.time.indexOf("ET")===-1) return null;
+  var m=ev.time.match(/(\d+):(\d+)(am|pm)/i); if(!m) return null;
+  var h=+m[1]%12; if(/pm/i.test(m[3])) h+=12; var min=+m[2];
+  var off=isEDT(ev.date)?12:13; var tot=h*60+min+off*60; var nd=Math.floor(tot/1440); tot%=1440;
+  var label=pad(Math.floor(tot/60))+":"+pad(tot%60);
+  return {label:label, next:nd>0, dst:isEDT(ev.date)?"夏令时 EDT":"冬令时 EST"};
+}
+function timeLine(ev){
+  if(ev.type==="holiday") return "CME 股指全天关闭 · NYSE 同步休市";
+  if(ev.type==="roll") return "换月周周一 · 到期周五之前的周一（CME 口径）";
+  if(ev.type==="dst") return ev.name.indexOf("Begins")>-1 ? "凌晨 2:00 起进入夏令时 EDT · 8:30 ET 变北京时间 20:30" : "凌晨 2:00 起回到冬令时 EST · 8:30 ET 变北京时间 21:30";
+  var bj=beijingTime(ev);
+  var verb=ev.type==="early_close" ? "暂停 / 收盘 " : "";
+  if(bj) return verb+ev.time.replace(" ET","")+" ET（北京时间 "+(bj.next?"次日 ":"")+bj.label+"）";
+  return ev.time||"";
+}
+function shortCode(ev){
+  if(ev.type==="fomc")return "FOMC";
+  if(ev.type==="nfp")return "NFP";
+  if(ev.type==="cpi")return "CPI";
+  if(ev.type==="pce")return "PCE";
+  if(ev.type==="roll")return "换月";
+  if(ev.type==="dst")return ev.name.indexOf("Begins")>-1?"夏令时":"冬令时";
+  if(ev.name==="Thanksgiving Day")return "感恩节";
+  if(ev.name==="Day after Thanksgiving")return "黑五";
+  if(ev.name==="Christmas Eve")return "平安夜";
+  if(ev.name==="Christmas Day")return "圣诞";
+  if(ev.name==="New Year's Day")return "元旦";
+  if(ev.name==="Good Friday")return "受难日";
+  var z=zhName(ev); return z?z.slice(0,3):ev.name.slice(0,4);
+}
+function matchFilter(ev){return filter==="all"||ev.type===filter;}
+function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;");}
+
+function renderStats(){
+  var counts={}; EVENTS_RAW.forEach(function(e){counts[e.type]=(counts[e.type]||0)+1;});
+  var total=EVENTS_RAW.length;
+  document.getElementById("stats").innerHTML=
+    '<div class="stat"><b>'+total+'</b><span>2026–2027 事件</span></div>'+
+    '<div class="stat"><b>'+((counts.fomc||0)+(counts.nfp||0)+(counts.cpi||0)+(counts.pce||0))+'</b><span>数据 / 决议</span></div>'+
+    '<div class="stat"><b>'+((counts.early_close||0)+(counts.holiday||0))+'</b><span>休市 / 早收</span></div>'+
+    '<div class="stat"><b>'+(counts.roll||0)+'</b><span>换月周</span></div>'+
+    '<div class="stat"><b>'+(counts.dst||0)+'</b><span>夏令时切换</span></div>';
+}
+function renderFilters(){
+  var counts={all:EVENTS_RAW.length}; EVENTS_RAW.forEach(function(e){counts[e.type]=(counts[e.type]||0)+1;});
+  var html='<button class="chip'+(filter==="all"?" on":"")+'" data-f="all">全部 <span class="n">'+counts.all+'</span></button>';
+  Object.keys(TYPES).forEach(function(k){
+    html+='<button class="chip'+(filter===k?" on":"")+'" data-f="'+k+'"><span class="dot" style="background:'+TYPES[k].color+'"></span>'+TYPES[k].label+' <span class="n">'+(counts[k]||0)+'</span></button>';
+  });
+  var el=document.getElementById("filters"); el.innerHTML=html;
+  el.querySelectorAll(".chip").forEach(function(c){c.addEventListener("click",function(){filter=c.getAttribute("data-f");renderFilters();render();});});
+}
+function renderNext(){
+  var up=EVENTS_RAW.filter(function(e){return daysUntil(e.date)>=0;}).sort(function(a,b){return a.date<b.date?-1:1;});
+  var el=document.getElementById("nextUp");
+  if(!up.length){el.innerHTML='<span class="k">Next up</span><span class="v">2027 年底前已无后续事件，该补下一年数据了</span>';return;}
+  var e=up[0], d=daysUntil(e.date);
+  var cd=d===0?"就是今天":d===1?"明天":"还有 "+d+" 天";
+  el.innerHTML='<span class="k">Next up · 下一个</span><span class="v">'+esc(shortName(e))+(zhName(e)?' · '+zhName(e):'')+' <em>— '+e.date+' '+WD[parseD(e.date).getDay()]+' · '+esc(timeLine(e))+'</em></span><span class="cd">'+cd+'</span>';
+}
+function render(){
+  document.getElementById("monthLabel").textContent=MONTHS[viewM]+" "+viewY;
+  document.getElementById("monthSub").textContent=viewY+" 年 "+MONTHS_ZH[viewM]+" · NQ / ES 美盘事件";
+  var grid=document.getElementById("grid"); grid.innerHTML="";
+  var first=new Date(viewY,viewM,1).getDay(), dim=new Date(viewY,viewM+1,0).getDate(), today=todayStr();
+  var total=Math.ceil((first+dim)/7)*7;
+  for(var i=0;i<total;i++){
+    var day=i-first+1, cell=document.createElement("div"); cell.className="cell";
+    if(day<1||day>dim){cell.classList.add("outside");grid.appendChild(cell);continue;}
+    var dow=(first+day-1)%7; if(dow===0||dow===6)cell.classList.add("weekend");
+    var key=ymd(viewY,viewM,day), evs=BY[key]||[];
+    if(evs.some(function(e){return e.type==="holiday";}))cell.classList.add("closed");
+    if(evs.some(function(e){return e.type==="dst";}))cell.classList.add("dst-day");
+    var isToday=key===today; if(isToday)cell.classList.add("today");
+    var vis=evs.filter(matchFilter);
+    if(evs.length&&!vis.length)cell.classList.add("dimmed");
+    var html='<div class="day-num">'+day+(isToday?'<span class="today-tag">TODAY</span>':"")+'</div>';
+    if(vis.length){
+      cell.classList.add("has-events"); html+='<div class="pills">';
+      vis.slice(0,2).forEach(function(ev){html+='<div class="pill '+TYPES[ev.type].cls+'"><span class="full">'+esc(shortName(ev))+(ev.time&&ev.time.indexOf("ET")>-1&&ev.type!=="dst"?' <small>'+esc(ev.time)+'</small>':"")+'</span><span class="short">'+esc(shortCode(ev))+'</span></div>';});
+      if(vis.length>2)html+='<div class="more">+'+(vis.length-2)+' 更多</div>';
+      html+='</div>';
+      (function(k,list){cell.setAttribute("role","button");cell.setAttribute("tabindex","0");cell.setAttribute("aria-label",k+" 事件详情");cell.addEventListener("click",function(){openModal(k,list);});cell.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();openModal(k,list);}});})(key,evs);
+    }
+    cell.innerHTML=html; grid.appendChild(cell);
+  }
+  renderMonthList(); renderUpList();
+}
+function evRow(ev){
+  var d=parseD(ev.date);
+  return '<div class="evrow" role="button" tabindex="0" data-date="'+ev.date+'"><div class="datebox"><b>'+d.getDate()+'</b><span>'+WD[d.getDay()]+'</span></div><div class="main"><div class="t">'+esc(shortName(ev))+(zhName(ev)?' · '+esc(zhName(ev)):"")+'</div><div class="d">'+ev.date+' · '+esc(timeLine(ev))+'<br>'+esc(ev.desc)+'</div></div><span class="tag '+TYPES[ev.type].cls+'">'+TYPES[ev.type].label+'</span></div>';
+}
+function renderMonthList(){
+  document.getElementById("monthListTitle").textContent="本月事件 · "+MONTHS[viewM]+" "+viewY;
+  var list=EVENTS_RAW.filter(function(e){var d=parseD(e.date);return d.getFullYear()===viewY&&d.getMonth()===viewM;}).filter(matchFilter);
+  document.getElementById("monthList").innerHTML=list.length?list.map(evRow).join(""):'<div class="empty">这个月在当前筛选下没有事件。</div>';
+  bindRows(document.getElementById("monthList"));
+}
+function renderUpList(){
+  var list=EVENTS_RAW.filter(function(e){var d=daysUntil(e.date);return d>=0&&d<=45;}).sort(function(a,b){return a.date<b.date?-1:1;}).filter(matchFilter);
+  document.getElementById("upList").innerHTML=list.length?list.map(function(ev){var d=daysUntil(ev.date);var r=evRow(ev);return r.replace('</div><span class="tag',' <span style="font-size:11px;color:#ffd9a0;font-weight:700">'+(d===0?"今天":d===1?"明天":d+" 天后")+'</span></div><span class="tag');}).join(""):'<div class="empty">接下来 45 天在当前筛选下没有事件。</div>';
+  bindRows(document.getElementById("upList"));
+}
+function bindRows(scope){scope.querySelectorAll(".evrow").forEach(function(r){var go=function(){var dt=r.getAttribute("data-date");openModal(dt,BY[dt]||[]);};r.addEventListener("click",go);r.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();go();}});});}
+function openModal(dateKey,evs){
+  var d=parseD(dateKey);
+  document.getElementById("modalDate").textContent=dateKey+" · "+WD[d.getDay()]+" · "+d.getFullYear()+"年"+(d.getMonth()+1)+"月"+d.getDate()+"日";
+  var html="";
+  evs.forEach(function(ev){
+    var bj=beijingTime(ev);
+    var timeHtml="";
+    if(ev.type==="holiday") timeHtml='<div class="timebox"><div><span>CME Globex · 股指期货</span><b>全天关闭</b></div><div><span>NYSE · 股票</span><b>全天休市</b></div></div>';
+    else if(ev.type==="dst"){
+      var begins=ev.name.indexOf("Begins")>-1;
+      timeHtml='<div class="timebox"><div><span>切换时刻</span><b>凌晨 2:00 ET '+(begins?"拨到 3:00":"拨回 1:00")+'</b></div><div><span>切换后换算</span><b>'+(begins?"8:30 ET = 北京 20:30（EDT）":"8:30 ET = 北京 21:30（EST）")+'</b></div></div>';
+    }
+    else if(ev.type==="roll") timeHtml='<div class="timebox"><div><span>换月周</span><b>'+ev.date+' 起这一周</b></div><div><span>合约切换</span><b style="font-size:13px">'+esc(ev.ref||"")+'</b></div></div>';
+    else if(bj) timeHtml='<div class="timebox"><div><span>Eastern · 美东 ET</span><b>'+esc(ev.time)+'</b></div><div><span>Beijing · 北京时间</span><b>'+(bj.next?"次日 ":"")+bj.label+'（'+bj.dst+'）</b></div></div>';
+    var note="";
+    if(ev.type==="nfp")note="盘前简报三件套之一：TPT 在非农时段有禁交易安排，开盘前先确认。8:30 ET 数据一出，NQ/ES 第一波波动通常在开盘前就走完。";
+    else if(ev.type==="cpi")note="盘前简报三件套之一：TPT 在 CPI 时段有禁交易安排。看核心 CPI 的实际 vs 预期，别只看头条数。";
+    else if(ev.type==="fomc")note="盘前简报三件套之一：TPT 在 FOMC 声明时段禁交易。决议 14:00 ET、发布会 14:30 ET，下午盘波动和流动性都会变。";
+    else if(ev.type==="pce")note="美联储首选通胀指标。不在 TPT 提前提醒三件套里，但当天盘前简报会列；早盘容易放量。";
+    else if(ev.type==="roll")note="换月周：CME 的换月日是到期周五之前的周一，但实操以次月成交量超过近月为准再切合约，别只看日历硬切。";
+    else if(ev.type==="early_close")note="这是 CME 期货口径，不是股票口径：股指期货只是中午暂停或提前收盘，NYSE 当天多为全天休市。暂停日流动性薄，别按正常时段留仓。";
+    else if(ev.type==="holiday")note="全天休市：美股与股指期货都不开，Globex 周日傍晚（美东）重开。";
+    else if(ev.type==="dst")note="切换在周日凌晨，周一起所有 ET → 北京时间换算整体平移 1 小时：闹钟、盘前简报发送时间、TPT 锁定时间都要跟着改。";
+    var badges='<span class="tag '+TYPES[ev.type].cls+'">'+TYPES[ev.type].label+'</span>';
+    if(ev.sep)badges+=' <span class="flag">SEP · 点阵图会议</span>';
+    if(ev.flag)badges+=' <span class="flag">注意</span>';
+    html+='<div class="mitem"><div class="mname">'+esc(ev.title||ev.name)+'</div>'+(zhName(ev)?'<div style="color:var(--dim);font-size:13.5px;margin-top:3px">'+esc(zhName(ev))+'</div>':"")+(ev.ref&&ev.type!=="roll"?'<div style="color:var(--dim);font-size:13.5px;margin-top:3px">参考月份：'+esc(ev.ref)+'</div>':"")+'<div class="mbadges">'+badges+'</div>'+timeHtml+'<div class="mdesc">'+esc(ev.desc)+'</div>'+(ev.flag?'<div class="mnote">'+esc(ev.flag)+'</div>':"")+(note?'<div class="mnote">'+note+'</div>':"")+'<div class="msource">来源：<a href="'+ev.sourceUrl+'" target="_blank" rel="noopener">'+esc(ev.source)+'</a> · 核实于 2026-11-06</div></div>';
+  });
+  document.getElementById("modalBody").innerHTML=html;
+  document.getElementById("modal").hidden=false;
+}
+function closeModal(){document.getElementById("modal").hidden=true;}
+function shift(d){viewM+=d;if(viewM<0){viewM=11;viewY--;}if(viewM>11){viewM=0;viewY++;}render();}
+document.getElementById("prevBtn").addEventListener("click",function(){shift(-1);});
+document.getElementById("nextBtn").addEventListener("click",function(){shift(1);});
+document.getElementById("todayBtn").addEventListener("click",function(){viewY=now.getFullYear();viewM=now.getMonth();render();});
+document.getElementById("modalClose").addEventListener("click",closeModal);
+document.getElementById("modal").addEventListener("click",function(e){if(e.target===this)closeModal();});
+document.addEventListener("keydown",function(e){if(e.key==="Escape")closeModal();if(e.key==="ArrowLeft")shift(-1);if(e.key==="ArrowRight")shift(1);});
+/* stale check: from Dec 10 of the last covered year, remind to add the next year */
+(function(){var maxY=Math.max.apply(null,EVENTS_RAW.map(function(e){return +e.date.slice(0,4);}));if(now>=new Date(maxY,11,10)){document.getElementById("staleYear").textContent=maxY+1;document.getElementById("staleBanner").hidden=false;}})();
+renderStats(); renderFilters(); renderNext(); render();
+</script>
 </body>
 </html>
