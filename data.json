@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-06",
+  "generated": "2026-11-07",
   "years": [
     2026,
     2027
@@ -46,16 +46,6 @@
       "sourceUrl": "https://tradesearcher.ai/tools/futures-trading-hours"
     },
     {
-      "date": "2026-01-22",
-      "name": "PCE | Personal Income and Outlays",
-      "title": "Personal Income and Outlays, October and November 2025",
-      "time": "10:00am ET",
-      "type": "pce",
-      "desc": "01/22/2026 at 10:00am ET. BEA《个人收入与支出》（Personal Income and Outlays）报告，PCE 物价指数与核心 PCE（除食品和能源）都在这份报告里发布，没有单独的“核心 PCE”报告。美联储首选通胀指标。 例外：这是 2025 年政府停摆后的合并补发（2025年10月+11月两期一起发），时间是 10:00 ET 不是 8:30；该条为二手来源核实（BEA 2026 表格未单列此条）。",
-      "source": "BEA · Personal Income and Outlays 2026 发布表",
-      "sourceUrl": "https://bea.gov/news/2026/personal-income-and-outlays-december-2025"
-    },
-    {
       "date": "2026-01-28",
       "name": "FOMC Statement",
       "title": "FOMC Statement",
@@ -96,16 +86,6 @@
       "sourceUrl": "https://tradesearcher.ai/tools/futures-trading-hours"
     },
     {
-      "date": "2026-02-20",
-      "name": "PCE | Personal Income and Outlays",
-      "title": "Personal Income and Outlays, December 2025",
-      "time": "8:30am ET",
-      "type": "pce",
-      "desc": "02/20/2026 at 8:30am ET. BEA《个人收入与支出》（Personal Income and Outlays）报告，PCE 物价指数与核心 PCE（除食品和能源）都在这份报告里发布，没有单独的“核心 PCE”报告。美联储首选通胀指标。 改期：原定 1月29日，因 2025 年 10–11 月政府停摆顺延到 2月20日。",
-      "source": "BEA · Personal Income and Outlays 2026 发布表",
-      "sourceUrl": "https://bea.gov/news/2026/personal-income-and-outlays-december-2025"
-    },
-    {
       "date": "2026-03-06",
       "name": "Non-Farm Payrolls",
       "title": "Non-Farm Payrolls · Employment Situation",
@@ -134,16 +114,6 @@
       "desc": "03/11/2026 at 8:30am ET. 美国消费者物价指数（CPI），统计参考月份：2026年2月。8:30 ET 发布。",
       "source": "BLS · CPI 发布日程",
       "sourceUrl": "https://www.bls.gov/schedule/news_release/cpi.htm"
-    },
-    {
-      "date": "2026-03-13",
-      "name": "PCE | Personal Income and Outlays",
-      "title": "Personal Income and Outlays, January 2026",
-      "time": "8:30am ET",
-      "type": "pce",
-      "desc": "03/13/2026 at 8:30am ET. BEA《个人收入与支出》（Personal Income and Outlays）报告，PCE 物价指数与核心 PCE（除食品和能源）都在这份报告里发布，没有单独的“核心 PCE”报告。美联储首选通胀指标。",
-      "source": "BEA · Personal Income and Outlays 2026 发布表",
-      "sourceUrl": "https://bea.gov/news/2026/personal-income-and-outlays-december-2025"
     },
     {
       "date": "2026-03-16",
@@ -186,16 +156,6 @@
       "sourceUrl": "https://tradesearcher.ai/tools/futures-trading-hours"
     },
     {
-      "date": "2026-04-09",
-      "name": "PCE | Personal Income and Outlays",
-      "title": "Personal Income and Outlays, February 2026",
-      "time": "8:30am ET",
-      "type": "pce",
-      "desc": "04/09/2026 at 8:30am ET. BEA《个人收入与支出》（Personal Income and Outlays）报告，PCE 物价指数与核心 PCE（除食品和能源）都在这份报告里发布，没有单独的“核心 PCE”报告。美联储首选通胀指标。",
-      "source": "BEA · Personal Income and Outlays 2026 发布表",
-      "sourceUrl": "https://bea.gov/news/2026/personal-income-and-outlays-december-2025"
-    },
-    {
       "date": "2026-04-10",
       "name": "CPI | Consumer Price Index",
       "title": "CPI | Consumer Price Index",
@@ -214,16 +174,6 @@
       "desc": "04/29/2026 at 2:00pm ET. FOMC 两日会议（4月28–29日），利率决议与政策声明在第二天 14:00 ET 发布，发布会 14:30 ET。本次无经济预测摘要（SEP）。",
       "source": "Federal Reserve · FOMC 日程",
       "sourceUrl": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
-    },
-    {
-      "date": "2026-04-30",
-      "name": "PCE | Personal Income and Outlays",
-      "title": "Personal Income and Outlays, March 2026",
-      "time": "8:30am ET",
-      "type": "pce",
-      "desc": "04/30/2026 at 8:30am ET. BEA《个人收入与支出》（Personal Income and Outlays）报告，PCE 物价指数与核心 PCE（除食品和能源）都在这份报告里发布，没有单独的“核心 PCE”报告。美联储首选通胀指标。 与 GDP 初值同日上午发布。",
-      "source": "BEA · Personal Income and Outlays 2026 发布表",
-      "sourceUrl": "https://bea.gov/news/2026/personal-income-and-outlays-december-2025"
     },
     {
       "date": "2026-05-08",
@@ -254,16 +204,6 @@
       "desc": "05/25/2026 at 1:00pm ET. CME 股指期货（Globex）当天照常开盘，中午 12:00 CT（13:00 ET）暂停交易，无结算，17:00 CT（18:00 ET）重开下一交易日。注意：这只是缩短时段，不是休市——NYSE 股票市场当天是全天休市，两边口径不同。",
       "source": "CME Globex 假期表（TradeSearcher 复现，另经 MarketFramework / FinanceCalendar 与 NYSE 交叉核对）",
       "sourceUrl": "https://tradesearcher.ai/tools/futures-trading-hours"
-    },
-    {
-      "date": "2026-05-28",
-      "name": "PCE | Personal Income and Outlays",
-      "title": "Personal Income and Outlays, April 2026",
-      "time": "8:30am ET",
-      "type": "pce",
-      "desc": "05/28/2026 at 8:30am ET. BEA《个人收入与支出》（Personal Income and Outlays）报告，PCE 物价指数与核心 PCE（除食品和能源）都在这份报告里发布，没有单独的“核心 PCE”报告。美联储首选通胀指标。",
-      "source": "BEA · Personal Income and Outlays 2026 发布表",
-      "sourceUrl": "https://bea.gov/news/2026/personal-income-and-outlays-december-2025"
     },
     {
       "date": "2026-06-05",
@@ -316,16 +256,6 @@
       "sourceUrl": "https://tradesearcher.ai/tools/futures-trading-hours"
     },
     {
-      "date": "2026-06-25",
-      "name": "PCE | Personal Income and Outlays",
-      "title": "Personal Income and Outlays, May 2026",
-      "time": "8:30am ET",
-      "type": "pce",
-      "desc": "06/25/2026 at 8:30am ET. BEA《个人收入与支出》（Personal Income and Outlays）报告，PCE 物价指数与核心 PCE（除食品和能源）都在这份报告里发布，没有单独的“核心 PCE”报告。美联储首选通胀指标。",
-      "source": "BEA · Personal Income and Outlays 2026 发布表",
-      "sourceUrl": "https://bea.gov/news/2026/personal-income-and-outlays-december-2025"
-    },
-    {
       "date": "2026-07-02",
       "name": "Non-Farm Payrolls",
       "title": "Non-Farm Payrolls · Employment Situation",
@@ -366,16 +296,6 @@
       "sourceUrl": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
     },
     {
-      "date": "2026-07-30",
-      "name": "PCE | Personal Income and Outlays",
-      "title": "Personal Income and Outlays, June 2026",
-      "time": "8:30am ET",
-      "type": "pce",
-      "desc": "07/30/2026 at 8:30am ET. BEA《个人收入与支出》（Personal Income and Outlays）报告，PCE 物价指数与核心 PCE（除食品和能源）都在这份报告里发布，没有单独的“核心 PCE”报告。美联储首选通胀指标。",
-      "source": "BEA · Personal Income and Outlays 2026 发布表",
-      "sourceUrl": "https://bea.gov/news/2026/personal-income-and-outlays-december-2025"
-    },
-    {
       "date": "2026-08-07",
       "name": "Non-Farm Payrolls",
       "title": "Non-Farm Payrolls · Employment Situation",
@@ -394,16 +314,6 @@
       "desc": "08/12/2026 at 8:30am ET. 美国消费者物价指数（CPI），统计参考月份：2026年7月。8:30 ET 发布。",
       "source": "BLS · CPI 发布日程",
       "sourceUrl": "https://www.bls.gov/schedule/news_release/cpi.htm"
-    },
-    {
-      "date": "2026-08-26",
-      "name": "PCE | Personal Income and Outlays",
-      "title": "Personal Income and Outlays, July 2026",
-      "time": "8:30am ET",
-      "type": "pce",
-      "desc": "08/26/2026 at 8:30am ET. BEA《个人收入与支出》（Personal Income and Outlays）报告，PCE 物价指数与核心 PCE（除食品和能源）都在这份报告里发布，没有单独的“核心 PCE”报告。美联储首选通胀指标。",
-      "source": "BEA · Personal Income and Outlays 2026 发布表",
-      "sourceUrl": "https://bea.gov/news/2026/personal-income-and-outlays-december-2025"
     },
     {
       "date": "2026-09-04",
@@ -456,16 +366,6 @@
       "sourceUrl": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
     },
     {
-      "date": "2026-09-30",
-      "name": "PCE | Personal Income and Outlays",
-      "title": "Personal Income and Outlays, August 2026",
-      "time": "8:30am ET",
-      "type": "pce",
-      "desc": "09/30/2026 at 8:30am ET. BEA《个人收入与支出》（Personal Income and Outlays）报告，PCE 物价指数与核心 PCE（除食品和能源）都在这份报告里发布，没有单独的“核心 PCE”报告。美联储首选通胀指标。",
-      "source": "BEA · Personal Income and Outlays 2026 发布表",
-      "sourceUrl": "https://bea.gov/news/2026/personal-income-and-outlays-december-2025"
-    },
-    {
       "date": "2026-10-02",
       "name": "Non-Farm Payrolls",
       "title": "Non-Farm Payrolls · Employment Situation",
@@ -486,6 +386,36 @@
       "sourceUrl": "https://www.bls.gov/schedule/news_release/cpi.htm"
     },
     {
+      "date": "2026-10-20",
+      "name": "SpaceX earnings",
+      "title": "SpaceX 财报 · 盘后发布",
+      "time": "",
+      "type": "earnings",
+      "desc": "10/20/2026. SpaceX财报，盘后发布（美东收盘后）。该公司在 TPT 指定财报日名单内（七巨头 + SpaceX，共 8 家）：PRO+ 实盘在这类财报日会提前休市，当晚盘后与次日开盘跳空风险高。 盘后发布：具体发布时间以公司投资者关系公告为准，本页只记日期与“盘后”口径，不猜具体时刻。",
+      "source": "TPT 指定财报日名单（用户提供的 TPT 日历截图核对，2026 年这批日期）",
+      "sourceUrl": ""
+    },
+    {
+      "date": "2026-10-21",
+      "name": "Tesla earnings",
+      "title": "Tesla 特斯拉财报 · 盘后发布",
+      "time": "",
+      "type": "earnings",
+      "desc": "10/21/2026. 特斯拉财报，盘后发布（美东收盘后）。该公司在 TPT 指定财报日名单内（七巨头 + SpaceX，共 8 家）：PRO+ 实盘在这类财报日会提前休市，当晚盘后与次日开盘跳空风险高。 盘后发布：具体发布时间以公司投资者关系公告为准，本页只记日期与“盘后”口径，不猜具体时刻。",
+      "source": "TPT 指定财报日名单（用户提供的 TPT 日历截图核对，2026 年这批日期）",
+      "sourceUrl": ""
+    },
+    {
+      "date": "2026-10-21",
+      "name": "Meta earnings",
+      "title": "Meta 财报 · 盘后发布",
+      "time": "",
+      "type": "earnings",
+      "desc": "10/21/2026. Meta财报，盘后发布（美东收盘后）。该公司在 TPT 指定财报日名单内（七巨头 + SpaceX，共 8 家）：PRO+ 实盘在这类财报日会提前休市，当晚盘后与次日开盘跳空风险高。 盘后发布：具体发布时间以公司投资者关系公告为准，本页只记日期与“盘后”口径，不猜具体时刻。",
+      "source": "TPT 指定财报日名单（用户提供的 TPT 日历截图核对，2026 年这批日期）",
+      "sourceUrl": ""
+    },
+    {
       "date": "2026-10-28",
       "name": "FOMC Statement",
       "title": "FOMC Statement",
@@ -496,14 +426,34 @@
       "sourceUrl": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
     },
     {
+      "date": "2026-10-28",
+      "name": "Microsoft earnings",
+      "title": "Microsoft 微软财报 · 盘后发布",
+      "time": "",
+      "type": "earnings",
+      "desc": "10/28/2026. 微软财报，盘后发布（美东收盘后）。该公司在 TPT 指定财报日名单内（七巨头 + SpaceX，共 8 家）：PRO+ 实盘在这类财报日会提前休市，当晚盘后与次日开盘跳空风险高。 盘后发布：具体发布时间以公司投资者关系公告为准，本页只记日期与“盘后”口径，不猜具体时刻。",
+      "source": "TPT 指定财报日名单（用户提供的 TPT 日历截图核对，2026 年这批日期）",
+      "sourceUrl": ""
+    },
+    {
+      "date": "2026-10-28",
+      "name": "Alphabet (Google) earnings",
+      "title": "Alphabet（Google）财报 · 盘后发布",
+      "time": "",
+      "type": "earnings",
+      "desc": "10/28/2026. 谷歌财报，盘后发布（美东收盘后）。该公司在 TPT 指定财报日名单内（七巨头 + SpaceX，共 8 家）：PRO+ 实盘在这类财报日会提前休市，当晚盘后与次日开盘跳空风险高。 盘后发布：具体发布时间以公司投资者关系公告为准，本页只记日期与“盘后”口径，不猜具体时刻。",
+      "source": "TPT 指定财报日名单（用户提供的 TPT 日历截图核对，2026 年这批日期）",
+      "sourceUrl": ""
+    },
+    {
       "date": "2026-10-29",
-      "name": "PCE | Personal Income and Outlays",
-      "title": "Personal Income and Outlays, September 2026",
-      "time": "8:30am ET",
-      "type": "pce",
-      "desc": "10/29/2026 at 8:30am ET. BEA《个人收入与支出》（Personal Income and Outlays）报告，PCE 物价指数与核心 PCE（除食品和能源）都在这份报告里发布，没有单独的“核心 PCE”报告。美联储首选通胀指标。",
-      "source": "BEA · Personal Income and Outlays 2026 发布表",
-      "sourceUrl": "https://bea.gov/news/2026/personal-income-and-outlays-december-2025"
+      "name": "Amazon earnings",
+      "title": "Amazon 亚马逊财报 · 盘后发布",
+      "time": "",
+      "type": "earnings",
+      "desc": "10/29/2026. 亚马逊财报，盘后发布（美东收盘后）。该公司在 TPT 指定财报日名单内（七巨头 + SpaceX，共 8 家）：PRO+ 实盘在这类财报日会提前休市，当晚盘后与次日开盘跳空风险高。 盘后发布：具体发布时间以公司投资者关系公告为准，本页只记日期与“盘后”口径，不猜具体时刻。",
+      "source": "TPT 指定财报日名单（用户提供的 TPT 日历截图核对，2026 年这批日期）",
+      "sourceUrl": ""
     },
     {
       "date": "2026-11-01",
@@ -514,6 +464,16 @@
       "desc": "11/01/2026 at 2:00am ET. 2026年11月1日（周日）凌晨 2:00 本地时钟拨回 1:00（这一小时重复一次），美国东部回到标准时 EST（UTC-5）。此后 8:30 ET = 北京时间 21:30，14:00 ET = 北京时间次日 03:00。切换后的第一个交易日是 11月2日（周一）。 说明：美国《阳光保护法》（永久夏令时）2026年7月已过众议院、送参议院，截至 2026年11月尚未成为法律，切换按现行规则照常进行。",
       "source": "NIST 夏令时规则（经 Old Farmer's Almanac / timeanddate 核对）",
       "sourceUrl": "https://www.almanac.com/content/when-daylight-saving-time"
+    },
+    {
+      "date": "2026-11-02",
+      "name": "Apple earnings",
+      "title": "Apple 苹果财报 · 盘后发布",
+      "time": "",
+      "type": "earnings",
+      "desc": "11/02/2026. 苹果财报，盘后发布（美东收盘后）。该公司在 TPT 指定财报日名单内（七巨头 + SpaceX，共 8 家）：PRO+ 实盘在这类财报日会提前休市，当晚盘后与次日开盘跳空风险高。 盘后发布：具体发布时间以公司投资者关系公告为准，本页只记日期与“盘后”口径，不猜具体时刻。",
+      "source": "TPT 指定财报日名单（用户提供的 TPT 日历截图核对，2026 年这批日期）",
+      "sourceUrl": ""
     },
     {
       "date": "2026-11-06",
@@ -536,14 +496,14 @@
       "sourceUrl": "https://www.bls.gov/schedule/news_release/cpi.htm"
     },
     {
-      "date": "2026-11-25",
-      "name": "PCE | Personal Income and Outlays",
-      "title": "Personal Income and Outlays, October 2026",
-      "time": "8:30am ET",
-      "type": "pce",
-      "desc": "11/25/2026 at 8:30am ET. BEA《个人收入与支出》（Personal Income and Outlays）报告，PCE 物价指数与核心 PCE（除食品和能源）都在这份报告里发布，没有单独的“核心 PCE”报告。美联储首选通胀指标。",
-      "source": "BEA · Personal Income and Outlays 2026 发布表",
-      "sourceUrl": "https://bea.gov/news/2026/personal-income-and-outlays-december-2025"
+      "date": "2026-11-17",
+      "name": "NVIDIA earnings",
+      "title": "NVIDIA 英伟达财报 · 盘后发布",
+      "time": "",
+      "type": "earnings",
+      "desc": "11/17/2026. 英伟达财报，盘后发布（美东收盘后）。该公司在 TPT 指定财报日名单内（七巨头 + SpaceX，共 8 家）：PRO+ 实盘在这类财报日会提前休市，当晚盘后与次日开盘跳空风险高。 盘后发布：具体发布时间以公司投资者关系公告为准，本页只记日期与“盘后”口径，不猜具体时刻。",
+      "source": "TPT 指定财报日名单（用户提供的 TPT 日历截图核对，2026 年这批日期）",
+      "sourceUrl": ""
     },
     {
       "date": "2026-11-26",
@@ -604,16 +564,6 @@
       "desc": "12/14/2026. CME 官方口径：换月日 = 到期月第三个周五之前的周一（到期周五为2026年12月18日）。本周起次近月合约成为主力口径。合约切换：2026年9月（ESU26）→ 2026年12月（ESZ26）。实操仍以次月成交量超过近月为准再切。",
       "source": "CME Group · Equity Index Roll Dates",
       "sourceUrl": "https://www.cmegroup.com/trading/equity-index/rolldates.html"
-    },
-    {
-      "date": "2026-12-23",
-      "name": "PCE | Personal Income and Outlays",
-      "title": "Personal Income and Outlays, November 2026",
-      "time": "8:30am ET",
-      "type": "pce",
-      "desc": "12/23/2026 at 8:30am ET. BEA《个人收入与支出》（Personal Income and Outlays）报告，PCE 物价指数与核心 PCE（除食品和能源）都在这份报告里发布，没有单独的“核心 PCE”报告。美联储首选通胀指标。",
-      "source": "BEA · Personal Income and Outlays 2026 发布表",
-      "sourceUrl": "https://bea.gov/news/2026/personal-income-and-outlays-december-2025"
     },
     {
       "date": "2026-12-24",
@@ -686,16 +636,6 @@
       "sourceUrl": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
     },
     {
-      "date": "2027-01-28",
-      "name": "PCE | Personal Income and Outlays",
-      "title": "Personal Income and Outlays, December 2026",
-      "time": "8:30am ET",
-      "type": "pce",
-      "desc": "01/28/2027 at 8:30am ET. BEA《个人收入与支出》（Personal Income and Outlays）报告，PCE 物价指数与核心 PCE（除食品和能源）都在这份报告里发布，没有单独的“核心 PCE”报告。美联储首选通胀指标。 与 GDP 初值同日上午发布。",
-      "source": "BEA · Release Schedule",
-      "sourceUrl": "https://bea.gov/news/schedule/next-year"
-    },
-    {
       "date": "2027-02-05",
       "name": "Non-Farm Payrolls",
       "title": "Non-Farm Payrolls · Employment Situation",
@@ -724,16 +664,6 @@
       "desc": "02/15/2027 at 1:00pm ET. CME 股指期货（Globex）当天照常开盘，中午 12:00 CT（13:00 ET）暂停交易，无结算，17:00 CT（18:00 ET）重开下一交易日。注意：这只是缩短时段，不是休市——NYSE 股票市场当天是全天休市，两边口径不同。 2027 年 CME 假期具体时段尚未最终定版（CME 一般在假期前约两周才定版）；此处日期与时段为三家复现源一致口径，临近时须再核 CME 官方通知。NYSE 的 2027 年日期已正式公布。",
       "source": "CME Globex 假期表（TradeSearcher 复现，另经 MarketFramework / FinanceCalendar 与 NYSE 交叉核对）",
       "sourceUrl": "https://tradesearcher.ai/tools/futures-trading-hours"
-    },
-    {
-      "date": "2027-02-25",
-      "name": "PCE | Personal Income and Outlays",
-      "title": "Personal Income and Outlays, January 2027",
-      "time": "8:30am ET",
-      "type": "pce",
-      "desc": "02/25/2027 at 8:30am ET. BEA《个人收入与支出》（Personal Income and Outlays）报告，PCE 物价指数与核心 PCE（除食品和能源）都在这份报告里发布，没有单独的“核心 PCE”报告。美联储首选通胀指标。 与 GDP 二次估值同日上午发布。",
-      "source": "BEA · Release Schedule",
-      "sourceUrl": "https://bea.gov/news/schedule/next-year"
     },
     {
       "date": "2027-03-05",
@@ -796,16 +726,6 @@
       "sourceUrl": "https://tradesearcher.ai/tools/futures-trading-hours"
     },
     {
-      "date": "2027-03-31",
-      "name": "PCE | Personal Income and Outlays",
-      "title": "Personal Income and Outlays, February 2027",
-      "time": "8:30am ET",
-      "type": "pce",
-      "desc": "03/31/2027 at 8:30am ET. BEA《个人收入与支出》（Personal Income and Outlays）报告，PCE 物价指数与核心 PCE（除食品和能源）都在这份报告里发布，没有单独的“核心 PCE”报告。美联储首选通胀指标。 与 GDP 三次估值同日上午发布。",
-      "source": "BEA · Release Schedule",
-      "sourceUrl": "https://bea.gov/news/schedule/next-year"
-    },
-    {
       "date": "2027-04-02",
       "name": "Non-Farm Payrolls",
       "title": "Non-Farm Payrolls · Employment Situation",
@@ -836,16 +756,6 @@
       "sourceUrl": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
     },
     {
-      "date": "2027-04-29",
-      "name": "PCE | Personal Income and Outlays",
-      "title": "Personal Income and Outlays, March 2027",
-      "time": "8:30am ET",
-      "type": "pce",
-      "desc": "04/29/2027 at 8:30am ET. BEA《个人收入与支出》（Personal Income and Outlays）报告，PCE 物价指数与核心 PCE（除食品和能源）都在这份报告里发布，没有单独的“核心 PCE”报告。美联储首选通胀指标。 与 GDP 初值同日上午发布。",
-      "source": "BEA · Release Schedule",
-      "sourceUrl": "https://bea.gov/news/schedule/next-year"
-    },
-    {
       "date": "2027-05-07",
       "name": "Non-Farm Payrolls",
       "title": "Non-Farm Payrolls · Employment Situation",
@@ -864,16 +774,6 @@
       "desc": "05/12/2027 at 8:30am ET. 美国消费者物价指数（CPI），统计参考月份：2027年4月。8:30 ET 发布。",
       "source": "BLS · CPI 发布日程",
       "sourceUrl": "https://www.bls.gov/schedule/news_release/cpi.htm"
-    },
-    {
-      "date": "2027-05-27",
-      "name": "PCE | Personal Income and Outlays",
-      "title": "Personal Income and Outlays, April 2027",
-      "time": "8:30am ET",
-      "type": "pce",
-      "desc": "05/27/2027 at 8:30am ET. BEA《个人收入与支出》（Personal Income and Outlays）报告，PCE 物价指数与核心 PCE（除食品和能源）都在这份报告里发布，没有单独的“核心 PCE”报告。美联储首选通胀指标。",
-      "source": "BEA · Release Schedule",
-      "sourceUrl": "https://bea.gov/news/schedule/next-year"
     },
     {
       "date": "2027-05-31",
@@ -936,16 +836,6 @@
       "sourceUrl": "https://tradesearcher.ai/tools/futures-trading-hours"
     },
     {
-      "date": "2027-06-25",
-      "name": "PCE | Personal Income and Outlays",
-      "title": "Personal Income and Outlays, May 2027",
-      "time": "8:30am ET",
-      "type": "pce",
-      "desc": "06/25/2027 at 8:30am ET. BEA《个人收入与支出》（Personal Income and Outlays）报告，PCE 物价指数与核心 PCE（除食品和能源）都在这份报告里发布，没有单独的“核心 PCE”报告。美联储首选通胀指标。",
-      "source": "BEA · Release Schedule",
-      "sourceUrl": "https://bea.gov/news/schedule/next-year"
-    },
-    {
       "date": "2027-07-02",
       "name": "Non-Farm Payrolls",
       "title": "Non-Farm Payrolls · Employment Situation",
@@ -986,16 +876,6 @@
       "sourceUrl": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
     },
     {
-      "date": "2027-07-29",
-      "name": "PCE | Personal Income and Outlays",
-      "title": "Personal Income and Outlays, June 2027",
-      "time": "8:30am ET",
-      "type": "pce",
-      "desc": "07/29/2027 at 8:30am ET. BEA《个人收入与支出》（Personal Income and Outlays）报告，PCE 物价指数与核心 PCE（除食品和能源）都在这份报告里发布，没有单独的“核心 PCE”报告。美联储首选通胀指标。 与 GDP 初值同日上午发布。",
-      "source": "BEA · Release Schedule",
-      "sourceUrl": "https://bea.gov/news/schedule/next-year"
-    },
-    {
       "date": "2027-08-06",
       "name": "Non-Farm Payrolls",
       "title": "Non-Farm Payrolls · Employment Situation",
@@ -1014,16 +894,6 @@
       "desc": "08/11/2027 at 8:30am ET. 美国消费者物价指数（CPI），统计参考月份：2027年7月。8:30 ET 发布。",
       "source": "BLS · CPI 发布日程",
       "sourceUrl": "https://www.bls.gov/schedule/news_release/cpi.htm"
-    },
-    {
-      "date": "2027-08-25",
-      "name": "PCE | Personal Income and Outlays",
-      "title": "Personal Income and Outlays, July 2027",
-      "time": "8:30am ET",
-      "type": "pce",
-      "desc": "08/25/2027 at 8:30am ET. BEA《个人收入与支出》（Personal Income and Outlays）报告，PCE 物价指数与核心 PCE（除食品和能源）都在这份报告里发布，没有单独的“核心 PCE”报告。美联储首选通胀指标。",
-      "source": "BEA · Release Schedule",
-      "sourceUrl": "https://bea.gov/news/schedule/next-year"
     },
     {
       "date": "2027-09-03",
@@ -1076,16 +946,6 @@
       "sourceUrl": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
     },
     {
-      "date": "2027-09-30",
-      "name": "PCE | Personal Income and Outlays",
-      "title": "Personal Income and Outlays, August 2027",
-      "time": "8:30am ET",
-      "type": "pce",
-      "desc": "09/30/2027 at 8:30am ET. BEA《个人收入与支出》（Personal Income and Outlays）报告，PCE 物价指数与核心 PCE（除食品和能源）都在这份报告里发布，没有单独的“核心 PCE”报告。美联储首选通胀指标。",
-      "source": "BEA · Release Schedule",
-      "sourceUrl": "https://bea.gov/news/schedule/next-year"
-    },
-    {
       "date": "2027-10-08",
       "name": "Non-Farm Payrolls",
       "title": "Non-Farm Payrolls · Employment Situation",
@@ -1116,16 +976,6 @@
       "sourceUrl": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
     },
     {
-      "date": "2027-10-28",
-      "name": "PCE | Personal Income and Outlays",
-      "title": "Personal Income and Outlays, September 2027",
-      "time": "8:30am ET",
-      "type": "pce",
-      "desc": "10/28/2027 at 8:30am ET. BEA《个人收入与支出》（Personal Income and Outlays）报告，PCE 物价指数与核心 PCE（除食品和能源）都在这份报告里发布，没有单独的“核心 PCE”报告。美联储首选通胀指标。 与 GDP 初值同日上午发布。",
-      "source": "BEA · Release Schedule",
-      "sourceUrl": "https://bea.gov/news/schedule/next-year"
-    },
-    {
       "date": "2027-11-05",
       "name": "Non-Farm Payrolls",
       "title": "Non-Farm Payrolls · Employment Situation",
@@ -1154,16 +1004,6 @@
       "desc": "11/10/2027 at 8:30am ET. 美国消费者物价指数（CPI），统计参考月份：2027年10月。8:30 ET 发布。 夏令时已于 11月7日结束，本次北京时间回到 21:30。",
       "source": "BLS · CPI 发布日程",
       "sourceUrl": "https://www.bls.gov/schedule/news_release/cpi.htm"
-    },
-    {
-      "date": "2027-11-24",
-      "name": "PCE | Personal Income and Outlays",
-      "title": "Personal Income and Outlays, October 2027",
-      "time": "8:30am ET",
-      "type": "pce",
-      "desc": "11/24/2027 at 8:30am ET. BEA《个人收入与支出》（Personal Income and Outlays）报告，PCE 物价指数与核心 PCE（除食品和能源）都在这份报告里发布，没有单独的“核心 PCE”报告。美联储首选通胀指标。",
-      "source": "BEA · Release Schedule",
-      "sourceUrl": "https://bea.gov/news/schedule/next-year"
     },
     {
       "date": "2027-11-25",
@@ -1224,16 +1064,6 @@
       "desc": "12/13/2027. CME 官方口径：换月日 = 到期月第三个周五之前的周一（到期周五为2027年12月17日）。本周起次近月合约成为主力口径。合约切换：2027年9月（ESU27）→ 2027年12月（ESZ27）。实操仍以次月成交量超过近月为准再切。",
       "source": "CME Group · Equity Index Roll Dates",
       "sourceUrl": "https://www.cmegroup.com/trading/equity-index/rolldates.html"
-    },
-    {
-      "date": "2027-12-22",
-      "name": "PCE | Personal Income and Outlays",
-      "title": "Personal Income and Outlays, November 2027",
-      "time": "8:30am ET",
-      "type": "pce",
-      "desc": "12/22/2027 at 8:30am ET. BEA《个人收入与支出》（Personal Income and Outlays）报告，PCE 物价指数与核心 PCE（除食品和能源）都在这份报告里发布，没有单独的“核心 PCE”报告。美联储首选通胀指标。",
-      "source": "BEA · Release Schedule",
-      "sourceUrl": "https://bea.gov/news/schedule/next-year"
     },
     {
       "date": "2027-12-24",
